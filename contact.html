@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <include src="partials/head.html"></include>
+    <title>Contact — Baye Lamine Gueye</title>
+    <meta
+      name="description"
+      content="Contacter Baye Lamine Gueye, étudiant en BTS SIO SLAM : e-mail, téléphone, WhatsApp et CV."
+    />
+  </head>
+  <body data-page="contact">
+    <include src="partials/header.html"></include>
+
+    <main id="contenu">
+      <section class="p-head">
+        <div class="l-wrapper p-head__wrapper">
+          <div class="p-head__main">
+            <h1 class="p-head__title anton js-title-scale"><span class="text-wrapper">CONTACT</span></h1>
+            <div class="p-head__lead">
+              <p class="t-base">[ME CONTACTER]</p>
+              <p class="t-base">
+                Stage, alternance, projet ou simple question&nbsp;: je vous réponds rapidement par e-mail,
+                téléphone ou WhatsApp.
+              </p>
+            </div>
+          </div>
+          <div class="p-head__labels t-sm" aria-hidden="true">
+            <p>[08]</p>
+            <p>BAYE LAMINE GUEYE</p>
+            <p><span>SCROLL</span><span>[↓]</span></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="p-contact">
+        <div class="l-wrapper p-contact__wrapper">
+          <div class="p-contact__info">
+            <dl class="c-facts">
+              <div class="c-facts__row"><dt class="t-sm">[NOM]</dt><dd>GUEYE</dd></div>
+              <div class="c-facts__row"><dt class="t-sm">[PRÉNOM]</dt><dd>BAYE LAMINE</dd></div>
+              <div class="c-facts__row">
+                <dt class="t-sm">[E-MAIL]</dt>
+                <dd>
+                  <a class="c-slide" href="mailto:{{ email }}">
+                    <span class="text-wrapper"><span>{{ email }}</span><span aria-hidden="true">{{ email }}</span></span>
+                  </a>
+                </dd>
+              </div>
+              <div class="c-facts__row">
+                <dt class="t-sm">[TÉLÉPHONE]</dt>
+                <dd>
+                  <a class="c-slide" href="tel:{{ phoneLink }}">
+                    <span class="text-wrapper"><span>{{ phone }}</span><span aria-hidden="true">{{ phone }}</span></span>
+                  </a>
+                </dd>
+              </div>
+              <div class="c-facts__row"><dt class="t-sm">[VILLE]</dt><dd>PARIS, FRANCE</dd></div>
+            </dl>
+
+            <div class="c-actions">
+              <a class="c-cta anton" href="mailto:{{ email }}">
+                <span class="text-wrapper">
+                  <span class="c-cta__label c-cta__label--default">M'ÉCRIRE UN E-MAIL</span>
+                  <span class="c-cta__label c-cta__label--clone" aria-hidden="true">M'ÉCRIRE UN E-MAIL</span>
+                </span>
+                <span class="c-cta__rule"></span>
+                <span class="text-wrapper">
+                  <span class="c-cta__icon c-cta__icon--default"></span>
+                  <span class="c-cta__icon c-cta__icon--clone"></span>
+                </span>
+              </a>
+              <a class="c-cta c-cta--outline c-cta--whatsapp anton" href="https://wa.me/{{ whatsapp }}" target="_blank" rel="noopener">
+                <span class="text-wrapper">
+                  <span class="c-cta__label c-cta__label--default">WHATSAPP</span>
+                  <span class="c-cta__label c-cta__label--clone" aria-hidden="true">WHATSAPP</span>
+                </span>
+                <span class="c-cta__rule"></span>
+                <span class="text-wrapper">
+                  <span class="c-cta__icon c-cta__icon--default"></span>
+                  <span class="c-cta__icon c-cta__icon--clone"></span>
+                </span>
+              </a>
+              <a class="c-cta c-cta--outline c-cta--down anton" href="{{ cv }}" download>
+                <span class="text-wrapper">
+                  <span class="c-cta__label c-cta__label--default">TÉLÉCHARGER MON CV</span>
+                  <span class="c-cta__label c-cta__label--clone" aria-hidden="true">TÉLÉCHARGER MON CV</span>
+                </span>
+                <span class="c-cta__rule"></span>
+                <span class="text-wrapper">
+                  <span class="c-cta__icon c-cta__icon--default"></span>
+                  <span class="c-cta__icon c-cta__icon--clone"></span>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <form class="p-contact__form js-contact-form" data-to="{{ email }}">
+            <p class="t-base">[ÉCRIRE UN MESSAGE]</p>
+            <div class="p-contact__fields">
+              <label class="p-contact__field">
+                <span class="t-sm">NOM *</span>
+                <input class="input c-input" type="text" name="lastName" autocomplete="family-name" required />
+              </label>
+              <label class="p-contact__field">
+                <span class="t-sm">PRÉNOM *</span>
+                <input class="input c-input" type="text" name="firstName" autocomplete="given-name" required />
+              </label>
+              <label class="p-contact__field">
+                <span class="t-sm">E-MAIL *</span>
+                <input class="input c-input" type="email" name="email" autocomplete="email" required />
+              </label>
+              <label class="p-contact__field">
+                <span class="t-sm">TÉLÉPHONE</span>
+                <input class="input c-input" type="tel" name="phone" autocomplete="tel" />
+              </label>
+              <label class="p-contact__field p-contact__field--full">
+                <span class="t-sm">MESSAGE *</span>
+                <textarea class="textarea c-input" name="message" rows="6" required></textarea>
+              </label>
+            </div>
+            <button class="c-cta anton" type="submit">
+              <span class="text-wrapper">
+                <span class="c-cta__label c-cta__label--default">ENVOYER</span>
+                <span class="c-cta__label c-cta__label--clone" aria-hidden="true">ENVOYER</span>
+              </span>
+              <span class="c-cta__rule"></span>
+              <span class="text-wrapper">
+                <span class="c-cta__icon c-cta__icon--default"></span>
+                <span class="c-cta__icon c-cta__icon--clone"></span>
+              </span>
+            </button>
+            <p class="t-sm">Le message s'ouvre dans votre messagerie, prêt à être envoyé.</p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <include src="partials/footer.html"></include>
+  </body>
+</html>

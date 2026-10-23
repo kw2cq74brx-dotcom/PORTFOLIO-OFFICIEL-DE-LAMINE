@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <include src="partials/head.html"></include>
+    <title>Tableau de synthèse — Baye Lamine Gueye</title>
+    <meta
+      name="description"
+      content="Tableau de synthèse des réalisations professionnelles de Baye Lamine Gueye pour l'épreuve E4 du BTS SIO."
+    />
+  </head>
+  <body data-page="synthese">
+    <include src="partials/header.html"></include>
+
+    <main id="contenu">
+      <section class="p-head">
+        <div class="l-wrapper p-head__wrapper">
+          <div class="p-head__main">
+            <h1 class="p-head__title anton js-title-scale"><span class="text-wrapper">SYNTHÈSE</span></h1>
+            <div class="p-head__lead">
+              <p class="t-base">[TABLEAU DE SYNTHÈSE]</p>
+              <p class="t-base">
+                Mes réalisations professionnelles et les compétences du bloc 1 qu'elles mobilisent, support
+                de l'épreuve E4 du BTS SIO.
+              </p>
+            </div>
+          </div>
+          <div class="p-head__labels t-sm" aria-hidden="true">
+            <p>[07]</p>
+            <p>BAYE LAMINE GUEYE</p>
+            <p><span>SCROLL</span><span>[↓]</span></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ TABLEAU ============ -->
+      <section class="p-section">
+        <div class="l-wrapper p-section__wrapper">
+          <div class="p-about__info">
+            <div class="p-about__info-item">
+              <p class="t-sm">Réalisations</p>
+              <p class="t-sm">présentées</p>
+              <p class="t-sm">au total</p>
+              <p class="anton">09</p>
+            </div>
+            <div class="p-about__info-item">
+              <p class="t-sm">Compétences</p>
+              <p class="t-sm">du bloc 1</p>
+              <p class="t-sm">évaluées</p>
+              <p class="anton">06</p>
+            </div>
+          </div>
+
+          <div class="p-projects__lead">
+            <div class="p-projects__intro">
+              <p class="t-base">[RÉALISATIONS × COMPÉTENCES]</p>
+              <p class="t-base">
+                Chaque ligne est une réalisation&nbsp;; chaque case pleine indique une compétence mise en
+                œuvre.
+              </p>
+            </div>
+            <h2 class="anton p-projects__title js-title-roll">
+              <span class="text-wrapper"><span>TABLEAU DE</span><span aria-hidden="true">TABLEAU DE</span></span>
+              <span class="text-wrapper"><span>SYNTHÈSE</span><span aria-hidden="true">SYNTHÈSE</span></span>
+            </h2>
+          </div>
+
+          <!--
+            ⚠️ À VÉRIFIER : les cases cochées sont une proposition.
+            Ajoute ou retire la classe « is-on » selon tes réalisations réelles,
+            puis mets à jour le compteur « Réalisations » ci-dessus.
+          -->
+          <div class="c-synth">
+            <table class="c-synth__table js-synthesis">
+              <caption class="sr-only">
+                Tableau de synthèse : réalisations professionnelles et compétences du bloc 1 mobilisées
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="t-sm">RÉALISATION</th>
+                  <th scope="col" class="t-sm">PÉRIODE</th>
+                  <th scope="col"><span class="c-synth__code anton">C1</span><span class="t-sm">PATRIMOINE</span></th>
+                  <th scope="col"><span class="c-synth__code anton">C2</span><span class="t-sm">INCIDENTS</span></th>
+                  <th scope="col"><span class="c-synth__code anton">C3</span><span class="t-sm">PRÉSENCE EN LIGNE</span></th>
+                  <th scope="col"><span class="c-synth__code anton">C4</span><span class="t-sm">MODE PROJET</span></th>
+                  <th scope="col"><span class="c-synth__code anton">C5</span><span class="t-sm">MISE À DISPOSITION</span></th>
+                  <th scope="col"><span class="c-synth__code anton">C6</span><span class="t-sm">DÉV. PRO</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><span class="t-sm">[FORMATION]</span><a class="anton" href="projets.html#mds-avis">MDS AVIS</a></th>
+                  <td class="t-sm">{{ yearsSio }}</td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check is-on" role="img" aria-label="Oui"></span></td>
+                  <td><span class="c-synth__check is-on" role="img" aria-label="Oui"></span></td>
+                  <td><span class="c-synth__check is-on" role="img" aria-label="Oui"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span class="t-sm">[FORMATION]</span><a class="anton" href="projets.html#app-python">APPLICATION PYTHON</a></th>
+                  <td class="t-sm">{{ yearsSio }}</td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check is-on" role="img" aria-label="Oui"></span></td>
+                  <td><span class="c-synth__check is-on" role="img" aria-label="Oui"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span class="t-sm">[PERSONNEL]</span><a class="anton" href="projets.html#models-maps">MODEL'S MAPS</a></th>
+                  <td class="t-sm">20XX</td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check is-on" role="img" aria-label="Oui"></span></td>
+                  <td><span class="c-synth__check is-on" role="img" aria-label="Oui"></span></td>
+                  <td><span class="c-synth__check is-on" role="img" aria-label="Oui"></span></td>
+                  <td><span class="c-synth__check is-on" role="img" aria-label="Oui"></span></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span class="t-sm">[FORMATION]</span><a class="anton" href="index.html">PORTFOLIO</a></th>
+                  <td class="t-sm">{{ yearsSio }}</td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check is-on" role="img" aria-label="Oui"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check is-on" role="img" aria-label="Oui"></span></td>
+                  <td><span class="c-synth__check is-on" role="img" aria-label="Oui"></span></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span class="t-sm">[FORMATION]</span><a class="anton" href="veille.html">VEILLE INFORMATIQUE</a></th>
+                  <td class="t-sm">{{ yearsSio }}</td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check is-on" role="img" aria-label="Oui"></span></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span class="t-sm">[STAGE]</span><a class="anton" href="experiences.html#stages">STAGE 1<sup>RE</sup> ANNÉE</a></th>
+                  <td class="t-sm">20XX</td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span class="t-sm">[STAGE]</span><a class="anton" href="experiences.html#stages">STAGE 2<sup>E</sup> ANNÉE</a></th>
+                  <td class="t-sm">20XX</td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span class="t-sm">[ATELIER PRO]</span><a class="anton" href="experiences.html#ateliers">ATELIER N°1</a></th>
+                  <td class="t-sm">20XX</td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span class="t-sm">[ATELIER PRO]</span><a class="anton" href="experiences.html#ateliers">ATELIER N°2</a></th>
+                  <td class="t-sm">20XX</td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                  <td><span class="c-synth__check" role="img" aria-label="Non"></span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="t-sm c-synth__legend">
+            <span class="c-synth__check is-on" aria-hidden="true"></span> COMPÉTENCE MOBILISÉE
+            <span class="c-synth__check" aria-hidden="true"></span> NON MOBILISÉE
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ LÉGENDE : LES 6 COMPÉTENCES ============ -->
+      <section class="p-section">
+        <div class="l-wrapper p-section__wrapper">
+          <div class="p-projects__lead">
+            <div class="p-projects__intro">
+              <p class="t-base">[BLOC 1]</p>
+              <p class="t-base">
+                Support et mise à disposition de services informatiques&nbsp;: les six compétences évaluées
+                à l'épreuve E4.
+              </p>
+            </div>
+            <h2 class="anton p-projects__title js-title-roll">
+              <span class="text-wrapper"><span>LES</span><span aria-hidden="true">LES</span></span>
+              <span class="text-wrapper"><span>COMPÉTENCES</span><span aria-hidden="true">COMPÉTENCES</span></span>
+            </h2>
+          </div>
+
+          <div class="c-entries">
+            <article class="c-entry">
+              <p class="anton c-entry__title c-entry__date">C1</p>
+              <div class="c-entry__head"><h3 class="anton c-entry__title">GÉRER LE PATRIMOINE INFORMATIQUE</h3></div>
+              <div class="c-entry__body"><p class="t-md">Recenser et identifier les ressources numériques, exploiter les référentiels, normes et standards, mettre en place et vérifier les niveaux d'habilitation, vérifier les conditions de continuité d'un service.</p></div>
+            </article>
+            <article class="c-entry">
+              <p class="anton c-entry__title c-entry__date">C2</p>
+              <div class="c-entry__head"><h3 class="anton c-entry__title">RÉPONDRE AUX INCIDENTS ET AUX DEMANDES D'ASSISTANCE ET D'ÉVOLUTION</h3></div>
+              <div class="c-entry__body"><p class="t-md">Collecter, suivre et orienter des demandes, traiter des demandes concernant les services réseau, système et applicatifs.</p></div>
+            </article>
+            <article class="c-entry">
+              <p class="anton c-entry__title c-entry__date">C3</p>
+              <div class="c-entry__head"><h3 class="anton c-entry__title">DÉVELOPPER LA PRÉSENCE EN LIGNE DE L'ORGANISATION</h3></div>
+              <div class="c-entry__body"><p class="t-md">Participer à la valorisation de l'image de l'organisation sur les médias numériques, référencer les services en ligne et mesurer leur visibilité, participer à l'évolution d'un site web.</p></div>
+            </article>
+            <article class="c-entry">
+              <p class="anton c-entry__title c-entry__date">C4</p>
+              <div class="c-entry__head"><h3 class="anton c-entry__title">TRAVAILLER EN MODE PROJET</h3></div>
+              <div class="c-entry__body"><p class="t-md">Analyser les objectifs et les modalités d'organisation d'un projet, planifier les activités, évaluer les indicateurs de suivi et analyser les écarts.</p></div>
+            </article>
+            <article class="c-entry">
+              <p class="anton c-entry__title c-entry__date">C5</p>
+              <div class="c-entry__head"><h3 class="anton c-entry__title">METTRE À DISPOSITION DES UTILISATEURS UN SERVICE INFORMATIQUE</h3></div>
+              <div class="c-entry__body"><p class="t-md">Réaliser les tests d'intégration et d'acceptation, déployer un service, accompagner les utilisateurs dans sa mise en place.</p></div>
+            </article>
+            <article class="c-entry">
+              <p class="anton c-entry__title c-entry__date">C6</p>
+              <div class="c-entry__head"><h3 class="anton c-entry__title">ORGANISER SON DÉVELOPPEMENT PROFESSIONNEL</h3></div>
+              <div class="c-entry__body"><p class="t-md">Mettre en place son environnement d'apprentissage personnel, mettre en œuvre des outils et stratégies de veille informatique, gérer son identité professionnelle, développer son projet professionnel.</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <include src="partials/footer.html"></include>
+  </body>
+</html>

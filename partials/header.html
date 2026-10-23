@@ -1,0 +1,107 @@
+<a class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[1001] focus:p-3 focus:bg-[#e6f1ff] focus:text-[#05070d]" href="#contenu">Aller au contenu</a>
+
+<!-- Fond « glace liquide » (shader WebGL) -->
+<canvas class="c-liquid js-liquid" aria-hidden="true"></canvas>
+
+<!-- Transition de page : couvre l'écran jusqu'à ce que le JS la dissolve -->
+<div class="c-transition js-transition" aria-hidden="true"></div>
+
+<!-- Menu mobile / tablette -->
+<div class="c-menu js-menu" id="menu" inert>
+  <nav class="c-menu__wrapper" aria-label="Menu principal">
+    <p class="anton c-menu__heading"><span class="text-wrapper"><span>[MENU]</span></span></p>
+    <ul class="c-menu__list">
+      <li><a class="c-menu__link anton" href="index.html" data-nav="index"><span class="text-wrapper"><span>ACCUEIL</span></span></a></li>
+      <li><a class="c-menu__link anton" href="a-propos.html" data-nav="a-propos"><span class="text-wrapper"><span>À PROPOS</span></span></a></li>
+      <li><a class="c-menu__link anton" href="formations.html" data-nav="formations"><span class="text-wrapper"><span>FORMATIONS</span></span></a></li>
+      <li><a class="c-menu__link anton" href="competences.html" data-nav="competences"><span class="text-wrapper"><span>COMPÉTENCES</span></span></a></li>
+      <li><a class="c-menu__link anton" href="experiences.html" data-nav="experiences"><span class="text-wrapper"><span>EXPÉRIENCES</span></span></a></li>
+      <li><a class="c-menu__link anton" href="projets.html" data-nav="projets"><span class="text-wrapper"><span>PROJETS</span></span></a></li>
+      <li><a class="c-menu__link anton" href="veille.html" data-nav="veille"><span class="text-wrapper"><span>VEILLE</span></span></a></li>
+      <li><a class="c-menu__link anton" href="synthese.html" data-nav="synthese"><span class="text-wrapper"><span>SYNTHÈSE</span></span></a></li>
+      <li><a class="c-menu__link anton" href="contact.html" data-nav="contact"><span class="text-wrapper"><span>CONTACT</span></span></a></li>
+    </ul>
+    <div class="c-menu__rule"></div>
+    <div class="c-menu__contact">
+      <p class="anton"><span class="text-wrapper"><span>[E-MAIL]</span></span></p>
+      <a class="anton" href="mailto:{{ email }}"><span class="text-wrapper"><span>{{ email }}</span></span></a>
+      <a class="anton" href="{{ cv }}" download><span class="text-wrapper"><span>TÉLÉCHARGER MON CV [↓]</span></span></a>
+    </div>
+  </nav>
+</div>
+
+<!-- Header -->
+<header class="c-header js-header">
+  <a class="c-header__link anton js-header-item" href="index.html" aria-label="{{ fullName }} — accueil">
+    <span class="c-header__label c-header__label--default">B.L. GUEYE</span>
+    <span class="c-header__label c-header__label--clone" aria-hidden="true">B.L. GUEYE</span>
+  </a>
+
+  <nav class="c-header__nav" aria-label="Navigation principale">
+    <ul class="c-header__list">
+      <li class="js-header-item">
+        <a class="c-header__link anton" href="index.html" data-nav="index">
+          <span class="c-header__label c-header__label--default">ACCUEIL</span>
+          <span class="c-header__label c-header__label--clone" aria-hidden="true">ACCUEIL</span>
+        </a>
+      </li>
+      <li class="js-header-item">
+        <a class="c-header__link anton" href="a-propos.html" data-nav="a-propos">
+          <span class="c-header__label c-header__label--default">À PROPOS</span>
+          <span class="c-header__label c-header__label--clone" aria-hidden="true">À PROPOS</span>
+        </a>
+      </li>
+      <li class="js-header-item">
+        <a class="c-header__link anton" href="formations.html" data-nav="formations">
+          <span class="c-header__label c-header__label--default">FORMATIONS</span>
+          <span class="c-header__label c-header__label--clone" aria-hidden="true">FORMATIONS</span>
+        </a>
+      </li>
+      <li class="js-header-item">
+        <a class="c-header__link anton" href="competences.html" data-nav="competences">
+          <span class="c-header__label c-header__label--default">COMPÉTENCES</span>
+          <span class="c-header__label c-header__label--clone" aria-hidden="true">COMPÉTENCES</span>
+        </a>
+      </li>
+      <li class="js-header-item">
+        <a class="c-header__link anton" href="experiences.html" data-nav="experiences">
+          <span class="c-header__label c-header__label--default">EXPÉRIENCES</span>
+          <span class="c-header__label c-header__label--clone" aria-hidden="true">EXPÉRIENCES</span>
+        </a>
+      </li>
+      <li class="js-header-item">
+        <a class="c-header__link anton" href="projets.html" data-nav="projets">
+          <span class="c-header__label c-header__label--default">PROJETS</span>
+          <span class="c-header__label c-header__label--clone" aria-hidden="true">PROJETS</span>
+        </a>
+      </li>
+      <li class="js-header-item">
+        <a class="c-header__link anton" href="veille.html" data-nav="veille">
+          <span class="c-header__label c-header__label--default">VEILLE</span>
+          <span class="c-header__label c-header__label--clone" aria-hidden="true">VEILLE</span>
+        </a>
+      </li>
+      <li class="js-header-item">
+        <a class="c-header__link anton" href="synthese.html" data-nav="synthese">
+          <span class="c-header__label c-header__label--default">SYNTHÈSE</span>
+          <span class="c-header__label c-header__label--clone" aria-hidden="true">SYNTHÈSE</span>
+        </a>
+      </li>
+      <li class="js-header-item">
+        <a class="c-header__link anton" href="contact.html" data-nav="contact">
+          <span class="c-header__label c-header__label--default">CONTACT</span>
+          <span class="c-header__label c-header__label--clone" aria-hidden="true">CONTACT</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="c-menu-button js-menu-button js-header-item">
+    <button class="c-menu-button__button anton" type="button" aria-controls="menu" aria-expanded="false">
+      <span class="text-wrapper">
+        <span class="c-menu-button__label c-menu-button__label--open">MENU</span>
+        <span class="c-menu-button__label c-menu-button__label--close">FERMER</span>
+      </span>
+    </button>
+  </div>
+</header>

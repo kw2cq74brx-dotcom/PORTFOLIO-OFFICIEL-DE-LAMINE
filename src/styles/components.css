@@ -1,0 +1,486 @@
+/* =========================================================
+   Bouton d'action (CTA) — libellé et flèche qui glissent au survol
+   ========================================================= */
+.c-cta {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--ice);
+  color: var(--bg);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px rgba(127, 231, 255, 0.15);
+  padding: 12px 16px 12px 24px;
+  position: relative;
+  font-size: var(--fs-btn);
+  letter-spacing: 0.01em;
+}
+@media (min-width: 1024px) {
+  .c-cta {
+    padding: 16px 24px 16px 32px;
+  }
+}
+
+.c-cta .text-wrapper {
+  display: flex;
+}
+
+.c-cta__rule {
+  width: 1px;
+  background-color: currentColor;
+  align-self: stretch;
+  flex-shrink: 0;
+}
+
+.c-cta__label {
+  display: inline-block;
+  white-space: nowrap;
+  transition: transform 0.3s ease-out;
+}
+/* 130 % : l'accent d'une majuscule (É) dépasse du haut du libellé caché */
+.c-cta__label--clone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(130%);
+}
+
+.c-cta__icon {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  background-color: currentColor;
+  mask: url('../assets/arrow.svg') center / contain no-repeat;
+  transition: transform 0.3s ease-out;
+}
+.c-cta--down .c-cta__icon {
+  mask-image: url('../assets/arrow-down.svg');
+}
+@media (min-width: 1024px) {
+  .c-cta__icon {
+    width: 12px;
+    height: 12px;
+  }
+}
+.c-cta__icon--clone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-16px, 16px);
+}
+.c-cta--down .c-cta__icon--clone {
+  transform: translate(0, -16px);
+}
+
+@media (hover: hover) and (min-width: 1024px) {
+  .c-cta:hover .c-cta__label--default {
+    transform: translateY(-100%);
+  }
+  .c-cta:hover .c-cta__label--clone {
+    transform: translateY(0%);
+  }
+  .c-cta:hover .c-cta__icon--default {
+    transform: translate(16px, -16px);
+  }
+  .c-cta:hover .c-cta__icon--clone {
+    transform: translate(0, 0);
+  }
+  .c-cta--down:hover .c-cta__icon--default {
+    transform: translate(0, 16px);
+  }
+}
+
+.c-cta--outline {
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shine);
+  color: var(--text);
+  border-color: var(--glass-border);
+}
+
+.c-cta--whatsapp:hover {
+  background-color: var(--whatsapp);
+  border-color: var(--whatsapp);
+  color: var(--bg);
+}
+
+.c-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* =========================================================
+   Lien « slide-up » (texte dupliqué qui glisse au survol)
+   ========================================================= */
+.c-slide {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+}
+.c-slide .text-wrapper {
+  display: flex;
+}
+.c-slide .text-wrapper > span {
+  display: inline-block;
+  transition: transform 0.4s ease-out;
+}
+.c-slide .text-wrapper > span:nth-child(2) {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .c-slide .text-wrapper > span:nth-child(2) {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(130%);
+  }
+  .c-slide:hover .text-wrapper > span:nth-child(1) {
+    transform: translateY(-100%);
+  }
+  .c-slide:hover .text-wrapper > span:nth-child(2) {
+    transform: translateY(0%);
+  }
+}
+
+/* =========================================================
+   Cartes projet (image pixelisée + infos)
+   ========================================================= */
+.c-cards {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  row-gap: 64px;
+}
+
+.c-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+@media (min-width: 1024px) {
+  .c-card {
+    gap: 12px;
+  }
+}
+
+/* Positions reprises de la grille « Selected works » */
+.c-card--a {
+  grid-column: 1 / 11;
+}
+.c-card--b {
+  grid-column: 6 / 13;
+}
+.c-card--c {
+  grid-column: 1 / 10;
+}
+.c-card--wide {
+  grid-column: 1 / 13;
+}
+@media (min-width: 1024px) {
+  .c-card--a {
+    grid-column: 1 / 6;
+  }
+  .c-card--b {
+    grid-column: 8 / 13;
+    margin-top: 240px;
+  }
+  .c-card--c {
+    grid-column: 4 / 10;
+  }
+  .c-card--wide {
+    grid-column: 3 / 11;
+  }
+}
+
+.c-card__img {
+  aspect-ratio: 4 / 3;
+}
+.c-card--b .c-card__img {
+  aspect-ratio: 4 / 5;
+}
+.c-card--wide .c-card__img {
+  aspect-ratio: 16 / 9;
+}
+
+.c-card__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+a.c-card:hover .c-card__info p:first-child {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+.c-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+
+.c-card__title {
+  font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.75rem);
+}
+
+/* =========================================================
+   Image révélée par pixels (canvas)
+   ========================================================= */
+.c-pixel {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--veil);
+}
+.c-pixel img,
+.c-pixel canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.c-pixel img {
+  object-fit: cover;
+}
+/* Quand le JS a pris le relais, l'image reste dans le DOM (texte alternatif) mais invisible */
+.c-pixel.is-pixel img {
+  opacity: 0;
+}
+
+/* =========================================================
+   Entrées (expériences, articles de veille)
+   ========================================================= */
+.c-entries {
+  border-bottom: 1px solid var(--line);
+}
+
+.c-entry {
+  display: grid;
+  gap: 16px;
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+}
+@media (min-width: 1024px) {
+  .c-entry {
+    grid-template-columns: repeat(12, 1fr);
+    padding: 40px 0;
+  }
+  .c-entry__date {
+    grid-column: 1 / 3;
+  }
+  .c-entry__head {
+    grid-column: 3 / 7;
+  }
+  .c-entry__body {
+    grid-column: 7 / 13;
+  }
+}
+
+.c-entry__head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.c-entry__title {
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.5rem);
+}
+
+.c-entry__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.c-todo {
+  display: inline-block;
+  padding: 2px 6px;
+  background-color: var(--accent);
+  color: var(--bg);
+}
+
+/* Liste à puces carrées */
+.c-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.c-dots li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Badges daisyUI */
+.c-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.c-tags .badge {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  border-color: currentColor;
+  color: inherit;
+  background-color: transparent;
+}
+
+/* =========================================================
+   Accordéon (daisyUI collapse)
+   ========================================================= */
+.c-accordion {
+  border-bottom: 1px solid var(--line);
+}
+
+.c-collapse.collapse {
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+}
+.c-collapse .collapse-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1rem + 1vw, 2rem);
+  line-height: 1.1;
+  padding: 24px 48px 24px 0;
+}
+.c-collapse .collapse-title::after {
+  right: 8px;
+}
+.c-collapse .collapse-content {
+  padding-left: 0;
+  padding-right: 0;
+}
+.c-collapse .collapse-content > * + * {
+  margin-top: 12px;
+}
+.c-collapse__num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  margin-right: 16px;
+  vertical-align: middle;
+}
+
+/* =========================================================
+   Champs de formulaire (daisyUI input / textarea)
+   ========================================================= */
+.c-input.input,
+.c-input.textarea {
+  width: 100%;
+  background-color: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: var(--fs-btn);
+}
+.c-input.input {
+  height: 48px;
+}
+.c-input.textarea {
+  min-height: 160px;
+  padding-top: 12px;
+}
+.c-input:focus,
+.c-input:focus-within {
+  outline: 2px solid var(--text);
+  outline-offset: 0;
+  border-color: var(--text);
+}
+
+/* =========================================================
+   Tableau de synthèse
+   ========================================================= */
+.c-synth {
+  margin-top: 40px;
+  overflow-x: auto;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.c-synth__table {
+  width: 100%;
+  min-width: 880px;
+  border-collapse: collapse;
+}
+
+.c-synth__table th,
+.c-synth__table td {
+  padding: 16px 12px;
+  text-align: center;
+  vertical-align: middle;
+  border-top: 1px solid var(--line);
+}
+.c-synth__table thead th {
+  border-top: none;
+  vertical-align: bottom;
+}
+.c-synth__table th:first-child,
+.c-synth__table td:nth-child(2),
+.c-synth__table thead th:nth-child(2) {
+  text-align: left;
+}
+.c-synth__table th:first-child {
+  padding-left: 0;
+}
+
+.c-synth__table thead th span {
+  display: block;
+}
+.c-synth__code {
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2.25rem);
+  margin-bottom: 6px;
+}
+
+.c-synth__table tbody th {
+  min-width: 220px;
+}
+.c-synth__table tbody th > span {
+  display: block;
+  margin-bottom: 6px;
+}
+.c-synth__table tbody th a {
+  display: block;
+  width: fit-content;
+  font-size: clamp(1.125rem, 1rem + 0.5vw, 1.5rem);
+}
+.c-synth__table tbody tr {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+.c-synth__table tbody tr:hover {
+  background: var(--ice);
+  color: var(--bg);
+}
+
+/* Case : pleine = compétence mobilisée, pointillés = non mobilisée */
+.c-synth__check {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px dashed currentColor;
+  opacity: 0.5;
+  vertical-align: middle;
+}
+.c-synth__check.is-on {
+  border-style: solid;
+  background-color: currentColor;
+  opacity: 1;
+}
+
+.c-synth__legend {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-top: 16px;
+}
+.c-synth__legend .c-synth__check {
+  width: 12px;
+  height: 12px;
+}

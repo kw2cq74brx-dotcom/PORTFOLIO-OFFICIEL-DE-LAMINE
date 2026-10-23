@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1200" viewBox="0 0 960 1200">
+  <rect width="960" height="1200" fill="#05070d"/>
+  <g stroke="#dcecff" stroke-opacity=".1"><path d="M0 200H960M0 400H960M0 600H960M0 800H960M0 1000H960M240 0V1200M480 0V1200M720 0V1200"/></g>
+  <text x="80" y="230" font-family="Anton, Impact, sans-serif" font-size="150" fill="#dcecff">PYTHON</text>
+  <g font-family="'Courier New', monospace" font-size="34">
+    <text x="80" y="380" fill="#7fe7ff">class</text><text x="200" y="380" fill="#dcecff">Application:</text>
+    <text x="140" y="440" fill="#6fe3ff">def</text><text x="220" y="440" fill="#dcecff">__init__(self):</text>
+    <text x="200" y="500" fill="#dcecff">self.data = []</text>
+    <text x="140" y="580" fill="#6fe3ff">def</text><text x="220" y="580" fill="#dcecff">run(self):</text>
+    <text x="200" y="640" fill="#7fe7ff">for</text><text x="290" y="640" fill="#dcecff">item</text><text x="400" y="640" fill="#7fe7ff">in</text><text x="460" y="640" fill="#dcecff">self.data:</text>
+    <text x="260" y="700" fill="#dcecff">print(item)</text>
+  </g>
+  <rect x="80" y="820" width="800" height="300" fill="#0b1a2e"/>
+  <text x="120" y="900" font-family="'Courier New', monospace" font-size="30" fill="#dcecff">$ python main.py</text>
+  <rect x="120" y="940" width="420" height="14" fill="#dcecff" opacity=".6"/>
+  <rect x="120" y="975" width="300" height="14" fill="#dcecff" opacity=".6"/>
+  <rect x="120" y="1010" width="24" height="34" fill="#7fe7ff"/>
+</svg>

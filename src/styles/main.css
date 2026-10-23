@@ -1,0 +1,49 @@
+/* =========================================================
+   Portfolio — Baye Lamine GUEYE
+   Design basé sur « Atelier North » (Codrops / Kaisei Sadatoki, licence MIT)
+   ========================================================= */
+@import 'tailwindcss';
+@import './base.css';
+@import './layout.css';
+@import './components.css';
+@import './pages.css';
+
+/* daisyUI : thème aux couleurs du portfolio (angles droits, sans ombre) */
+@plugin "daisyui" {
+  themes: false;
+}
+
+@plugin "daisyui/theme" {
+  name: 'atelier';
+  default: true;
+  prefersdark: false;
+  color-scheme: dark;
+  --color-base-100: #05070d;
+  --color-base-200: #0a0f1a;
+  --color-base-300: #111a2a;
+  --color-base-content: #e6f1ff;
+  --color-primary: #e6f1ff;
+  --color-primary-content: #05070d;
+  --color-secondary: #0a1626;
+  --color-secondary-content: #e6f1ff;
+  --color-accent: #7fe7ff;
+  --color-accent-content: #05070d;
+  --color-neutral: #e6f1ff;
+  --color-neutral-content: #05070d;
+  --color-info: #7fe7ff;
+  --color-info-content: #05070d;
+  --color-success: #25d366;
+  --color-success-content: #222222;
+  --color-warning: #7fe7ff;
+  --color-warning-content: #05070d;
+  --color-error: #d83333;
+  --color-error-content: #fef0d5;
+  --radius-selector: 0rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}

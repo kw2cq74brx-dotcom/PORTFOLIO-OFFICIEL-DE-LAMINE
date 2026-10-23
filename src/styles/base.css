@@ -1,0 +1,157 @@
+/* ---------- Variables ---------- */
+:root {
+  /* Glace liquide sombre */
+  --bg: #05070d; /* encre sombre : fond de page et texte sur fond glacé */
+  --text: #e6f1ff; /* blanc glacé */
+  --dark: rgba(1, 3, 8, 0.55); /* voile des sections sombres */
+  --accent: #7fe7ff; /* cyan glacier */
+  --whatsapp: #25d366;
+  --line: rgba(230, 241, 255, 0.2);
+  --line-light: rgba(230, 241, 255, 0.35);
+
+  /* Verre dépoli */
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-strong: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(230, 241, 255, 0.16);
+  --glass-blur: blur(16px) saturate(160%);
+  --glass-shine: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  --veil: #0b1a2e;
+  --ice: linear-gradient(135deg, #f2f8ff 0%, #c9e6ff 55%, #9fdcff 100%);
+
+  --font-mono: 'Kode Mono', monospace;
+  --font-display: 'Anton', sans-serif;
+
+  --gutter: clamp(16px, calc(7.762px + 2.197vw), 64px);
+  --header-top: clamp(24px, calc(21.254px + 0.732vw), 40px);
+
+  --fs-sm: clamp(0.625rem, 0.581rem + 0.1878vw, 0.75rem);
+  --fs-base: clamp(0.75rem, 0.706rem + 0.1878vw, 0.875rem);
+  --fs-md: clamp(0.8125rem, 0.769rem + 0.1878vw, 0.9375rem);
+  --fs-btn: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
+  --fs-display: clamp(4rem, 1.8873rem + 9.0141vw, 10rem);
+  --fs-giant: clamp(5rem, 1.6626rem + 14.2395vw, 18.75rem);
+}
+
+/* ---------- Base ---------- */
+html {
+  background-color: var(--bg);
+}
+
+body {
+  font-family: var(--font-mono);
+  font-optical-sizing: auto;
+  background-color: transparent;
+  color: var(--text);
+  line-height: 1;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background-color: var(--text);
+  color: var(--bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+/* ---------- Utilitaires ---------- */
+.l-wrapper {
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.t-sm {
+  font-size: var(--fs-sm);
+  line-height: 1.2;
+}
+
+.t-base {
+  font-size: var(--fs-base);
+  line-height: 1.2;
+}
+
+.t-md {
+  font-size: var(--fs-md);
+  line-height: 1.6;
+}
+
+.anton {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1;
+}
+
+/* line-height 1.2 : laisse la place aux accents des majuscules (É, À…) dans le masque */
+.text-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  line-height: 1.2;
+}
+.p-fv__title .text-wrapper,
+.p-sticky__title .text-wrapper,
+.c-footer__title .text-wrapper {
+  line-height: inherit;
+}
+
+/* Lettres générées par splitChars() */
+.word {
+  display: inline-block;
+  white-space: nowrap;
+}
+.char {
+  display: inline-block;
+}
+
+.br-sp {
+  display: block;
+}
+@media (min-width: 1024px) {
+  .br-sp {
+    display: none;
+  }
+}
+
+.dot {
+  display: block;
+  width: 4px;
+  height: 4px;
+  flex-shrink: 0;
+  background-color: currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

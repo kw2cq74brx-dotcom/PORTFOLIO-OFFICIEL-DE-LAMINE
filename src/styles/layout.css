@@ -1,0 +1,434 @@
+/* =========================================================
+   Header (desktop) — liens avec effet « roll » au survol
+   ========================================================= */
+.c-header {
+  position: fixed;
+  top: var(--header-top);
+  left: var(--gutter);
+  right: var(--gutter);
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  pointer-events: none;
+}
+.c-header > * {
+  pointer-events: auto;
+}
+
+.c-header__nav {
+  display: none;
+}
+@media (min-width: 1360px) {
+  .c-header__nav {
+    display: block;
+  }
+}
+
+.c-header__list {
+  display: flex;
+  gap: 8px;
+}
+@media (min-width: 1440px) {
+  .c-header__list {
+    gap: 16px;
+  }
+}
+
+.c-header__link {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.c-header__label {
+  display: block;
+  font-size: var(--fs-btn);
+  padding: 8px 16px;
+  white-space: nowrap;
+}
+.c-header__label--default {
+  border: 1px solid var(--glass-border);
+  background-color: var(--glass);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shine);
+}
+.c-header__label--clone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border: 1px solid var(--text);
+  background: var(--ice);
+  color: var(--bg);
+  transform: translateY(100%);
+  transform-origin: left top;
+}
+.c-header__link.is-current .c-header__label--default {
+  background: var(--ice);
+  color: var(--bg);
+}
+
+/* ---------- Bouton menu (mobile / tablette) ---------- */
+@media (min-width: 1360px) {
+  .c-menu-button {
+    display: none;
+  }
+}
+.c-menu-button__button {
+  display: flex;
+  padding: 8px 16px;
+  font-size: var(--fs-btn);
+  border: 1px solid var(--glass-border);
+  background-color: var(--glass);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shine);
+  color: var(--text);
+}
+.c-menu-button__button .text-wrapper {
+  display: flex;
+  min-width: 52px;
+}
+.c-menu-button__label--close {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* ---------- Menu (mobile / tablette) ---------- */
+.c-menu {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 998;
+  background-color: rgba(1, 3, 8, 0.45);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+  opacity: 0;
+  pointer-events: none;
+}
+@media (min-width: 1360px) {
+  .c-menu {
+    display: none;
+  }
+}
+
+.c-menu__wrapper {
+  width: fit-content;
+  min-width: 240px;
+  max-height: calc(100svh - 100px);
+  overflow-y: auto;
+  background-color: rgba(10, 18, 32, 0.6);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shine);
+  color: var(--text);
+  padding: 48px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: absolute;
+  top: 80px;
+  right: var(--gutter);
+  font-size: 20px;
+}
+
+.c-menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.c-menu__heading,
+.c-menu__contact > p {
+  margin-bottom: 12px;
+}
+.c-menu__link.is-current {
+  color: var(--accent);
+}
+
+.c-menu__rule {
+  border-bottom: 0.5px solid var(--line);
+  margin: 24px 0;
+}
+
+.c-menu__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* =========================================================
+   Footer
+   ========================================================= */
+.c-footer {
+  width: 100%;
+  overflow: hidden;
+}
+@media (min-width: 1024px) {
+  .c-footer {
+    min-height: 100svh;
+  }
+}
+
+.c-footer__wrapper {
+  width: 100%;
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+}
+
+.c-footer__top {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 40px;
+  margin-bottom: 80px;
+}
+@media (min-width: 1024px) {
+  .c-footer__top {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0;
+  }
+}
+
+.c-footer__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+.c-footer__intro p:last-child {
+  max-width: 400px;
+}
+@media (min-width: 1024px) {
+  .c-footer__intro {
+    gap: 16px;
+  }
+}
+
+.c-footer__contact .c-cta {
+  margin-bottom: 40px;
+}
+@media (min-width: 1024px) {
+  .c-footer__contact .c-cta {
+    margin-bottom: 80px;
+  }
+}
+
+.c-footer__address {
+  font-size: clamp(1rem, 0.912rem + 0.3756vw, 1.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.c-footer__title {
+  font-size: var(--fs-display);
+}
+@media (min-width: 1024px) {
+  .c-footer__title {
+    text-align: right;
+  }
+}
+
+.c-footer__bottom {
+  margin-top: auto;
+}
+
+.c-footer__meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 48px;
+  column-gap: 16px;
+  margin-bottom: 16px;
+}
+@media (min-width: 1024px) {
+  .c-footer__meta {
+    align-items: end;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.c-footer__meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.c-footer__meta-item a {
+  width: fit-content;
+}
+.c-footer__meta-item:nth-child(1) {
+  grid-column: 1 / 3;
+}
+.c-footer__meta-item:nth-child(2) {
+  grid-column: 1 / 2;
+}
+.c-footer__meta-item:nth-child(3) {
+  grid-column: 2 / 3;
+}
+.c-footer__meta-item:nth-child(4) {
+  grid-column: 2 / 3;
+}
+@media (min-width: 1024px) {
+  .c-footer__meta-item:nth-child(1) {
+    grid-column: 1 / 5;
+  }
+  .c-footer__meta-item:nth-child(2) {
+    grid-column: 6 / 8;
+  }
+  .c-footer__meta-item:nth-child(3) {
+    grid-column: 9 / 11;
+  }
+  .c-footer__meta-item:nth-child(4) {
+    grid-column: 11 / 13;
+    justify-self: end;
+  }
+}
+
+.c-footer__underline {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  transition: opacity 0.3s ease;
+}
+.c-footer__underline:hover {
+  opacity: 0.5;
+}
+
+.c-footer__top-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* =========================================================
+   Transitions en pixels (entre les sections et en pied de page)
+   ========================================================= */
+.c-pixels {
+  display: grid;
+  gap: 0;
+  overflow: hidden;
+  height: 24.1vw;
+  grid-template-columns: repeat(25, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+}
+
+.c-pixels__cell {
+  margin: 0 -1px -1px 0;
+}
+
+.c-pixels--footer {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  height: 40vw;
+}
+@media (min-width: 1024px) {
+  .c-pixels--footer {
+    height: 20vw;
+  }
+}
+
+/* =========================================================
+   Fond « glace liquide » (canvas WebGL plein écran)
+   ========================================================= */
+.c-liquid {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  /* Repli si WebGL est indisponible */
+  background:
+    radial-gradient(60% 50% at 20% 30%, rgba(40, 110, 200, 0.25), transparent 70%),
+    radial-gradient(50% 45% at 80% 70%, rgba(110, 70, 200, 0.18), transparent 70%),
+    var(--bg);
+}
+
+/* =========================================================
+   Transition de page (grille de pixels plein écran)
+   ========================================================= */
+.c-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  background-color: var(--veil);
+  pointer-events: none;
+}
+
+.c-transition__cell {
+  background-color: var(--veil);
+  margin: 0 -1px -1px 0;
+}
+
+/* =========================================================
+   Bouton WhatsApp flottant
+   ========================================================= */
+.c-whatsapp {
+  position: fixed;
+  right: var(--gutter);
+  bottom: var(--gutter);
+  z-index: 997;
+}
+
+.c-whatsapp__link {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  color: var(--text);
+  border: 1px solid var(--glass-border);
+  background-color: var(--glass-strong);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shine);
+  position: relative;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+.c-whatsapp__link::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border: 1px solid var(--accent);
+  animation: whatsapp-pulse 2.4s ease-out infinite;
+}
+.c-whatsapp__link svg {
+  width: 26px;
+  height: 26px;
+  transition: transform 0.4s ease;
+}
+.c-whatsapp__link:hover {
+  background-color: var(--whatsapp);
+  color: #fff;
+}
+.c-whatsapp__link:hover svg {
+  transform: rotate(-12deg) scale(1.08);
+}
+
+@keyframes whatsapp-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .c-whatsapp__link::before {
+    animation: none;
+  }
+}
