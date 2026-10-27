@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a0f1d"/><stop offset="1" stop-color="#5a1f3d"/></linearGradient></defs>
+  <rect width="1600" height="1000" fill="url(#g)"/>
+  <g stroke="#ffe8f2" stroke-opacity=".1"><path d="M160 0V1000"/><path d="M320 0V1000"/><path d="M480 0V1000"/><path d="M640 0V1000"/><path d="M800 0V1000"/><path d="M960 0V1000"/><path d="M1120 0V1000"/><path d="M1280 0V1000"/><path d="M1440 0V1000"/><path d="M0 160H1600"/><path d="M0 320H1600"/><path d="M0 480H1600"/><path d="M0 640H1600"/><path d="M0 800H1600"/><path d="M0 960H1600"/></g>
+  <circle cx="1240" cy="300" r="190" fill="#ff8fb8" fill-opacity=".22"/>
+  <circle cx="1240" cy="300" r="110" fill="#ff8fb8" fill-opacity=".45"/>
+  <text x="110" y="760" font-family="Anton, Impact, sans-serif" font-size="230" fill="#ffe8f2">ATELIER 02</text>
+  <rect x="110" y="805" width="480" height="72" fill="#ff8fb8"/>
+  <text x="140" y="853" font-family="Courier New, monospace" font-size="36" fill="#05070d">PROFESSIONNALISATION</text>
+</svg>

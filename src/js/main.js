@@ -13,15 +13,25 @@ import { initPixelImages } from './animations/pixelImage.js';
 import { initPixelTransitions } from './animations/pixelTransition.js';
 import { initSynthesis } from './animations/synthesis.js';
 import { initLiquidBackground } from './webgl/liquidBackground.js';
+import { initLens } from './components/lens.js';
 import { initToolkit } from './animations/toolkit.js';
+import { initProjects } from './animations/projects.js';
+import { initPile } from './animations/pile.js';
+import { initAbout } from './animations/about.js';
+import { initExperiences } from './animations/experiences.js';
 
 initLiquidBackground();
+initLens();
 initSmoothScroll();
 initHeader();
 initMenu();
 initNavigation();
 // Avant les autres animations au scroll : la section épinglée décale tout ce qui suit
 initToolkit();
+initProjects();
+initPile();
+initAbout();
+initExperiences();
 initContactForm();
 initFloating();
 initPixelImages();
@@ -37,5 +47,6 @@ document.querySelectorAll('.collapse > input').forEach((input) => {
 document.fonts.ready.then(() => {
   initTitles({ delay: 0.4 });
   enter();
+  document.dispatchEvent(new Event('page:enter'));
   ScrollTrigger.refresh();
 });

@@ -59,7 +59,7 @@ export function initToolkit() {
       const visible = order.slice(0, step + 1).sort((a, b) => a - b);
       const card = cards[k];
 
-      // La toute première carte est déjà en place grâce à l'intro
+      // La toute première carte est déjà en place : elle surgit à l'arrivée sur la page
       if (s === 0 && step === 0) {
         gsap.set(card, { x: 0, y: 0, rotation: 0, opacity: 1 });
         return;
@@ -128,9 +128,10 @@ export function initToolkit() {
   });
   updateProgress();
 
-  // Intro au chargement : la première carte surgit seule au centre
+  // Quand la page se révèle, la première carte surgit seule au centre
   const first = sets[0][appearanceOrder(sets[0].length)[0]].querySelector('.c-tool__inner');
-  gsap.from(first, {
+  const intro = gsap.from(first, {
+    paused: true,
     y: 160,
     scale: 0.6,
     rotation: -8,
@@ -140,6 +141,7 @@ export function initToolkit() {
     ease: 'power4.out',
     clearProps: 'transform,opacity',
   });
+  document.addEventListener('page:enter', () => intro.play(), { once: true });
 }
 
 // Ordre d'apparition : du centre vers les bords, en alternant droite et gauche

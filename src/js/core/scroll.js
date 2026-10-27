@@ -13,10 +13,24 @@ const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 const easeOutQuad = (t) => 1 - Math.pow(1 - t, 2);
 export const easeInOutQuad = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
 
-export function initSmoothScroll() {
-  if (prefersReducedMotion) return;
+// Réglages du défilement : celui du site, ou celui du CodePen gridmorphic/WbQPRwv
+// (page avec <body data-scroll="codepen">) : sortie exponentielle, lissé aussi au doigt
+const presets = {
+  default: { duration: 1.2, easing: easeOutCubic },
+  codepen: {
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    gestureOrientation: 'vertical',
+    syncTouch: true,
+    touchMultiplier: 2,
+  },
+};
 
-  const lenis = new Lenis({ duration: 1.2, easing: easeOutCubic });
+export function initSmoothScroll() {
+  // data-scroll="none" : page plein écran sans défilement (expériences)
+  if (prefersReducedMotion || document.body.dataset.scroll === 'none') return;
+
+  const lenis = new Lenis(presets[document.body.dataset.scroll] ?? presets.default);
 
   // Lenis et ScrollTrigger avancent sur la même horloge (le ticker GSAP)
   lenis.on('scroll', ScrollTrigger.update);

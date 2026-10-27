@@ -1,8 +1,10 @@
 import { prefersReducedMotion } from '../core/scroll.js';
+import { lens } from '../components/lens.js';
 
 // Fond « glace liquide » : un shader plein écran qui déforme un bruit fractal
 // (domain warping) pour imiter une surface de glace en fusion, sombre,
 // traversée de reflets bleutés. WebGL natif, sans librairie.
+// La lentille du curseur (components/lens.js) y réfracte le fond.
 
 const vertexSource = `
 attribute vec2 aPosition;
@@ -16,6 +18,9 @@ precision highp float;
 uniform vec2 uResolution;
 uniform float uTime;
 uniform vec2 uMouse;
+uniform vec2 uLens; // centre de la lentille, en pixels du canvas (origine en bas)
+uniform float uLensRadius;
+uniform float uLensOn;
 
 float hash(vec2 p) {
   return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
@@ -44,9 +49,10 @@ float fbm(vec2 p) {
   return value;
 }
 
-void main() {
-  vec2 uv = gl_FragCoord.xy / uResolution;
-  vec2 p = (gl_FragCoord.xy - 0.5 * uResolution) / min(uResolution.x, uResolution.y);
+// Couleur de la glace liquide en un point de l'écran (pixels du canvas)
+vec3 liquid(vec2 fragCoord) {
+  vec2 uv = fragCoord / uResolution;
+  vec2 p = (fragCoord - 0.5 * uResolution) / min(uResolution.x, uResolution.y);
   p += uMouse * 0.06;
 
   float t = uTime * 0.035;
@@ -74,7 +80,35 @@ void main() {
 
   // Vignette pour garder les bords sombres et le texte lisible
   color *= 1.0 - 0.5 * length(uv - 0.5);
+  return color;
+}
 
+void main() {
+  vec2 fc = gl_FragCoord.xy;
+  vec2 toLens = fc - uLens;
+  float d = length(toLens);
+
+  if (uLensOn < 0.5 || d > uLensRadius) {
+    gl_FragColor = vec4(liquid(fc), 1.0);
+    return;
+  }
+
+  // Sous la lentille : grossissement au centre, bord qui tord l'image,
+  // et canaux rouge / vert / bleu décalés (aberration chromatique)
+  float n = d / uLensRadius;
+  vec2 dir = d > 0.0 ? toLens / d : vec2(0.0);
+  vec2 q = uLens + toLens * (0.72 + 0.55 * pow(n, 3.0));
+  vec2 ca = dir * uLensRadius * 0.05 * n * n;
+  vec3 refracted = vec3(liquid(q + ca).r, liquid(q).g, liquid(q - ca).b);
+
+  // Verre : plus lumineux, liseré clair sur le bord, reflet en haut à gauche
+  refracted = refracted * 1.25 + vec3(0.45, 0.8, 1.0) * 0.05;
+  refracted += vec3(0.75, 0.9, 1.0) * smoothstep(0.82, 1.0, n) * 0.35;
+  refracted += smoothstep(0.35, 0.0, length(toLens / uLensRadius - vec2(-0.35, 0.4))) * 0.16;
+
+  // Bord adouci pour éviter l'escalier
+  float edge = smoothstep(1.0, 0.96, n);
+  vec3 color = edge < 1.0 ? mix(liquid(fc), refracted, edge) : refracted;
   gl_FragColor = vec4(color, 1.0);
 }
 `;
@@ -110,6 +144,9 @@ export function initLiquidBackground() {
   const uResolution = gl.getUniformLocation(program, 'uResolution');
   const uTime = gl.getUniformLocation(program, 'uTime');
   const uMouse = gl.getUniformLocation(program, 'uMouse');
+  const uLens = gl.getUniformLocation(program, 'uLens');
+  const uLensRadius = gl.getUniformLocation(program, 'uLensRadius');
+  const uLensOn = gl.getUniformLocation(program, 'uLensOn');
 
   // Rendu en demi-résolution : le flou est voulu et le GPU respire
   const scale = 0.5;
@@ -134,6 +171,10 @@ export function initLiquidBackground() {
     mouse.y += (mouse.targetY - mouse.y) * 0.04;
     gl.uniform1f(uTime, (now - start) / 1000);
     gl.uniform2f(uMouse, mouse.x, mouse.y);
+    // Lentille : pixels CSS → pixels du canvas (demi-résolution, axe Y inversé)
+    gl.uniform2f(uLens, lens.x * scale, (window.innerHeight - lens.y) * scale);
+    gl.uniform1f(uLensRadius, lens.radius * scale);
+    gl.uniform1f(uLensOn, lens.visible ? 1 : 0);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
     if (!prefersReducedMotion) requestAnimationFrame(render);
   };

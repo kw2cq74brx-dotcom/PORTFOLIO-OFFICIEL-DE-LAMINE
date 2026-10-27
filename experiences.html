@@ -8,168 +8,115 @@
       content="Expériences professionnelles de Baye Lamine Gueye : stages, ateliers de professionnalisation et missions freelance."
     />
   </head>
-  <body data-page="experiences">
+  <body data-page="experiences" data-scroll="none">
     <include src="partials/header.html"></include>
 
-    <main id="contenu">
-      <section class="p-head">
-        <div class="l-wrapper p-head__wrapper">
-          <div class="p-head__main">
-            <h1 class="p-head__title anton js-title-scale"><span class="text-wrapper">EXPÉRIENCES</span></h1>
-            <div class="p-head__lead">
-              <p class="t-base">[EXPÉRIENCES]</p>
-              <p class="t-base">
-                Stages, ateliers de professionnalisation et missions freelance&nbsp;: la mise en pratique de
-                ma formation.
-              </p>
-            </div>
+    <!-- Page plein écran (structure inspirée de ricardochance.com/work) :
+         un carrousel WebGL d'expériences, piloté à la molette, au glisser ou au clavier. -->
+    <main id="contenu" class="p-exp js-exp">
+      <canvas class="p-exp__canvas js-exp-canvas" aria-hidden="true"></canvas>
+
+      <div class="l-wrapper p-exp__ui">
+        <div class="p-exp__top">
+          <div class="p-exp__status">
+            <p class="t-sm"><span class="p-exp__pulse" aria-hidden="true"></span>DISPONIBLE POUR UN STAGE OU UNE ALTERNANCE</p>
+            <a class="t-sm c-slide" href="mailto:{{ email }}">
+              <span class="text-wrapper"><span>{{ email }}</span><span aria-hidden="true">{{ email }}</span></span>
+            </a>
           </div>
-          <div class="p-head__labels t-sm" aria-hidden="true">
-            <p>[04]</p>
-            <p>BAYE LAMINE GUEYE</p>
-            <p><span>SCROLL</span><span>[↓]</span></p>
+          <p class="anton p-exp__counter" aria-hidden="true">
+            <span class="p-exp__digits"><span class="p-exp__digits-col js-exp-digits"></span></span><span class="p-exp__total js-exp-total"></span>
+          </p>
+        </div>
+
+        <div class="p-exp__bottom">
+          <div class="p-exp__info" aria-live="polite">
+            <p class="t-sm p-exp__mask"><span class="p-exp__line js-exp-kind"></span></p>
+            <h1 class="p-exp__title p-exp__mask"><span class="p-exp__line js-exp-title"></span></h1>
+            <p class="t-sm p-exp__mask p-exp__meta"><span class="p-exp__line js-exp-meta"></span></p>
+          </div>
+
+          <div class="p-exp__actions">
+            <div class="p-exp__nav">
+              <button class="p-exp__arrow js-exp-prev" type="button" aria-label="Expérience précédente">←</button>
+              <button class="p-exp__arrow js-exp-next" type="button" aria-label="Expérience suivante">→</button>
+            </div>
+            <button class="p-exp__open js-exp-open" type="button">
+              <span class="t-base">VOIR LE DÉTAIL</span>
+              <span class="c-cta__icon" aria-hidden="true"></span>
+            </button>
           </div>
         </div>
-      </section>
 
-      <!-- ============ STAGES ============ -->
-      <section class="p-section" id="stages">
-        <div class="l-wrapper p-section__wrapper">
-          <div class="p-projects__lead">
-            <div class="p-projects__intro">
-              <p class="t-base">[01] — STAGES</p>
-              <p class="t-base">Périodes en entreprise réalisées dans le cadre du BTS SIO.</p>
-            </div>
-            <h2 class="anton p-projects__title js-title-roll">
-              <span class="text-wrapper"><span>STAGES</span><span aria-hidden="true">STAGES</span></span>
-            </h2>
-          </div>
+        <p class="t-sm p-exp__hint" aria-hidden="true">MOLETTE · GLISSER · ← →</p>
+      </div>
 
-          <div class="c-entries">
-            <article class="c-entry">
-              <p class="t-sm c-entry__date">[20XX]</p>
-              <div class="c-entry__head">
-                <p class="t-sm">STAGE DE 1<sup>RE</sup> ANNÉE</p>
-                <h3 class="anton c-entry__title">ENTREPRISE</h3>
-                <p class="t-sm">VILLE — DURÉE</p>
-              </div>
-              <div class="c-entry__body">
-                <p class="t-md"><span class="c-todo">À COMPLÉTER</span> Contexte de l'entreprise et objectif de la mission.</p>
-                <ul class="c-dots t-sm">
-                  <li><span class="dot"></span>MISSION 1</li>
-                  <li><span class="dot"></span>MISSION 2</li>
-                  <li><span class="dot"></span>MISSION 3</li>
-                </ul>
-                <ul class="c-tags"><li class="badge badge-outline badge-sm">Technologie</li><li class="badge badge-outline badge-sm">Outil</li></ul>
-              </div>
+      <!-- Panneau de détail (glisse depuis la droite) -->
+      <aside class="p-exp__drawer js-exp-drawer" aria-label="Détail de l'expérience" inert>
+        <button class="p-exp__close js-exp-close" type="button" aria-label="Fermer le détail">✕</button>
+        <div class="p-exp__drawer-body js-exp-drawer-body"></div>
+      </aside>
+
+      <!-- Contenu des expériences : sert de source au carrousel et reste lisible
+           par les lecteurs d'écran et les moteurs de recherche -->
+      <section class="sr-only" aria-label="Liste de mes expériences">
+        <ol>
+          <!-- À COMPLÉTER : Stage de première année (image : public/images/experiences/stage-1.svg) -->
+          <li class="js-exp-item" data-image="images/experiences/stage-1.svg">
+            <article class="p-exp-detail">
+              <p class="t-sm p-exp-detail__kind">STAGE — 1RE ANNÉE</p>
+              <h2 class="anton p-exp-detail__title">ENTREPRISE À COMPLÉTER</h2>
+              <p class="t-sm p-exp-detail__meta">Ville — 20XX — durée</p>
+              <p class="t-md"><span class="c-todo">À COMPLÉTER</span> Contexte de l'entreprise et objectif de la mission.</p>
+              <ul class="c-dots t-sm"><li><span class="dot"></span>Mission 1</li><li><span class="dot"></span>Mission 2</li><li><span class="dot"></span>Mission 3</li></ul>
+              <ul class="c-tags"><li class="badge badge-outline badge-sm">Technologie</li><li class="badge badge-outline badge-sm">Outil</li></ul>
             </article>
-            <article class="c-entry">
-              <p class="t-sm c-entry__date">[20XX]</p>
-              <div class="c-entry__head">
-                <p class="t-sm">STAGE DE 2<sup>E</sup> ANNÉE</p>
-                <h3 class="anton c-entry__title">ENTREPRISE</h3>
-                <p class="t-sm">VILLE — DURÉE</p>
-              </div>
-              <div class="c-entry__body">
-                <p class="t-md"><span class="c-todo">À COMPLÉTER</span> Contexte de l'entreprise et objectif de la mission.</p>
-                <ul class="c-dots t-sm">
-                  <li><span class="dot"></span>MISSION 1</li>
-                  <li><span class="dot"></span>MISSION 2</li>
-                  <li><span class="dot"></span>MISSION 3</li>
-                </ul>
-                <ul class="c-tags"><li class="badge badge-outline badge-sm">Technologie</li><li class="badge badge-outline badge-sm">Outil</li></ul>
-              </div>
+          </li>
+          <!-- À COMPLÉTER : Stage de deuxième année (image : public/images/experiences/stage-2.svg) -->
+          <li class="js-exp-item" data-image="images/experiences/stage-2.svg">
+            <article class="p-exp-detail">
+              <p class="t-sm p-exp-detail__kind">STAGE — 2E ANNÉE</p>
+              <h2 class="anton p-exp-detail__title">ENTREPRISE À COMPLÉTER</h2>
+              <p class="t-sm p-exp-detail__meta">Ville — 20XX — durée</p>
+              <p class="t-md"><span class="c-todo">À COMPLÉTER</span> Contexte de l'entreprise et objectif de la mission.</p>
+              <ul class="c-dots t-sm"><li><span class="dot"></span>Mission 1</li><li><span class="dot"></span>Mission 2</li><li><span class="dot"></span>Mission 3</li></ul>
+              <ul class="c-tags"><li class="badge badge-outline badge-sm">Technologie</li><li class="badge badge-outline badge-sm">Outil</li></ul>
             </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ ATELIERS DE PROFESSIONNALISATION ============ -->
-      <section class="p-section" id="ateliers">
-        <div class="l-wrapper p-section__wrapper">
-          <div class="p-projects__lead">
-            <div class="p-projects__intro">
-              <p class="t-base">[02] — ATELIERS DE PROFESSIONNALISATION</p>
-              <p class="t-base">
-                Situations professionnelles simulées en cours de formation, menées en équipe et en mode
-                projet.
-              </p>
-            </div>
-            <h2 class="anton p-projects__title js-title-roll">
-              <span class="text-wrapper"><span>ATELIERS</span><span aria-hidden="true">ATELIERS</span></span>
-              <span class="text-wrapper"><span>PRO</span><span aria-hidden="true">PRO</span></span>
-            </h2>
-          </div>
-
-          <div class="c-entries">
-            <article class="c-entry">
-              <p class="t-sm c-entry__date">[20XX]</p>
-              <div class="c-entry__head">
-                <p class="t-sm">ATELIER N°1</p>
-                <h3 class="anton c-entry__title">INTITULÉ DE L'ATELIER</h3>
-                <p class="t-sm">MY DIGITAL SCHOOL — EN ÉQUIPE</p>
-              </div>
-              <div class="c-entry__body">
-                <p class="t-md"><span class="c-todo">À COMPLÉTER</span> Contexte, besoin du client fictif et livrables.</p>
-                <ul class="c-dots t-sm">
-                  <li><span class="dot"></span>RÉALISATION 1</li>
-                  <li><span class="dot"></span>RÉALISATION 2</li>
-                </ul>
-                <ul class="c-tags"><li class="badge badge-outline badge-sm">Technologie</li><li class="badge badge-outline badge-sm">Mode projet</li></ul>
-              </div>
+          </li>
+          <!-- À COMPLÉTER : Atelier n°1 (image : public/images/experiences/atelier-1.svg) -->
+          <li class="js-exp-item" data-image="images/experiences/atelier-1.svg">
+            <article class="p-exp-detail">
+              <p class="t-sm p-exp-detail__kind">ATELIER DE PROFESSIONNALISATION</p>
+              <h2 class="anton p-exp-detail__title">INTITULÉ À COMPLÉTER</h2>
+              <p class="t-sm p-exp-detail__meta">My Digital School — 20XX — en équipe</p>
+              <p class="t-md"><span class="c-todo">À COMPLÉTER</span> Situation professionnelle simulée : contexte, besoin du client et livrables.</p>
+              <ul class="c-dots t-sm"><li><span class="dot"></span>Réalisation 1</li><li><span class="dot"></span>Réalisation 2</li></ul>
+              <ul class="c-tags"><li class="badge badge-outline badge-sm">Technologie</li><li class="badge badge-outline badge-sm">Mode projet</li></ul>
             </article>
-            <article class="c-entry">
-              <p class="t-sm c-entry__date">[20XX]</p>
-              <div class="c-entry__head">
-                <p class="t-sm">ATELIER N°2</p>
-                <h3 class="anton c-entry__title">INTITULÉ DE L'ATELIER</h3>
-                <p class="t-sm">MY DIGITAL SCHOOL — EN ÉQUIPE</p>
-              </div>
-              <div class="c-entry__body">
-                <p class="t-md"><span class="c-todo">À COMPLÉTER</span> Contexte, besoin du client fictif et livrables.</p>
-                <ul class="c-dots t-sm">
-                  <li><span class="dot"></span>RÉALISATION 1</li>
-                  <li><span class="dot"></span>RÉALISATION 2</li>
-                </ul>
-                <ul class="c-tags"><li class="badge badge-outline badge-sm">Technologie</li><li class="badge badge-outline badge-sm">Mode projet</li></ul>
-              </div>
+          </li>
+          <!-- À COMPLÉTER : Atelier n°2 (image : public/images/experiences/atelier-2.svg) -->
+          <li class="js-exp-item" data-image="images/experiences/atelier-2.svg">
+            <article class="p-exp-detail">
+              <p class="t-sm p-exp-detail__kind">ATELIER DE PROFESSIONNALISATION</p>
+              <h2 class="anton p-exp-detail__title">INTITULÉ À COMPLÉTER</h2>
+              <p class="t-sm p-exp-detail__meta">My Digital School — 20XX — en équipe</p>
+              <p class="t-md"><span class="c-todo">À COMPLÉTER</span> Situation professionnelle simulée : contexte, besoin du client et livrables.</p>
+              <ul class="c-dots t-sm"><li><span class="dot"></span>Réalisation 1</li><li><span class="dot"></span>Réalisation 2</li></ul>
+              <ul class="c-tags"><li class="badge badge-outline badge-sm">Technologie</li><li class="badge badge-outline badge-sm">Mode projet</li></ul>
             </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ FREELANCE ============ -->
-      <section class="p-section" id="freelance">
-        <div class="l-wrapper p-section__wrapper">
-          <div class="p-projects__lead">
-            <div class="p-projects__intro">
-              <p class="t-base">[03] — ACTIVITÉS FREELANCE</p>
-              <p class="t-base">Missions réalisées en autonomie pour des clients.</p>
-            </div>
-            <h2 class="anton p-projects__title js-title-roll">
-              <span class="text-wrapper"><span>FREELANCE</span><span aria-hidden="true">FREELANCE</span></span>
-            </h2>
-          </div>
-
-          <div class="c-entries">
-            <article class="c-entry">
-              <p class="t-sm c-entry__date">[20XX]</p>
-              <div class="c-entry__head">
-                <p class="t-sm">MISSION FREELANCE</p>
-                <h3 class="anton c-entry__title">CLIENT / PROJET</h3>
-                <p class="t-sm">À DISTANCE — DURÉE</p>
-              </div>
-              <div class="c-entry__body">
-                <p class="t-md"><span class="c-todo">À COMPLÉTER</span> Besoin du client, solution livrée et résultat.</p>
-                <ul class="c-dots t-sm">
-                  <li><span class="dot"></span>LIVRABLE 1</li>
-                  <li><span class="dot"></span>LIVRABLE 2</li>
-                </ul>
-                <ul class="c-tags"><li class="badge badge-outline badge-sm">Technologie</li><li class="badge badge-outline badge-sm">Outil</li></ul>
-              </div>
+          </li>
+          <!-- À COMPLÉTER : Mission freelance (image : public/images/experiences/freelance.svg) -->
+          <li class="js-exp-item" data-image="images/experiences/freelance.svg">
+            <article class="p-exp-detail">
+              <p class="t-sm p-exp-detail__kind">ACTIVITÉ FREELANCE</p>
+              <h2 class="anton p-exp-detail__title">CLIENT À COMPLÉTER</h2>
+              <p class="t-sm p-exp-detail__meta">À distance — 20XX — durée</p>
+              <p class="t-md"><span class="c-todo">À COMPLÉTER</span> Besoin du client, solution livrée et résultat obtenu.</p>
+              <ul class="c-dots t-sm"><li><span class="dot"></span>Livrable 1</li><li><span class="dot"></span>Livrable 2</li></ul>
+              <ul class="c-tags"><li class="badge badge-outline badge-sm">Technologie</li><li class="badge badge-outline badge-sm">Outil</li></ul>
             </article>
-          </div>
-        </div>
+          </li>
+        </ol>
       </section>
     </main>
 

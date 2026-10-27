@@ -188,6 +188,23 @@
   }
 }
 
+/* Variante centrée (page projets), dans l'esprit de l'en-tête des compétences */
+.p-head--center .p-head__wrapper {
+  min-height: 100svh;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+  padding-bottom: calc(var(--header-top) + 40px);
+}
+.p-head--center .p-head__title {
+  font-size: clamp(4rem, 1rem + 10vw, 12rem);
+}
+.p-head__subtitle {
+  font-size: clamp(1rem, 0.75rem + 1.1vw, 1.875rem);
+  line-height: 1.4;
+}
+
 .p-head__labels {
   display: flex;
   justify-content: space-between;
@@ -733,6 +750,432 @@ a.p-sticky__item:hover {
 }
 
 /* =========================================================
+   Formations : pile de cartes (daisyUI « stack »)
+   La position des cartes (dessus entière, dessous décalées et réduites)
+   vient de daisyUI ; on ajoute l'habillage et les transitions.
+   ========================================================= */
+.p-pile__bg {
+  background-color: var(--dark);
+}
+
+.p-pile__wrapper {
+  display: grid;
+  gap: 56px;
+  align-items: center;
+  padding-top: 96px;
+  padding-bottom: 120px;
+}
+@media (min-width: 1024px) {
+  .p-pile__wrapper {
+    grid-template-columns: 5fr 6fr;
+    gap: 64px;
+    min-height: 100svh;
+  }
+}
+
+.p-pile__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 460px;
+}
+
+.p-pile__heading {
+  font-size: clamp(4rem, 1.5rem + 9vw, 11rem);
+  line-height: 0.95;
+}
+
+.p-pile__controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+.p-pile__counter {
+  margin-left: 8px;
+  font-size: clamp(1.5rem, 1rem + 1.5vw, 2.25rem);
+  font-variant-numeric: tabular-nums;
+}
+
+/* La pile : même taille pour toutes les cartes (comme w-* / h-* dans la doc daisyUI) */
+.p-pile__stack.stack {
+  justify-self: center;
+  width: min(440px, 100%);
+  height: 520px;
+  cursor: pointer;
+  outline: none;
+}
+.p-pile__stack:focus-visible .p-pile__card:first-child {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+@media (max-width: 767.98px) {
+  .p-pile__stack.stack {
+    height: 480px;
+  }
+}
+
+/* daisyUI ne décale les cartes du dessous que de quelques pixels :
+   on accentue l'effet de pile (décalage, réduction, légère rotation) */
+.p-pile__stack.stack > .p-pile__card {
+  opacity: 1;
+  transform-origin: 50% 100%;
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.6s ease,
+    filter 0.6s ease;
+}
+.p-pile__stack.stack > .p-pile__card:nth-child(2) {
+  transform: translateY(22px) scale(0.95) rotate(2.5deg);
+  filter: brightness(0.8);
+}
+.p-pile__stack.stack > .p-pile__card:nth-child(3) {
+  transform: translateY(42px) scale(0.9) rotate(-2.5deg);
+  filter: brightness(0.65);
+}
+.p-pile__stack.stack > .p-pile__card:nth-child(n + 4) {
+  transform: translateY(60px) scale(0.85);
+  filter: brightness(0.5);
+}
+
+/* Seule la carte du dessus montre son contenu */
+.p-pile__card .p-pile__body {
+  transition: opacity 0.4s ease;
+}
+.p-pile__card:not(:first-child) .p-pile__body {
+  opacity: 0;
+}
+
+.p-pile__card.card {
+  height: 100%;
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  background: var(--card-bg);
+  color: var(--card-fg);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+.p-pile__card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, transparent 35%);
+  pointer-events: none;
+}
+
+.p-pile__card--sio {
+  --card-bg: var(--ice);
+  --card-fg: #05070d;
+}
+.p-pile__card--esat {
+  --card-bg: linear-gradient(160deg, #0f2a4a 0%, #0b1a2e 100%);
+  --card-fg: #dcecff;
+}
+.p-pile__card--bac {
+  --card-bg: linear-gradient(160deg, #2a1d4f 0%, #160f2e 100%);
+  --card-fg: #ece4ff;
+}
+.p-pile__card--next {
+  --card-bg: linear-gradient(160deg, #10202e 0%, #071018 100%);
+  --card-fg: #7fe7ff;
+}
+
+.p-pile__body.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px 28px;
+}
+
+.p-pile__top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.p-pile__title {
+  font-size: clamp(2rem, 1.4rem + 1.8vw, 3rem);
+  line-height: 0.95;
+  margin-top: 8px;
+}
+
+.p-pile__school {
+  opacity: 0.8;
+}
+
+.p-pile__desc {
+  margin-top: auto;
+}
+
+.p-pile__tags .badge {
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+}
+
+/* =========================================================
+   Expériences : page plein écran avec carrousel WebGL
+   (structure inspirée de ricardochance.com/work)
+   ========================================================= */
+body[data-page='experiences'] {
+  overflow: hidden;
+}
+body[data-page='experiences'] .c-footer {
+  display: none;
+}
+
+.p-exp {
+  position: fixed;
+  inset: 0;
+  /* clip (et non hidden) : le conteneur ne peut pas défiler, même quand un bouton prend le focus */
+  overflow: clip;
+}
+
+.p-exp__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: pan-y;
+  cursor: grab;
+}
+.p-exp__canvas:active {
+  cursor: grabbing;
+}
+
+/* Interface posée par-dessus le carrousel ; seuls ses éléments captent les clics */
+.p-exp__ui {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: calc(var(--header-top) + 72px);
+  padding-bottom: var(--gutter);
+  pointer-events: none;
+}
+.p-exp__ui a,
+.p-exp__ui button {
+  pointer-events: auto;
+}
+
+.p-exp__top,
+.p-exp__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.p-exp__status {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.p-exp__status p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.p-exp__pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--whatsapp);
+  box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+  animation: exp-pulse 2s ease-out infinite;
+}
+@keyframes exp-pulse {
+  to {
+    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+  }
+}
+
+/* Compteur à chiffres roulants : 01 / 05 */
+.p-exp__counter {
+  display: flex;
+  align-items: baseline;
+  font-size: clamp(2rem, 1.4rem + 2vw, 3.5rem);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.p-exp__digits {
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+}
+.p-exp__digits-col {
+  display: flex;
+  flex-direction: column;
+}
+.p-exp__digits-col span {
+  height: 1em;
+  line-height: 1;
+}
+.p-exp__total {
+  opacity: 0.4;
+  margin-left: 4px;
+}
+
+/* Infos de l'expérience centrée : chaque ligne glisse dans son masque */
+.p-exp__info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 60%;
+}
+.p-exp__mask {
+  overflow: hidden;
+}
+.p-exp__line {
+  display: block;
+}
+.p-exp__title {
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 1rem + 4vw, 5.5rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+.p-exp__meta {
+  opacity: 0.65;
+}
+
+.p-exp__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+  /* laisse la place au bouton WhatsApp, en bas à droite */
+  margin-right: 80px;
+}
+.p-exp__nav {
+  display: flex;
+  gap: 8px;
+}
+.p-exp__arrow {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  background-color: var(--glass);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  color: var(--text);
+  font-size: 1.1rem;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+.p-exp__arrow:hover {
+  background: var(--ice);
+  color: var(--bg);
+}
+
+.p-exp__open {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid currentColor;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 0.8rem + 0.6vw, 1.4rem);
+  letter-spacing: 0.02em;
+  transition: color 0.3s ease;
+}
+.p-exp__open:hover {
+  color: var(--accent);
+}
+.p-exp__open .c-cta__icon {
+  transition: transform 0.3s ease;
+}
+.p-exp__open:hover .c-cta__icon {
+  transform: translate(3px, -3px);
+}
+
+.p-exp__hint {
+  position: absolute;
+  left: 50%;
+  bottom: var(--gutter);
+  transform: translateX(-50%);
+  opacity: 0.45;
+  white-space: nowrap;
+}
+
+/* Panneau de détail en verre dépoli */
+.p-exp__drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  width: min(440px, 100%);
+  padding: calc(var(--header-top) + 72px) 28px 32px;
+  overflow-y: auto;
+  border-left: 1px solid var(--glass-border);
+  background-color: rgba(10, 18, 32, 0.72);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(160%);
+  transform: translateX(100%);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.p-exp__drawer.is-open {
+  transform: translateX(0);
+}
+.p-exp__close {
+  position: absolute;
+  top: calc(var(--header-top) + 20px);
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  color: var(--text);
+}
+.p-exp-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.p-exp-detail__kind {
+  color: var(--accent);
+}
+.p-exp-detail__title {
+  font-size: clamp(2rem, 1.4rem + 1.6vw, 3rem);
+  line-height: 1;
+}
+.p-exp-detail__meta {
+  opacity: 0.65;
+}
+
+@media (max-width: 767.98px) {
+  .p-exp__top {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+  .p-exp__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 88px;
+  }
+  .p-exp__info {
+    max-width: 100%;
+  }
+  .p-exp__actions {
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+/* =========================================================
    Compétences : éventail de cartes (section épinglée)
    ========================================================= */
 .p-toolkit__stage {
@@ -897,6 +1340,132 @@ a.p-sticky__item:hover {
 }
 
 /* =========================================================
+   Projets — texte à gauche, image épinglée à droite
+   ========================================================= */
+.p-arch__tint {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: transparent;
+}
+
+.p-arch__wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-bottom: 20vh;
+}
+
+.p-arch__left {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  flex: 1;
+}
+
+.p-arch__info {
+  height: 100vh;
+  display: grid;
+  place-items: center start;
+}
+
+.p-arch__card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 460px;
+  padding: 32px 24px;
+  border: 1px solid var(--glass-border);
+  border-top: 2px solid var(--accent-project);
+  background-color: var(--glass);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shine);
+}
+
+.p-arch__label {
+  color: var(--accent-project);
+}
+
+.p-arch__title {
+  font-size: clamp(2.5rem, 1.2rem + 3.6vw, 4.5rem);
+  line-height: 0.95;
+}
+
+/* Bouton à la couleur du projet */
+.p-arch__link.c-cta {
+  background: var(--accent-project);
+  border-color: var(--accent-project);
+  color: var(--bg);
+  box-shadow: 0 8px 32px color-mix(in srgb, var(--accent-project), transparent 75%);
+}
+
+.p-arch__right {
+  position: relative;
+  flex-shrink: 1;
+  width: 100%;
+  max-width: 600px;
+  height: 100vh;
+}
+
+.p-arch__img {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: min(480px, 62vh);
+  transform: translateY(-50%);
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+.p-arch__img img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 900px) {
+  .p-arch__wrapper {
+    gap: 30px;
+  }
+}
+
+/* Mobile : texte et image alternent (ordre fixé en JS), sans épinglage */
+@media (max-width: 768px) {
+  .p-arch__wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .p-arch__left,
+  .p-arch__right {
+    display: contents;
+  }
+  .p-arch__info {
+    height: auto;
+    padding: 20px 0 0;
+    place-items: stretch;
+  }
+  .p-arch__card {
+    max-width: none;
+  }
+  .p-arch__img {
+    position: relative;
+    top: auto;
+    transform: none;
+    height: 300px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+  }
+}
+
+/* =========================================================
    Section de transition vers la page suivante
    ========================================================= */
 .p-next {
@@ -926,55 +1495,344 @@ a.p-sticky__item:hover {
 }
 
 /* =========================================================
-   À propos : photo + présentation
+   À propos (structure inspirée de lxlcreative.co.uk/about)
    ========================================================= */
-.p-profile__wrapper {
-  display: grid;
-  gap: 40px;
+
+/* Mot mis en avant dans un titre : écriture manuscrite, plus grande, en couleur */
+.p-ab-accent {
+  font-family: var(--font-accent);
+  font-weight: 600;
+  font-size: 1.45em;
+  line-height: 0.6;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--accent);
+}
+
+/* Carte photo à bord épais et coins arrondis */
+.p-ab-card {
+  aspect-ratio: 1;
+  overflow: clip;
+  border: 6px solid rgba(230, 241, 255, 0.9);
+  border-radius: 22px;
+  background-color: var(--veil);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+  will-change: transform;
+}
+.p-ab-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* ---------- Hero ---------- */
+.p-ab-hero__contain {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: calc(var(--header-top) + 140px);
   padding-bottom: 120px;
 }
-@media (min-width: 1024px) {
-  .p-profile__wrapper {
+
+.p-ab-hero__title-wrap {
+  position: relative;
+  max-width: 1100px;
+}
+
+.p-ab-hero__title {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 0.9rem + 4.6vw, 5.5rem);
+  line-height: 1.08;
+  text-transform: uppercase;
+  text-align: center;
+}
+.p-ab-hero__label {
+  display: block;
+  margin-bottom: 24px;
+  font-family: var(--font-mono);
+}
+
+.p-ab-hero__visual {
+  position: absolute;
+  z-index: 1;
+  width: 28vw;
+}
+/* Mobile : les deux cartes se placent au-dessus du titre */
+.p-ab-hero__visual--1 {
+  top: 0;
+  left: 50%;
+  transform: translate(-95%, -120%) rotate(-7.5deg);
+}
+.p-ab-hero__visual--2 {
+  top: 0;
+  right: 50%;
+  transform: translate(95%, -110%) rotate(4deg);
+}
+@media (min-width: 992px) {
+  .p-ab-hero__visual {
+    width: clamp(150px, 13vw, 240px);
+  }
+  .p-ab-hero__visual--1 {
+    top: 0;
+    left: 0;
+    transform: translate(-70%, -45%) rotate(-7.5deg);
+  }
+  .p-ab-hero__visual--2 {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    transform: translate(65%, 40%) rotate(4deg);
+  }
+}
+
+/* ---------- Image qui change au scroll + texte ---------- */
+.p-ab-cycle {
+  position: relative;
+  padding-block: 120px;
+}
+@media (min-width: 992px) {
+  .p-ab-cycle {
+    padding-block: 192px;
+  }
+}
+
+.p-ab-cycle__layout {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 56px;
+}
+@media (min-width: 992px) {
+  .p-ab-cycle__layout {
+    display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 24px;
-    padding-bottom: 192px;
   }
 }
 
-.p-profile__photo {
+.p-ab-cycle__visual {
+  position: relative;
+  width: 70%;
   aspect-ratio: 4 / 5;
+  overflow: clip;
+  border-radius: 22px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+.p-ab-cycle__visual img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  max-width: 520px;
+  height: 100%;
+  object-fit: cover;
 }
-@media (min-width: 1024px) {
-  .p-profile__photo {
+@media (min-width: 992px) {
+  .p-ab-cycle__visual {
     grid-column: 1 / 6;
-    position: sticky;
-    top: 120px;
-    align-self: start;
+    width: 100%;
   }
 }
 
-.p-profile__content {
+.p-ab-cycle__content {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
+  text-align: center;
+  align-items: center;
 }
-@media (min-width: 1024px) {
-  .p-profile__content {
-    grid-column: 7 / 13;
+@media (min-width: 992px) {
+  .p-ab-cycle__content {
+    grid-column: 7 / -1;
+    text-align: left;
+    align-items: flex-start;
   }
 }
 
-.p-profile__name {
-  font-size: clamp(2.5rem, 1.6rem + 3.6vw, 5rem);
+.p-ab-cycle__lead {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 1rem + 2.4vw, 3.25rem);
+  line-height: 1.12;
+  text-transform: uppercase;
 }
 
-.p-profile__text {
+.p-ab-cycle__text {
+  max-width: 560px;
+  opacity: 0.7;
+}
+
+/* Les quatre qualités */
+.p-ab-qualities {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  width: 100%;
+  max-width: 640px;
+  text-align: left;
+}
+@media (min-width: 560px) {
+  .p-ab-qualities {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.p-ab-quality {
   display: flex;
   flex-direction: column;
+  gap: 8px;
+  padding: 20px 18px;
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  background-color: var(--glass);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shine);
+}
+.p-ab-quality__name {
+  font-size: clamp(1.25rem, 1rem + 0.8vw, 1.75rem);
+  color: var(--accent);
+}
+.p-ab-quality__text {
+  opacity: 0.75;
+}
+
+/* Trait manuscrit qui traverse la section */
+.p-ab-squiggle {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 0;
+  width: 100%;
+  color: var(--accent);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.p-ab-squiggle svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.p-ab-squiggle path {
+  stroke-width: 2.5;
+}
+.p-ab-squiggle--steps {
+  inset: auto 0 0;
+}
+
+/* ---------- Parcours : cartes dispersées ---------- */
+.p-ab-steps {
+  position: relative;
+  padding-bottom: 160px;
+}
+
+.p-ab-steps__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 16px;
-  max-width: 620px;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.p-ab-steps__title {
+  max-width: 900px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 1rem + 2.4vw, 3.25rem);
+  line-height: 1.12;
+  text-transform: uppercase;
+}
+
+.p-ab-steps__list {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 56px;
+  width: 90%;
+  margin-inline: auto;
+}
+@media (min-width: 768px) {
+  .p-ab-steps__list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    width: 92%;
+  }
+  /* Disposition dispersée : chaque carte décalée et inclinée différemment */
+  .p-ab-steps__item:nth-child(1) {
+    transform: translate(6%, 0) rotate(-4deg);
+  }
+  .p-ab-steps__item:nth-child(2) {
+    transform: translate(0, 18%) rotate(3deg);
+    z-index: 2;
+  }
+  .p-ab-steps__item:nth-child(3) {
+    transform: translate(-6%, -4%) rotate(-2deg);
+  }
+}
+
+.p-ab-step {
+  padding: 0.5rem;
+  border: 6px solid rgba(230, 241, 255, 0.9);
+  border-radius: 26px;
+  background-color: #f2f8ff;
+  color: #05070d;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+  will-change: transform;
+}
+
+.p-ab-step__visual {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: clip;
+  border-radius: 18px;
+}
+.p-ab-step__visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.p-ab-step__content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 2rem 1rem;
+}
+.p-ab-step__name {
+  font-size: clamp(1.5rem, 1.1rem + 1vw, 2.25rem);
+}
+.p-ab-step__meta,
+.p-ab-step__role {
+  opacity: 0.6;
+}
+
+/* ---------- Appel à l'action ---------- */
+.p-ab-cta__contain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding-block: 120px 160px;
+  text-align: center;
+}
+.p-ab-cta__title {
+  max-width: 1000px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 1rem + 3.6vw, 4.5rem);
+  line-height: 1.08;
+  text-transform: uppercase;
+}
+.p-ab-cta__contain .c-actions {
+  justify-content: center;
 }
 
 /* Liste de faits (nom, formation…) */

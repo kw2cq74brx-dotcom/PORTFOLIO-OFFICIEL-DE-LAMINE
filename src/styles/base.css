@@ -1,3 +1,16 @@
+/* ---------- Police des grands titres ----------
+   Alt Matey (Andreas Leonidou). Fichier à déposer dans public/fonts/.
+   Tant qu'il est absent, les titres restent en Anton. */
+@font-face {
+  font-family: 'Alt Matey';
+  src:
+    url('/fonts/alt-matey.woff2') format('woff2'),
+    url('/fonts/alt-matey.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ---------- Variables ---------- */
 :root {
   /* Glace liquide sombre */
@@ -20,6 +33,8 @@
 
   --font-mono: 'Kode Mono', monospace;
   --font-display: 'Anton', sans-serif;
+  --font-title: 'Alt Matey', 'Anton', sans-serif;
+  --font-accent: 'Caveat', cursive;
 
   --gutter: clamp(16px, calc(7.762px + 2.197vw), 64px);
   --header-top: clamp(24px, calc(21.254px + 0.732vw), 40px);
@@ -110,6 +125,22 @@ html.lenis body {
 }
 
 /* line-height 1.2 : laisse la place aux accents des majuscules (É, À…) dans le masque */
+/* Grands titres : Alt Matey (les libellés, boutons et cartes restent en Anton) */
+.p-fv__title,
+.p-head__title,
+.p-about__title,
+.p-projects__title,
+.p-sticky__title,
+.p-toolkit__title,
+.p-arch__title,
+.p-pile__heading,
+.p-next__title,
+.p-profile__name,
+.p-split__name,
+.c-footer__title {
+  font-family: var(--font-title);
+}
+
 .text-wrapper {
   display: inline-block;
   overflow: hidden;

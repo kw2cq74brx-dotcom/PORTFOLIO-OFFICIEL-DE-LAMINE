@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#05070d"/><stop offset="1" stop-color="#0f2033"/></linearGradient></defs>
+  <rect width="800" height="800" fill="url(#g)"/>
+  <g font-family="Courier New, monospace" font-size="34" fill="#e6f1ff" fill-opacity=".55"><text x="70" y="140">const dev = {</text><text x="110" y="190">stack: "full",</text><text x="110" y="240">ville: "Paris"</text><text x="70" y="290">};</text></g>
+  <text x="60" y="640" font-family="Anton, Impact, sans-serif" font-size="190" fill="#e6f1ff">&lt;/&gt;</text>
+  <rect x="60" y="680" width="295" height="56" fill="#7fe7ff"/>
+  <text x="80" y="718" font-family="Courier New, monospace" font-size="26" fill="#05070d">DÉVELOPPEMENT WEB</text>
+</svg>
