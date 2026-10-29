@@ -17,7 +17,7 @@ export default {
   whatsapp: '33759062043', // indicatif + numéro, sans « + » ni espaces
 
   // Fichiers à déposer dans /public
-  photo: 'images/profil.svg', // À COMPLÉTER : remplace par ta photo (ex. images/profil.jpg)
+  photo: 'images/profil.jpg',
   cv: 'docs/cv-baye-lamine-gueye.pdf', // À COMPLÉTER : dépose ton CV à cet emplacement
 
   // Réseaux

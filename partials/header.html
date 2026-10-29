@@ -3,6 +3,17 @@
 <!-- Fond « glace liquide » (shader WebGL) -->
 <canvas class="c-liquid js-liquid" aria-hidden="true"></canvas>
 
+<!-- Animation d'entrée (inspirée de ascension.pegassi.be) : sigle « BLG » en chrome 3D
+     qui bascule depuis l'arrière, entouré de petits textes qui montent dans leur masque -->
+<div class="c-preloader js-preloader" aria-hidden="true">
+  <canvas class="c-preloader__canvas js-preloader-canvas"></canvas>
+  <p class="c-preloader__fallback anton">BLG</p>
+  <p class="t-sm c-preloader__mask c-preloader__mask--left"><span class="js-preloader-line">PORTFOLIO</span></p>
+  <p class="t-sm c-preloader__mask c-preloader__mask--right"><span class="js-preloader-line">{{ year }}</span></p>
+  <p class="t-sm c-preloader__mask c-preloader__mask--bl"><span class="js-preloader-line">BAYE LAMINE GUEYE</span></p>
+  <p class="t-sm c-preloader__mask c-preloader__mask--br"><span class="js-preloader-line">BTS SIO — SLAM</span></p>
+</div>
+
 <!-- Transition de page : couvre l'écran jusqu'à ce que le JS la dissolve -->
 <div class="c-transition js-transition" aria-hidden="true"></div>
 

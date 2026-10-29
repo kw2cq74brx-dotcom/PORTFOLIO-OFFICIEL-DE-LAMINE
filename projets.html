@@ -8,7 +8,7 @@
       content="Projets de Baye Lamine Gueye : MDS Avis (Next.js, Prisma, Tailwind CSS), application Python et Model's Maps, application web de scouting de mannequins."
     />
   </head>
-  <body data-page="projets" data-scroll="codepen">
+  <body data-page="projets">
     <include src="partials/header.html"></include>
 
     <main id="contenu">
@@ -21,89 +21,84 @@
         </div>
       </section>
 
-      <!-- Voile coloré : il prend la teinte du projet affiché, par-dessus la glace liquide -->
-      <div class="p-arch__tint js-arch-tint" aria-hidden="true"></div>
-
-      <!-- ============ PROJETS : texte à gauche, image épinglée à droite ============
-           Au scroll, l'image du projet courant se découpe vers le haut pour révéler la suivante.
-           (adapté du CodePen gridmorphic/WbQPRwv) -->
-      <section class="p-arch js-arch" aria-label="Mes projets">
-        <div class="l-wrapper p-arch__wrapper">
-          <div class="p-arch__left">
-          <article class="p-arch__info js-arch-info" id="mds-avis" style="--accent-project: #7FE7FF">
-            <div class="p-arch__card">
-              <p class="t-sm p-arch__label">[01 / 03] — PROJET ACADÉMIQUE</p>
-              <h2 class="anton p-arch__title">MDS AVIS</h2>
-              <p class="t-md">Conception et développement d'une solution applicative web complète&nbsp;: modélisation des données, développement full stack avec Next.js, accès aux données avec l'ORM Prisma et interface responsive construite avec Tailwind CSS.</p>
-              <ul class="c-tags"><li class="badge badge-outline badge-sm">Next.js</li><li class="badge badge-outline badge-sm">React</li><li class="badge badge-outline badge-sm">Prisma</li><li class="badge badge-outline badge-sm">Tailwind CSS</li></ul>
-              <!-- À COMPLÉTER : lien vers la page du projet -->
-              <a class="c-cta anton p-arch__link" href="{{ mdsAvisUrl }}" target="_blank" rel="noopener">
-                <span class="text-wrapper">
-                  <span class="c-cta__label c-cta__label--default">VOIR LE PROJET</span>
-                  <span class="c-cta__label c-cta__label--clone" aria-hidden="true">VOIR LE PROJET</span>
-                </span>
-                <span class="c-cta__rule"></span>
-                <span class="text-wrapper">
-                  <span class="c-cta__icon c-cta__icon--default"></span>
-                  <span class="c-cta__icon c-cta__icon--clone"></span>
-                </span>
-              </a>
-            </div>
-          </article>
-
-          <article class="p-arch__info js-arch-info" id="app-python" style="--accent-project: #FFD43B">
-            <div class="p-arch__card">
-              <p class="t-sm p-arch__label">[02 / 03] — PROJET ACADÉMIQUE</p>
-              <h2 class="anton p-arch__title">APPLICATION PYTHON</h2>
-              <p class="t-md">Conception et développement d'une application avec Python&nbsp;: analyse du besoin, conception, programmation orientée objet et tests. <span class="c-todo">À COMPLÉTER</span> nom et fonctionnalités de l'application.</p>
-              <ul class="c-tags"><li class="badge badge-outline badge-sm">Python</li><li class="badge badge-outline badge-sm">POO</li></ul>
-              <!-- À COMPLÉTER : lien vers la page du projet -->
-              <a class="c-cta anton p-arch__link" href="{{ pythonAppUrl }}" target="_blank" rel="noopener">
-                <span class="text-wrapper">
-                  <span class="c-cta__label c-cta__label--default">VOIR LE PROJET</span>
-                  <span class="c-cta__label c-cta__label--clone" aria-hidden="true">VOIR LE PROJET</span>
-                </span>
-                <span class="c-cta__rule"></span>
-                <span class="text-wrapper">
-                  <span class="c-cta__icon c-cta__icon--default"></span>
-                  <span class="c-cta__icon c-cta__icon--clone"></span>
-                </span>
-              </a>
-            </div>
-          </article>
-
-          <article class="p-arch__info js-arch-info" id="models-maps" style="--accent-project: #FFA0B0">
-            <div class="p-arch__card">
-              <p class="t-sm p-arch__label">[03 / 03] — PROJET PERSONNEL</p>
-              <h2 class="anton p-arch__title">MODEL'S MAPS</h2>
-              <p class="t-md">Application web de scouting de mannequins&nbsp;: un outil pour repérer, référencer et retrouver des profils de mannequins. <span class="c-todo">À COMPLÉTER</span> fonctionnalités et technologies utilisées.</p>
-              <ul class="c-tags"><li class="badge badge-outline badge-sm">Application web</li><li class="badge badge-outline badge-sm">Scouting</li></ul>
-              <!-- À COMPLÉTER : lien vers la page du projet -->
-              <a class="c-cta anton p-arch__link" href="{{ modelsMapsUrl }}" target="_blank" rel="noopener">
-                <span class="text-wrapper">
-                  <span class="c-cta__label c-cta__label--default">VOIR LE PROJET</span>
-                  <span class="c-cta__label c-cta__label--clone" aria-hidden="true">VOIR LE PROJET</span>
-                </span>
-                <span class="c-cta__rule"></span>
-                <span class="text-wrapper">
-                  <span class="c-cta__icon c-cta__icon--default"></span>
-                  <span class="c-cta__icon c-cta__icon--clone"></span>
-                </span>
-              </a>
-            </div>
-          </article>
+      <!-- ============ PROJETS : cartes dispersées (même structure que « Mon parcours » de la page À propos) ============
+           Au survol, l'image de chaque carte défile et la carte prend de l'élan. -->
+      <section class="p-ab-steps p-ab-steps--projects js-momentum" aria-label="Mes projets">
+        <div class="l-wrapper">
+          <div class="p-ab-steps__head">
+            <p class="t-base">[MES RÉALISATIONS]</p>
+            <h2 class="p-ab-steps__title">
+              Deux projets académiques, un projet <strong class="p-ab-accent">personnel</strong>, une même exigence.
+            </h2>
           </div>
 
-          <div class="p-arch__right js-arch-right">
-          <!-- À COMPLÉTER : capture du projet « MDS AVIS » -->
-          <figure class="p-arch__img js-arch-img" data-color="#7FE7FF"><img src="images/projets/mds-avis.svg" alt="Aperçu du projet MDS Avis" /></figure>
+          <ul class="p-ab-steps__list" role="list">
+            <li class="p-ab-steps__item js-hover-cycle js-momentum-item" id="mds-avis">
+              <article class="p-ab-step js-momentum-target">
+                <div class="p-ab-step__visual">
+                  <!-- À COMPLÉTER : captures du projet → public/images/projets/mds-avis.(jpg|png) et mds-avis-2.(jpg|png) -->
+                  <img class="js-hover-cycle-image" src="images/projets/mds-avis.svg" alt="Aperçu du projet MDS Avis" />
+                  <img class="js-hover-cycle-image" src="images/projets/mds-avis-2.svg" alt="" />
+                </div>
+                <div class="p-ab-step__content">
+                  <p class="t-sm p-ab-step__meta">[01] — PROJET ACADÉMIQUE · {{ yearsSio }}</p>
+                  <h2 class="anton p-ab-step__name">MDS Avis</h2>
+                  <p class="t-sm p-ab-step__role">Next.js · Prisma · Tailwind CSS</p>
+                  <!-- À COMPLÉTER : lien vers la page du projet (site.config.js) -->
+                  <a class="p-ab-step__link" href="{{ mdsAvisUrl }}" target="_blank" rel="noopener">
+                    <span>VOIR LE PROJET</span><span class="c-cta__icon" aria-hidden="true"></span>
+                  </a>
+                </div>
+              </article>
+            </li>
+            <li class="p-ab-steps__item js-hover-cycle js-momentum-item" id="app-python">
+              <article class="p-ab-step js-momentum-target">
+                <div class="p-ab-step__visual">
+                  <!-- À COMPLÉTER : captures du projet → public/images/projets/app-python.(jpg|png) et app-python-2.(jpg|png) -->
+                  <img class="js-hover-cycle-image" src="images/projets/app-python.svg" alt="Aperçu de l'application Python" />
+                  <img class="js-hover-cycle-image" src="images/projets/app-python-2.svg" alt="" />
+                </div>
+                <div class="p-ab-step__content">
+                  <p class="t-sm p-ab-step__meta">[02] — PROJET ACADÉMIQUE · {{ yearsSio }}</p>
+                  <h2 class="anton p-ab-step__name">Application Python</h2>
+                  <p class="t-sm p-ab-step__role">Python · Programmation orientée objet</p>
+                  <!-- À COMPLÉTER : lien vers la page du projet (site.config.js) -->
+                  <a class="p-ab-step__link" href="{{ pythonAppUrl }}" target="_blank" rel="noopener">
+                    <span>VOIR LE PROJET</span><span class="c-cta__icon" aria-hidden="true"></span>
+                  </a>
+                </div>
+              </article>
+            </li>
+            <li class="p-ab-steps__item js-hover-cycle js-momentum-item" id="models-maps">
+              <article class="p-ab-step js-momentum-target">
+                <div class="p-ab-step__visual">
+                  <!-- À COMPLÉTER : captures du projet → public/images/projets/models-maps.(jpg|png) et models-maps-2.(jpg|png) -->
+                  <img class="js-hover-cycle-image" src="images/projets/models-maps.svg" alt="Aperçu de Model's Maps" />
+                  <img class="js-hover-cycle-image" src="images/projets/models-maps-2.svg" alt="" />
+                </div>
+                <div class="p-ab-step__content">
+                  <p class="t-sm p-ab-step__meta">[03] — PROJET PERSONNEL · 20XX</p>
+                  <h2 class="anton p-ab-step__name">Model's Maps</h2>
+                  <p class="t-sm p-ab-step__role">Application web de scouting de mannequins</p>
+                  <!-- À COMPLÉTER : lien vers la page du projet (site.config.js) -->
+                  <a class="p-ab-step__link" href="{{ modelsMapsUrl }}" target="_blank" rel="noopener">
+                    <span>VOIR LE PROJET</span><span class="c-cta__icon" aria-hidden="true"></span>
+                  </a>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </div>
 
-          <!-- À COMPLÉTER : capture du projet « APPLICATION PYTHON » -->
-          <figure class="p-arch__img js-arch-img" data-color="#FFD43B"><img src="images/projets/app-python.svg" alt="Aperçu de l'application Python" /></figure>
-
-          <!-- À COMPLÉTER : capture du projet « MODEL'S MAPS » -->
-          <figure class="p-arch__img js-arch-img" data-color="#FFA0B0"><img src="images/projets/models-maps.svg" alt="Aperçu de Model's Maps" /></figure>
-          </div>
+        <div class="p-ab-squiggle p-ab-squiggle--steps js-draw-svg" aria-hidden="true">
+          <svg viewBox="0 0 1440 600" fill="none" preserveAspectRatio="none">
+            <path
+              d="M-20 420 C 180 300, 300 520, 470 430 S 700 140, 880 260 S 1150 520, 1460 300"
+              stroke="currentColor"
+              stroke-linecap="round"
+              vector-effect="non-scaling-stroke"
+            />
+          </svg>
         </div>
       </section>
     </main>

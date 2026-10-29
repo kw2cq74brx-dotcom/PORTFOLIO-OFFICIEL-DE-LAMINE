@@ -25,6 +25,9 @@
   /* Verre dépoli */
   --glass: rgba(255, 255, 255, 0.05);
   --glass-strong: rgba(255, 255, 255, 0.1);
+  /* Boutons du menu : quasi opaques pour rester lisibles au-dessus des grands titres */
+  --glass-nav: rgba(8, 14, 26, 0.85);
+  --glass-nav-blur: blur(20px) saturate(160%);
   --glass-border: rgba(230, 241, 255, 0.16);
   --glass-blur: blur(16px) saturate(160%);
   --glass-shine: inset 0 1px 0 rgba(255, 255, 255, 0.12);
@@ -132,12 +135,11 @@ html.lenis body {
 .p-projects__title,
 .p-sticky__title,
 .p-toolkit__title,
-.p-arch__title,
 .p-pile__heading,
+.p-ct__title,
 .p-next__title,
 .p-profile__name,
-.p-split__name,
-.c-footer__title {
+.p-split__name {
   font-family: var(--font-title);
 }
 
@@ -148,8 +150,7 @@ html.lenis body {
   line-height: 1.2;
 }
 .p-fv__title .text-wrapper,
-.p-sticky__title .text-wrapper,
-.c-footer__title .text-wrapper {
+.p-sticky__title .text-wrapper {
   line-height: inherit;
 }
 

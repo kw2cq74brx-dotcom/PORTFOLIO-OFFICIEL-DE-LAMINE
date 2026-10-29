@@ -3,6 +3,6 @@
   <rect width="800" height="800" fill="url(#g)"/>
   <circle cx="610" cy="210" r="120" fill="#ff8fb8" fill-opacity=".35"/><circle cx="610" cy="210" r="70" fill="#ff8fb8" fill-opacity=".6"/>
   <text x="60" y="640" font-family="Anton, Impact, sans-serif" font-size="190" fill="#ffe8f2">π</text>
-  <rect x="60" y="680" width="340" height="56" fill="#ff8fb8"/>
-  <text x="80" y="718" font-family="Courier New, monospace" font-size="26" fill="#05070d">MATHS &amp; PHYSIQUE</text>
+  <rect x="60" y="680" width="325" height="56" fill="#ff8fb8"/>
+  <text x="80" y="718" font-family="Courier New, monospace" font-size="26" fill="#05070d">APPROCHE ANALYTIQUE</text>
 </svg>

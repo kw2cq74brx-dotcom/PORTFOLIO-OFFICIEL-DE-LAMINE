@@ -15,7 +15,7 @@ export function initMenu() {
   const css = getComputedStyle(document.documentElement);
   const textColor = css.getPropertyValue('--text').trim();
   const bgColor = css.getPropertyValue('--bg').trim();
-  const glassColor = css.getPropertyValue('--glass').trim();
+  const glassColor = css.getPropertyValue('--glass-nav').trim();
 
   const trigger = button.querySelector('.c-menu-button__button');
   const panel = overlay.querySelector('.c-menu__wrapper');

@@ -38,6 +38,11 @@ export function enter() {
   });
 }
 
+// Après l'intro : la page est déjà dévoilée par la dissolution, la grille reste cachée
+export function reveal() {
+  if (build()) gsap.set(overlay, { visibility: 'hidden' });
+}
+
 export function leave() {
   if (!overlay) return Promise.resolve();
 

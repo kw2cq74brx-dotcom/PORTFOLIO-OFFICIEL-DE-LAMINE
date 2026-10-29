@@ -3,6 +3,6 @@
   <rect width="800" height="800" fill="url(#g)"/>
   <g stroke="#e6f1ff" stroke-opacity=".12"><path d="M100 0V800" /><path d="M200 0V800" /><path d="M300 0V800" /><path d="M400 0V800" /><path d="M500 0V800" /><path d="M600 0V800" /><path d="M700 0V800" /><path d="M0 100H800" /><path d="M0 200H800" /><path d="M0 300H800" /><path d="M0 400H800" /><path d="M0 500H800" /><path d="M0 600H800" /><path d="M0 700H800" /></g>
   <text x="60" y="640" font-family="Anton, Impact, sans-serif" font-size="190" fill="#e6f1ff">PARIS</text>
-  <rect x="60" y="680" width="445" height="56" fill="#7fe7ff"/>
-  <text x="80" y="718" font-family="Courier New, monospace" font-size="26" fill="#05070d">BTS SIO — MY DIGITAL SCHOOL</text>
+  <rect x="60" y="680" width="355" height="56" fill="#7fe7ff"/>
+  <text x="80" y="718" font-family="Courier New, monospace" font-size="26" fill="#05070d">BTS SIO — OPTION SLAM</text>
 </svg>

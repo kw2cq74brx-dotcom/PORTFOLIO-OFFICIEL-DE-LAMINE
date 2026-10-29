@@ -3,6 +3,6 @@
   <rect width="800" height="800" fill="url(#g)"/>
   <g stroke="#ffb38a" stroke-width="6" fill="none" stroke-opacity=".5"><path d="M60 620H260V500H420"/><path d="M740 180H560V320H380"/><circle cx="420" cy="500" r="14"/><circle cx="380" cy="320" r="14"/></g>
   <text x="60" y="640" font-family="Anton, Impact, sans-serif" font-size="190" fill="#f1e9ff">DAKAR</text>
-  <rect x="60" y="680" width="475" height="56" fill="#ffb38a"/>
-  <text x="80" y="718" font-family="Courier New, monospace" font-size="26" fill="#05070d">BTS ÉLECTROMÉCANIQUE — ESEBAT</text>
+  <rect x="60" y="680" width="505" height="56" fill="#ffb38a"/>
+  <text x="80" y="718" font-family="Courier New, monospace" font-size="26" fill="#05070d">ÉLECTROMÉCANIQUE &amp; AUTOMATISMES</text>
 </svg>

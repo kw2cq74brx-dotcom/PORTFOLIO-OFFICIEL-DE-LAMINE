@@ -6,7 +6,6 @@ export function initTitles({ delay = 0 } = {}) {
   outlineTitles();
   rollTitles();
   riseTitles();
-  dropTitles();
 }
 
 const textOf = (title) => title.querySelector('.text-wrapper') ?? title;
@@ -73,21 +72,6 @@ function riseTitles() {
       stagger: 0.05,
       ease: 'power4.out',
       scrollTrigger: { trigger: title, start: title.dataset.start ?? 'top top' },
-    });
-  });
-}
-
-// Titre du footer : les lettres se déplient depuis le haut
-function dropTitles() {
-  document.querySelectorAll('.js-title-drop').forEach((title) => {
-    const chars = splitChars(textOf(title));
-    gsap.set(chars, { scaleY: 0, transformOrigin: 'top center' });
-    gsap.to(chars, {
-      scaleY: 1,
-      duration: 1.5,
-      ease: 'power3.out',
-      stagger: { each: 0.05, from: 'random' },
-      scrollTrigger: { trigger: title, start: 'top 80%' },
     });
   });
 }
