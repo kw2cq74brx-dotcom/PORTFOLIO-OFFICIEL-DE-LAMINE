@@ -33,4 +33,8 @@ export default {
   yearsSio: '20XX — 20XX', // À COMPLÉTER
   yearsEsat: '20XX — 20XX', // À COMPLÉTER
   yearsBac: '20XX', // À COMPLÉTER
+  yearsClaude: '20XX', // À COMPLÉTER : année de la certification Claude
+  // Page du cours Claude 101 (Anthropic Academy) ; à remplacer par le lien personnel
+  // de vérification du certificat (verify.skilljar.com/c/…) une fois obtenu
+  claudeCertUrl: 'https://anthropic.skilljar.com/claude-101',
 };

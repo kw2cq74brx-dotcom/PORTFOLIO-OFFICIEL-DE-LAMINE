@@ -1,10 +1,9 @@
-import { gsap, ScrollTrigger } from '../lib/gsap.js';
+import { gsap } from '../lib/gsap.js';
 import { prefersReducedMotion } from '../core/scroll.js';
 
 // Page À propos (structure inspirée de lxlcreative.co.uk/about) :
 //  - entrée : les cartes et le titre du hero montent en fondu ;
 //  - élan au survol : une carte frôlée par la souris part dans le sens du geste puis revient ;
-//  - image qui change au scroll dans la section « Qui suis-je » ;
 //  - image qui défile au survol des cartes du parcours ;
 //  - traits manuscrits qui se dessinent au scroll.
 
@@ -13,7 +12,6 @@ const canHover = () => window.matchMedia('(hover: hover) and (pointer: fine)').m
 export function initAbout() {
   initEnter();
   initMomentum();
-  initImageCycle();
   initHoverCycle();
   initDrawSvg();
 }
@@ -67,30 +65,6 @@ function initMomentum() {
           overwrite: 'auto',
         });
       });
-    });
-  });
-}
-
-// L'image affichée dépend de la progression du scroll dans la section
-function initImageCycle() {
-  document.querySelectorAll('.js-image-cycle').forEach((wrap) => {
-    const images = [...wrap.querySelectorAll('.js-image-cycle-item')];
-    if (images.length < 2) return;
-    images.forEach((img, i) => gsap.set(img, { autoAlpha: i === 0 ? 1 : 0 }));
-    if (prefersReducedMotion) return;
-
-    let current = 0;
-    ScrollTrigger.create({
-      trigger: wrap,
-      start: 'top 70%',
-      end: 'bottom 40%',
-      onUpdate: (self) => {
-        const index = Math.min(images.length - 1, Math.floor(self.progress * images.length));
-        if (index === current) return;
-        gsap.set(images[current], { autoAlpha: 0 });
-        gsap.set(images[index], { autoAlpha: 1 });
-        current = index;
-      },
     });
   });
 }

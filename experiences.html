@@ -8,115 +8,158 @@
       content="Expériences professionnelles de Baye Lamine Gueye : stages, ateliers de professionnalisation et missions freelance."
     />
   </head>
-  <body data-page="experiences" data-scroll="none">
+  <body data-page="experiences">
     <include src="partials/header.html"></include>
 
-    <!-- Page plein écran (structure inspirée de ricardochance.com/work) :
-         un carrousel WebGL d'expériences, piloté à la molette, au glisser ou au clavier. -->
-    <main id="contenu" class="p-exp js-exp">
-      <canvas class="p-exp__canvas js-exp-canvas" aria-hidden="true"></canvas>
-
-      <div class="l-wrapper p-exp__ui">
-        <div class="p-exp__top">
-          <div class="p-exp__status">
-            <p class="t-sm"><span class="p-exp__pulse" aria-hidden="true"></span>DISPONIBLE POUR UN STAGE OU UNE ALTERNANCE</p>
-            <a class="t-sm c-slide" href="mailto:{{ email }}">
-              <span class="text-wrapper"><span>{{ email }}</span><span aria-hidden="true">{{ email }}</span></span>
-            </a>
-          </div>
-          <p class="anton p-exp__counter" aria-hidden="true">
-            <span class="p-exp__digits"><span class="p-exp__digits-col js-exp-digits"></span></span><span class="p-exp__total js-exp-total"></span>
+    <!-- Structure inspirée de la section « process » de kerna.studio :
+         sur une grille, chaque expérience est une carte numérotée qui s'ouvre quand la
+         timeline centrale, remplie au scroll, atteint son point ; ses tags surgissent à droite. -->
+    <main id="contenu" class="p-xp">
+      <section class="l-wrapper p-xp__intro">
+        <div class="p-xp__intro-panel">
+          <p class="t-sm p-xp__label js-xp-intro">[EXPÉRIENCES]</p>
+          <h1 class="p-xp__title js-title-scale" data-start="top 90%"><span class="text-wrapper">MON PARCOURS PRO</span></h1>
+          <p class="p-xp__lead js-xp-intro">
+            Stages, ateliers de professionnalisation et missions freelance&nbsp;: là où la théorie devient du concret.
           </p>
         </div>
+      </section>
 
-        <div class="p-exp__bottom">
-          <div class="p-exp__info" aria-live="polite">
-            <p class="t-sm p-exp__mask"><span class="p-exp__line js-exp-kind"></span></p>
-            <h1 class="p-exp__title p-exp__mask"><span class="p-exp__line js-exp-title"></span></h1>
-            <p class="t-sm p-exp__mask p-exp__meta"><span class="p-exp__line js-exp-meta"></span></p>
-          </div>
-
-          <div class="p-exp__actions">
-            <div class="p-exp__nav">
-              <button class="p-exp__arrow js-exp-prev" type="button" aria-label="Expérience précédente">←</button>
-              <button class="p-exp__arrow js-exp-next" type="button" aria-label="Expérience suivante">→</button>
+      <section class="l-wrapper p-xp__process" aria-label="Mes expériences">
+        <div class="p-xp__steps js-xp-steps">
+          <ol class="p-xp__list">
+          <!-- À COMPLÉTER : Stage de première année -->
+          <li class="p-xp-step js-xp-step">
+            <article class="p-xp-step__card">
+              <div class="p-xp-step__num js-xp-num" aria-hidden="true"><span class="js-xp-digit" data-digit="1"></span></div>
+              <div class="p-xp-step__body">
+                <p class="t-sm p-xp-step__kind">[01] STAGE — 1RE ANNÉE</p>
+                <h2 class="anton p-xp-step__title">ENTREPRISE À COMPLÉTER</h2>
+                <p class="t-md p-xp-step__desc">
+                  <span class="c-todo">À COMPLÉTER</span> Contexte de l'entreprise et objectif de la mission.
+                  <span class="p-xp-step__time">[Ville — 20XX — durée]</span>
+                </p>
+              </div>
+            </article>
+            <div class="p-xp-step__panel">
+              <ul class="p-xp-step__tags" aria-label="Missions et outils">
+                <li class="js-xp-tag"><span>Mission 1</span></li>
+                <li class="js-xp-tag"><span>Mission 2</span></li>
+                <li class="js-xp-tag"><span>Mission 3</span></li>
+                <li class="js-xp-tag"><span>Technologie</span></li>
+                <li class="js-xp-tag"><span>Outil</span></li>
+              </ul>
             </div>
-            <button class="p-exp__open js-exp-open" type="button">
-              <span class="t-base">VOIR LE DÉTAIL</span>
-              <span class="c-cta__icon" aria-hidden="true"></span>
-            </button>
+          </li>
+          <!-- À COMPLÉTER : Stage de deuxième année -->
+          <li class="p-xp-step js-xp-step">
+            <article class="p-xp-step__card">
+              <div class="p-xp-step__num js-xp-num" aria-hidden="true"><span class="js-xp-digit" data-digit="2"></span></div>
+              <div class="p-xp-step__body">
+                <p class="t-sm p-xp-step__kind">[02] STAGE — 2E ANNÉE</p>
+                <h2 class="anton p-xp-step__title">ENTREPRISE À COMPLÉTER</h2>
+                <p class="t-md p-xp-step__desc">
+                  <span class="c-todo">À COMPLÉTER</span> Contexte de l'entreprise et objectif de la mission.
+                  <span class="p-xp-step__time">[Ville — 20XX — durée]</span>
+                </p>
+              </div>
+            </article>
+            <div class="p-xp-step__panel">
+              <ul class="p-xp-step__tags" aria-label="Missions et outils">
+                <li class="js-xp-tag"><span>Mission 1</span></li>
+                <li class="js-xp-tag"><span>Mission 2</span></li>
+                <li class="js-xp-tag"><span>Mission 3</span></li>
+                <li class="js-xp-tag"><span>Technologie</span></li>
+                <li class="js-xp-tag"><span>Outil</span></li>
+              </ul>
+            </div>
+          </li>
+          <!-- À COMPLÉTER : Atelier n°1 -->
+          <li class="p-xp-step js-xp-step">
+            <article class="p-xp-step__card">
+              <div class="p-xp-step__num js-xp-num" aria-hidden="true"><span class="js-xp-digit" data-digit="3"></span></div>
+              <div class="p-xp-step__body">
+                <p class="t-sm p-xp-step__kind">[03] ATELIER DE PROFESSIONNALISATION</p>
+                <h2 class="anton p-xp-step__title">INTITULÉ À COMPLÉTER</h2>
+                <p class="t-md p-xp-step__desc">
+                  <span class="c-todo">À COMPLÉTER</span> Situation professionnelle simulée : besoin du client et livrables.
+                  <span class="p-xp-step__time">[My Digital School — 20XX — en équipe]</span>
+                </p>
+              </div>
+            </article>
+            <div class="p-xp-step__panel">
+              <ul class="p-xp-step__tags" aria-label="Missions et outils">
+                <li class="js-xp-tag"><span>Réalisation 1</span></li>
+                <li class="js-xp-tag"><span>Réalisation 2</span></li>
+                <li class="js-xp-tag"><span>Technologie</span></li>
+                <li class="js-xp-tag"><span>Mode projet</span></li>
+              </ul>
+            </div>
+          </li>
+          <!-- À COMPLÉTER : Atelier n°2 -->
+          <li class="p-xp-step js-xp-step">
+            <article class="p-xp-step__card">
+              <div class="p-xp-step__num js-xp-num" aria-hidden="true"><span class="js-xp-digit" data-digit="4"></span></div>
+              <div class="p-xp-step__body">
+                <p class="t-sm p-xp-step__kind">[04] ATELIER DE PROFESSIONNALISATION</p>
+                <h2 class="anton p-xp-step__title">INTITULÉ À COMPLÉTER</h2>
+                <p class="t-md p-xp-step__desc">
+                  <span class="c-todo">À COMPLÉTER</span> Situation professionnelle simulée : besoin du client et livrables.
+                  <span class="p-xp-step__time">[My Digital School — 20XX — en équipe]</span>
+                </p>
+              </div>
+            </article>
+            <div class="p-xp-step__panel">
+              <ul class="p-xp-step__tags" aria-label="Missions et outils">
+                <li class="js-xp-tag"><span>Réalisation 1</span></li>
+                <li class="js-xp-tag"><span>Réalisation 2</span></li>
+                <li class="js-xp-tag"><span>Technologie</span></li>
+                <li class="js-xp-tag"><span>Mode projet</span></li>
+              </ul>
+            </div>
+          </li>
+          <!-- À COMPLÉTER : Mission freelance -->
+          <li class="p-xp-step js-xp-step">
+            <article class="p-xp-step__card">
+              <div class="p-xp-step__num js-xp-num" aria-hidden="true"><span class="js-xp-digit" data-digit="5"></span></div>
+              <div class="p-xp-step__body">
+                <p class="t-sm p-xp-step__kind">[05] ACTIVITÉ FREELANCE</p>
+                <h2 class="anton p-xp-step__title">CLIENT À COMPLÉTER</h2>
+                <p class="t-md p-xp-step__desc">
+                  <span class="c-todo">À COMPLÉTER</span> Besoin du client, solution livrée et résultat obtenu.
+                  <span class="p-xp-step__time">[À distance — 20XX — durée]</span>
+                </p>
+              </div>
+            </article>
+            <div class="p-xp-step__panel">
+              <ul class="p-xp-step__tags" aria-label="Missions et outils">
+                <li class="js-xp-tag"><span>Livrable 1</span></li>
+                <li class="js-xp-tag"><span>Livrable 2</span></li>
+                <li class="js-xp-tag"><span>Technologie</span></li>
+                <li class="js-xp-tag"><span>Outil</span></li>
+              </ul>
+            </div>
+          </li>
+          </ol>
+          <!-- Timeline (ordinateur) : rail, remplissage et points, placés par le JS -->
+          <div class="p-xp__timeline js-xp-timeline" aria-hidden="true">
+            <div class="p-xp__track js-xp-track"><div class="p-xp__fill js-xp-fill"></div></div>
           </div>
         </div>
 
-        <p class="t-sm p-exp__hint" aria-hidden="true">MOLETTE · GLISSER · ← →</p>
-      </div>
-
-      <!-- Panneau de détail (glisse depuis la droite) -->
-      <aside class="p-exp__drawer js-exp-drawer" aria-label="Détail de l'expérience" inert>
-        <button class="p-exp__close js-exp-close" type="button" aria-label="Fermer le détail">✕</button>
-        <div class="p-exp__drawer-body js-exp-drawer-body"></div>
-      </aside>
-
-      <!-- Contenu des expériences : sert de source au carrousel et reste lisible
-           par les lecteurs d'écran et les moteurs de recherche -->
-      <section class="sr-only" aria-label="Liste de mes expériences">
-        <ol>
-          <!-- À COMPLÉTER : Stage de première année (image : public/images/experiences/stage-1.svg) -->
-          <li class="js-exp-item" data-image="images/experiences/stage-1.svg">
-            <article class="p-exp-detail">
-              <p class="t-sm p-exp-detail__kind">STAGE — 1RE ANNÉE</p>
-              <h2 class="anton p-exp-detail__title">ENTREPRISE À COMPLÉTER</h2>
-              <p class="t-sm p-exp-detail__meta">Ville — 20XX — durée</p>
-              <p class="t-md"><span class="c-todo">À COMPLÉTER</span> Contexte de l'entreprise et objectif de la mission.</p>
-              <ul class="c-dots t-sm"><li><span class="dot"></span>Mission 1</li><li><span class="dot"></span>Mission 2</li><li><span class="dot"></span>Mission 3</li></ul>
-              <ul class="c-tags"><li class="badge badge-outline badge-sm">Technologie</li><li class="badge badge-outline badge-sm">Outil</li></ul>
-            </article>
-          </li>
-          <!-- À COMPLÉTER : Stage de deuxième année (image : public/images/experiences/stage-2.svg) -->
-          <li class="js-exp-item" data-image="images/experiences/stage-2.svg">
-            <article class="p-exp-detail">
-              <p class="t-sm p-exp-detail__kind">STAGE — 2E ANNÉE</p>
-              <h2 class="anton p-exp-detail__title">ENTREPRISE À COMPLÉTER</h2>
-              <p class="t-sm p-exp-detail__meta">Ville — 20XX — durée</p>
-              <p class="t-md"><span class="c-todo">À COMPLÉTER</span> Contexte de l'entreprise et objectif de la mission.</p>
-              <ul class="c-dots t-sm"><li><span class="dot"></span>Mission 1</li><li><span class="dot"></span>Mission 2</li><li><span class="dot"></span>Mission 3</li></ul>
-              <ul class="c-tags"><li class="badge badge-outline badge-sm">Technologie</li><li class="badge badge-outline badge-sm">Outil</li></ul>
-            </article>
-          </li>
-          <!-- À COMPLÉTER : Atelier n°1 (image : public/images/experiences/atelier-1.svg) -->
-          <li class="js-exp-item" data-image="images/experiences/atelier-1.svg">
-            <article class="p-exp-detail">
-              <p class="t-sm p-exp-detail__kind">ATELIER DE PROFESSIONNALISATION</p>
-              <h2 class="anton p-exp-detail__title">INTITULÉ À COMPLÉTER</h2>
-              <p class="t-sm p-exp-detail__meta">My Digital School — 20XX — en équipe</p>
-              <p class="t-md"><span class="c-todo">À COMPLÉTER</span> Situation professionnelle simulée : contexte, besoin du client et livrables.</p>
-              <ul class="c-dots t-sm"><li><span class="dot"></span>Réalisation 1</li><li><span class="dot"></span>Réalisation 2</li></ul>
-              <ul class="c-tags"><li class="badge badge-outline badge-sm">Technologie</li><li class="badge badge-outline badge-sm">Mode projet</li></ul>
-            </article>
-          </li>
-          <!-- À COMPLÉTER : Atelier n°2 (image : public/images/experiences/atelier-2.svg) -->
-          <li class="js-exp-item" data-image="images/experiences/atelier-2.svg">
-            <article class="p-exp-detail">
-              <p class="t-sm p-exp-detail__kind">ATELIER DE PROFESSIONNALISATION</p>
-              <h2 class="anton p-exp-detail__title">INTITULÉ À COMPLÉTER</h2>
-              <p class="t-sm p-exp-detail__meta">My Digital School — 20XX — en équipe</p>
-              <p class="t-md"><span class="c-todo">À COMPLÉTER</span> Situation professionnelle simulée : contexte, besoin du client et livrables.</p>
-              <ul class="c-dots t-sm"><li><span class="dot"></span>Réalisation 1</li><li><span class="dot"></span>Réalisation 2</li></ul>
-              <ul class="c-tags"><li class="badge badge-outline badge-sm">Technologie</li><li class="badge badge-outline badge-sm">Mode projet</li></ul>
-            </article>
-          </li>
-          <!-- À COMPLÉTER : Mission freelance (image : public/images/experiences/freelance.svg) -->
-          <li class="js-exp-item" data-image="images/experiences/freelance.svg">
-            <article class="p-exp-detail">
-              <p class="t-sm p-exp-detail__kind">ACTIVITÉ FREELANCE</p>
-              <h2 class="anton p-exp-detail__title">CLIENT À COMPLÉTER</h2>
-              <p class="t-sm p-exp-detail__meta">À distance — 20XX — durée</p>
-              <p class="t-md"><span class="c-todo">À COMPLÉTER</span> Besoin du client, solution livrée et résultat obtenu.</p>
-              <ul class="c-dots t-sm"><li><span class="dot"></span>Livrable 1</li><li><span class="dot"></span>Livrable 2</li></ul>
-              <ul class="c-tags"><li class="badge badge-outline badge-sm">Technologie</li><li class="badge badge-outline badge-sm">Outil</li></ul>
-            </article>
-          </li>
-        </ol>
+        <div class="c-actions p-xp__end">
+          <a class="c-cta c-cta--down anton" href="{{ cv }}" download>
+            <span class="text-wrapper">
+              <span class="c-cta__label c-cta__label--default">TÉLÉCHARGER MON CV</span>
+              <span class="c-cta__label c-cta__label--clone" aria-hidden="true">TÉLÉCHARGER MON CV</span>
+            </span>
+            <span class="c-cta__rule"></span>
+            <span class="text-wrapper">
+              <span class="c-cta__icon c-cta__icon--default"></span>
+              <span class="c-cta__icon c-cta__icon--clone"></span>
+            </span>
+          </a>
+        </div>
       </section>
     </main>
 

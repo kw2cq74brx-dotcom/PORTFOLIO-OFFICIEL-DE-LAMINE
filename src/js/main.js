@@ -17,6 +17,8 @@ import { initLiquidBackground } from './webgl/liquidBackground.js';
 import { initLens } from './components/lens.js';
 import { initToolkit } from './animations/toolkit.js';
 import { initPile } from './animations/pile.js';
+import { initStair } from './animations/stair.js';
+import { initProgramme } from './animations/programme.js';
 import { initAbout } from './animations/about.js';
 import { initExperiences } from './animations/experiences.js';
 import { initContact } from './animations/contact.js';
@@ -30,6 +32,8 @@ initNavigation();
 // Avant les autres animations au scroll : la section épinglée décale tout ce qui suit
 initToolkit();
 initPile();
+initStair();
+initProgramme();
 initAbout();
 initExperiences();
 initContact();

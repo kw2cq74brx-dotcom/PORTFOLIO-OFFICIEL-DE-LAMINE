@@ -68,8 +68,10 @@ export function initPile() {
     setTimeout(() => (busy = false), 450);
   };
 
-  pile.addEventListener('click', next);
+  // Un lien dans une carte (ex. certification) s'ouvre sans faire tourner la pile
+  pile.addEventListener('click', (e) => !e.target.closest('a') && next());
   pile.addEventListener('keydown', (e) => {
+    if (e.target.closest('a')) return;
     if (['Enter', ' ', 'ArrowRight', 'ArrowDown'].includes(e.key)) {
       e.preventDefault();
       next();

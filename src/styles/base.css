@@ -131,6 +131,7 @@ html.lenis body {
 /* Grands titres : Alt Matey (les libellés, boutons et cartes restent en Anton) */
 .p-fv__title,
 .p-head__title,
+.p-xp__title,
 .p-about__title,
 .p-projects__title,
 .p-sticky__title,
@@ -139,7 +140,7 @@ html.lenis body {
 .p-ct__title,
 .p-next__title,
 .p-profile__name,
-.p-split__name {
+.p-stair__heading {
   font-family: var(--font-title);
 }
 

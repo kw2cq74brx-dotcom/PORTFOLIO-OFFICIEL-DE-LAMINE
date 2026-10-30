@@ -1,5 +1,5 @@
 import { gsap, ScrollTrigger } from '../lib/gsap.js';
-import { toolIcons } from '../data/toolIcons.js';
+import { injectIcons } from '../data/toolIcons.js';
 
 // Page compétences : un éventail de cartes par bloc, piloté par le scroll.
 //  1. la première carte du premier bloc apparaît seule au centre (au chargement) ;
@@ -151,16 +151,5 @@ function appearanceOrder(n) {
     const da = Math.abs(a - center);
     const db = Math.abs(b - center);
     return da === db ? b - a : da - db;
-  });
-}
-
-function injectIcons(root) {
-  root.querySelectorAll('[data-icon]').forEach((el) => {
-    const icon = toolIcons[el.dataset.icon];
-    if (!icon) return;
-    // Logo officiel (tracé plein) ou pictogramme maison (tracé au trait)
-    el.innerHTML = icon.path
-      ? `<svg viewBox="0 0 24 24" role="img" aria-label="${icon.title}"><path d="${icon.path}" /></svg>`
-      : `<svg viewBox="0 0 24 24" role="img" aria-label="${icon.title}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${icon.svg}</svg>`;
   });
 }

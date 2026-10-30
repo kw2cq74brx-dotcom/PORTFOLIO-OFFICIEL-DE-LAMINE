@@ -12,21 +12,19 @@
     <include src="partials/header.html"></include>
 
     <main id="contenu">
-      <!-- ============ HERO : phrase d'accroche + deux cartes photo inclinées ============
+      <!-- ============ HERO : phrase d'accroche + deux affiches inclinées (industrie → informatique) ============
            Les cartes réagissent au passage de la souris (élan + rotation). -->
       <section class="p-ab-hero js-momentum">
         <div class="l-wrapper p-ab-hero__contain">
           <div class="p-ab-hero__title-wrap">
             <div class="p-ab-hero__visual p-ab-hero__visual--1 js-enter js-momentum-item">
               <div class="p-ab-card js-momentum-target">
-                <img src="{{ photo }}" alt="Portrait de Baye Lamine Gueye" />
+                <img src="images/apropos/electromecanique.jpg" alt="Affiche Électromécanique et Systèmes Automatisés : moteur, automates et bras robotisé" />
               </div>
             </div>
             <div class="p-ab-hero__visual p-ab-hero__visual--2 js-enter js-momentum-item">
               <div class="p-ab-card js-momentum-target">
-                <!-- À COMPLÉTER : photo liée au BTS SIO (ton école, ton poste de travail…)
-                     → public/images/apropos/paris.jpg -->
-                <img src="images/apropos/paris.svg" alt="Formation BTS SIO option SLAM à Paris" />
+                <img src="images/apropos/informatique.jpg" alt="Affiche Informatique : développement, réseaux, bases de données, cybersécurité et systèmes" />
               </div>
             </div>
 
@@ -39,7 +37,7 @@
         </div>
       </section>
 
-      <!-- ============ PRÉSENTATION : image qui change au scroll + texte ============ -->
+      <!-- ============ PRÉSENTATION : photo de profil + texte ============ -->
       <section class="p-ab-cycle">
         <div class="p-ab-squiggle js-draw-svg" data-draw-reverse="true" aria-hidden="true">
           <svg viewBox="0 0 1440 900" fill="none" preserveAspectRatio="none">
@@ -53,14 +51,8 @@
         </div>
 
         <div class="l-wrapper p-ab-cycle__layout">
-          <!-- À COMPLÉTER : trois photos qui suivent le texte, dans cet ordre :
-               1. ton portrait (photo dans site.config.js)
-               2. l'électromécanique et les systèmes automatisés → public/images/apropos/dakar.jpg
-               3. le BTS SIO / le développement logiciel          → public/images/apropos/paris.jpg -->
-          <div class="p-ab-cycle__visual js-image-cycle">
-            <img class="js-image-cycle-item" src="{{ photo }}" alt="Portrait de Baye Lamine Gueye" />
-            <img class="js-image-cycle-item" src="images/apropos/dakar.svg" alt="Formation en Électromécanique et Systèmes Automatisés à Dakar" />
-            <img class="js-image-cycle-item" src="images/apropos/paris.svg" alt="BTS SIO option SLAM : conception de solutions logicielles" />
+          <div class="p-ab-cycle__visual">
+            <img src="{{ photo }}" alt="Portrait de Baye Lamine Gueye" />
           </div>
 
           <div class="p-ab-cycle__content">
@@ -115,109 +107,6 @@
               <strong>Mon objectif&nbsp;:</strong> transformer des idées en solutions fonctionnelles, alliant
               performance, fiabilité et innovation.
             </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ PARCOURS : cartes dispersées ============
-           Au survol, l'image de chaque carte défile et la carte prend de l'élan. -->
-      <section class="p-ab-steps js-momentum">
-        <div class="l-wrapper">
-          <div class="p-ab-steps__head">
-            <p class="t-base">[MON PARCOURS]</p>
-            <h2 class="p-ab-steps__title">
-              Trois étapes, <strong class="p-ab-accent">deux pays</strong>, une même envie d'apprendre.
-            </h2>
-          </div>
-
-          <ul class="p-ab-steps__list" role="list">
-            <li class="p-ab-steps__item js-hover-cycle js-momentum-item">
-              <article class="p-ab-step js-momentum-target" tabindex="0">
-                <div class="p-ab-step__visual">
-                  <!-- À COMPLÉTER : diourbel.jpg (lycée) puis sciences.jpg (sciences, logique) -->
-                  <img class="js-hover-cycle-image" src="images/apropos/diourbel.svg" alt="" />
-                  <img class="js-hover-cycle-image" src="images/apropos/sciences.svg" alt="" />
-                </div>
-                <div class="p-ab-step__content">
-                  <p class="t-sm p-ab-step__meta">{{ yearsBac }} — DIOURBEL, SÉNÉGAL</p>
-                  <h3 class="anton p-ab-step__name">Baccalauréat scientifique</h3>
-                  <p class="t-sm p-ab-step__role">Lycée d'Enseignement Général de Diourbel</p>
-                </div>
-              </article>
-            </li>
-            <li class="p-ab-steps__item js-hover-cycle js-momentum-item">
-              <article class="p-ab-step js-momentum-target" tabindex="0">
-                <div class="p-ab-step__visual">
-                  <!-- À COMPLÉTER : dakar.jpg (ESEBAT) puis automatisme.jpg (systèmes industriels) -->
-                  <img class="js-hover-cycle-image" src="images/apropos/dakar.svg" alt="" />
-                  <img class="js-hover-cycle-image" src="images/apropos/automatisme.svg" alt="" />
-                </div>
-                <div class="p-ab-step__content">
-                  <p class="t-sm p-ab-step__meta">{{ yearsEsat }} — DAKAR, SÉNÉGAL</p>
-                  <h3 class="anton p-ab-step__name">BTS Électromécanique</h3>
-                  <p class="t-sm p-ab-step__role">ESEBAT — Systèmes automatisés</p>
-                </div>
-              </article>
-            </li>
-            <li class="p-ab-steps__item js-hover-cycle js-momentum-item">
-              <article class="p-ab-step js-momentum-target" tabindex="0">
-                <div class="p-ab-step__visual">
-                  <!-- À COMPLÉTER : paris.jpg (My Digital School) puis code.jpg (développement logiciel) -->
-                  <img class="js-hover-cycle-image" src="images/apropos/paris.svg" alt="" />
-                  <img class="js-hover-cycle-image" src="images/apropos/code.svg" alt="" />
-                </div>
-                <div class="p-ab-step__content">
-                  <p class="t-sm p-ab-step__meta">{{ yearsSio }} — PARIS, FRANCE</p>
-                  <h3 class="anton p-ab-step__name">BTS SIO — option SLAM</h3>
-                  <p class="t-sm p-ab-step__role">My Digital School — en cours</p>
-                </div>
-              </article>
-            </li>
-          </ul>
-        </div>
-
-        <div class="p-ab-squiggle p-ab-squiggle--steps js-draw-svg" aria-hidden="true">
-          <svg viewBox="0 0 1440 600" fill="none" preserveAspectRatio="none">
-            <path
-              d="M-20 420 C 180 300, 300 520, 470 430 S 700 140, 880 260 S 1150 520, 1460 300"
-              stroke="currentColor"
-              stroke-linecap="round"
-              vector-effect="non-scaling-stroke"
-            />
-          </svg>
-        </div>
-      </section>
-
-      <!-- ============ APPEL À L'ACTION ============ -->
-      <section class="p-ab-cta">
-        <div class="l-wrapper p-ab-cta__contain">
-          <h2 class="p-ab-cta__title">
-            Un stage, une alternance ou un projet&nbsp;? Construisons quelque chose de
-            <strong class="p-ab-accent">solide</strong> ensemble.
-          </h2>
-          <div class="c-actions">
-            <a class="c-cta anton" href="contact.html">
-              <span class="text-wrapper">
-                <span class="c-cta__label c-cta__label--default">ME CONTACTER</span>
-                <span class="c-cta__label c-cta__label--clone" aria-hidden="true">ME CONTACTER</span>
-              </span>
-              <span class="c-cta__rule"></span>
-              <span class="text-wrapper">
-                <span class="c-cta__icon c-cta__icon--default"></span>
-                <span class="c-cta__icon c-cta__icon--clone"></span>
-              </span>
-            </a>
-            <a class="c-cta c-cta--outline c-cta--down anton" href="{{ cv }}" download>
-              <span class="text-wrapper">
-                <span class="c-cta__label c-cta__label--default">TÉLÉCHARGER MON CV</span>
-                <span class="c-cta__label c-cta__label--clone" aria-hidden="true">TÉLÉCHARGER MON CV</span>
-              </span>
-              <span class="c-cta__rule"></span>
-              <span class="text-wrapper">
-                <span class="c-cta__icon c-cta__icon--default"></span>
-                <span class="c-cta__icon c-cta__icon--clone"></span>
-              </span>
-            </a>
           </div>
         </div>
       </section>

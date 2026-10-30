@@ -161,14 +161,9 @@
 .p-head__main {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 32px;
-}
-@media (min-width: 1024px) {
-  .p-head__main {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
+  text-align: center;
 }
 
 .p-head__title {
@@ -179,8 +174,9 @@
 .p-head__lead {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 12px;
-  max-width: 420px;
+  max-width: 520px;
 }
 @media (min-width: 1024px) {
   .p-head__lead {
@@ -203,6 +199,11 @@
 .p-head__subtitle {
   font-size: clamp(1rem, 0.75rem + 1.1vw, 1.875rem);
   line-height: 1.4;
+}
+
+/* Formations : la section cursus suit directement l'en-tête */
+body[data-page='formations'] .p-head__wrapper {
+  padding-bottom: 32px;
 }
 
 .p-head__labels {
@@ -229,6 +230,7 @@
     padding-bottom: 192px;
   }
 }
+
 .p-about--flush .p-about__wrapper {
   padding-top: 0;
 }
@@ -245,7 +247,7 @@
 }
 .p-about__title .text-wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 0.2em;
 }
 .p-about__title .text-wrapper:nth-child(1) {
@@ -522,9 +524,8 @@ a.p-about__services-item:hover {
 }
 @media (min-width: 1024px) {
   .p-projects__lead {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
+    flex-direction: column-reverse;
+    align-items: center;
     margin-bottom: 0;
   }
 }
@@ -532,8 +533,11 @@ a.p-about__services-item:hover {
 .p-projects__intro {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 12px;
-  max-width: 400px;
+  max-width: 520px;
+  margin-inline: auto;
+  text-align: center;
 }
 @media (min-width: 1024px) {
   .p-projects__intro {
@@ -542,18 +546,30 @@ a.p-about__services-item:hover {
 }
 
 .p-projects__title {
-  text-align: right;
+  text-align: center;
   font-size: clamp(3rem, 1.2rem + 7.6vw, 10rem);
 }
 .p-projects__title .text-wrapper {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 .p-projects__title .text-wrapper > span:nth-child(2) {
   position: absolute;
   top: 0;
   right: 0;
+  left: 0;
   transform: translateY(115%);
+}
+/* Variante sur une seule ligne (« LES COMPÉTENCES ») */
+.p-projects__title--inline {
+  display: flex;
+  justify-content: center;
+  gap: 0.22em;
+  white-space: nowrap;
+  font-size: clamp(2.25rem, 0.4rem + 8.2vw, 10rem);
+}
+.p-projects__title--inline .text-wrapper {
+  display: inline-flex;
 }
 
 .p-projects__more {
@@ -574,19 +590,14 @@ a.p-about__services-item:hover {
   }
 }
 
-.p-sticky .c-pixels__cell {
-  background-color: transparent;
-}
-
 .p-sticky__wrapper {
-  background-color: var(--dark);
   color: var(--text);
   position: relative;
-  padding-bottom: 30vh;
+  padding-bottom: 15vh;
 }
 @media (min-width: 1024px) {
   .p-sticky__wrapper {
-    padding-bottom: calc(400px + 30vh);
+    padding-bottom: calc(200px + 30vh);
   }
 }
 
@@ -754,22 +765,24 @@ a.p-sticky__item:hover {
    La position des cartes (dessus entière, dessous décalées et réduites)
    vient de daisyUI ; on ajoute l'habillage et les transitions.
    ========================================================= */
-.p-pile__bg {
-  background-color: var(--dark);
+/* Sections sombres : fondu doux en haut et en bas (remplace les anciennes bandes de pixels) */
+.p-pile__bg,
+.p-sticky__wrapper,
+.p-next {
+  background: linear-gradient(to bottom, transparent, var(--dark) 160px, var(--dark) calc(100% - 160px), transparent);
 }
 
 .p-pile__wrapper {
   display: grid;
   gap: 56px;
   align-items: center;
-  padding-top: 96px;
-  padding-bottom: 120px;
+  padding-top: 24px;
+  padding-bottom: 48px;
 }
 @media (min-width: 1024px) {
   .p-pile__wrapper {
     grid-template-columns: 5fr 6fr;
     gap: 64px;
-    min-height: 100svh;
   }
 }
 
@@ -878,9 +891,10 @@ a.p-sticky__item:hover {
   --card-bg: linear-gradient(160deg, #2a1d4f 0%, #160f2e 100%);
   --card-fg: #ece4ff;
 }
-.p-pile__card--next {
-  --card-bg: linear-gradient(160deg, #10202e 0%, #071018 100%);
-  --card-fg: #7fe7ff;
+/* Certification Claude : terre cuite et crème, les couleurs d'Anthropic */
+.p-pile__card--claude {
+  --card-bg: linear-gradient(160deg, #d97757 0%, #a84f33 100%);
+  --card-fg: #faf6ee;
 }
 
 .p-pile__body.card-body {
@@ -914,265 +928,266 @@ a.p-sticky__item:hover {
   background: transparent;
   color: inherit;
 }
+.p-pile__link {
+  padding-top: 12px;
+  border-top: 1px solid currentColor;
+  align-self: stretch;
+  width: auto;
+}
 
 /* =========================================================
-   Expériences : page plein écran avec carrousel WebGL
-   (structure inspirée de ricardochance.com/work)
+   Expériences : étapes sur une grille, timeline remplie au scroll
+   (structure inspirée de la section « process » de kerna.studio)
    ========================================================= */
-body[data-page='experiences'] {
-  overflow: hidden;
+.p-xp {
+  --cell: 36px;
+  --grid-line: rgba(127, 231, 255, 0.07);
+  --panel: rgba(6, 11, 22, 0.9);
+  --panel-border: rgba(127, 231, 255, 0.22);
+  --num-bg: #dff3ff;
+  --num-ink: #0d63a8;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: var(--cell) var(--cell);
+  padding-top: calc(var(--header-top) + 110px);
+  padding-bottom: 120px;
 }
-body[data-page='experiences'] .c-footer {
-  display: none;
-}
-
-.p-exp {
-  position: fixed;
-  inset: 0;
-  /* clip (et non hidden) : le conteneur ne peut pas défiler, même quand un bouton prend le focus */
-  overflow: clip;
-}
-
-.p-exp__canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  touch-action: pan-y;
-  cursor: grab;
-}
-.p-exp__canvas:active {
-  cursor: grabbing;
-}
-
-/* Interface posée par-dessus le carrousel ; seuls ses éléments captent les clics */
-.p-exp__ui {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-top: calc(var(--header-top) + 72px);
-  padding-bottom: var(--gutter);
-  pointer-events: none;
-}
-.p-exp__ui a,
-.p-exp__ui button {
-  pointer-events: auto;
-}
-
-.p-exp__top,
-.p-exp__bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 24px;
-}
-
-.p-exp__status {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.p-exp__status p {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.p-exp__pulse {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--whatsapp);
-  box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
-  animation: exp-pulse 2s ease-out infinite;
-}
-@keyframes exp-pulse {
-  to {
-    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+@media (min-width: 1024px) {
+  .p-xp {
+    padding-top: calc(var(--header-top) + 150px);
+    padding-bottom: 160px;
   }
 }
 
-/* Compteur à chiffres roulants : 01 / 05 */
-.p-exp__counter {
-  display: flex;
-  align-items: baseline;
-  font-size: clamp(2rem, 1.4rem + 2vw, 3.5rem);
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
+/* ---------- Cadre d'introduction ---------- */
+.p-xp__intro {
+  margin-bottom: calc(var(--cell) * 2);
 }
-.p-exp__digits {
-  display: inline-block;
-  height: 1em;
-  overflow: hidden;
-}
-.p-exp__digits-col {
+.p-xp__intro-panel {
   display: flex;
   flex-direction: column;
-}
-.p-exp__digits-col span {
-  height: 1em;
-  line-height: 1;
-}
-.p-exp__total {
-  opacity: 0.4;
-  margin-left: 4px;
-}
-
-/* Infos de l'expérience centrée : chaque ligne glisse dans son masque */
-.p-exp__info {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  max-width: 60%;
-}
-.p-exp__mask {
-  overflow: hidden;
-}
-.p-exp__line {
-  display: block;
-}
-.p-exp__title {
-  font-family: var(--font-title);
-  font-weight: 400;
-  font-size: clamp(2.25rem, 1rem + 4vw, 5.5rem);
-  line-height: 1.05;
-  text-transform: uppercase;
-}
-.p-exp__meta {
-  opacity: 0.65;
-}
-
-.p-exp__actions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   gap: 16px;
-  /* laisse la place au bouton WhatsApp, en bas à droite */
-  margin-right: 80px;
+  text-align: center;
+  padding: 24px 20px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
 }
-.p-exp__nav {
+@media (min-width: 1024px) {
+  .p-xp__intro-panel {
+    gap: 20px;
+    margin-inline: calc(var(--cell) * 2);
+    padding: 56px 40px;
+  }
+}
+.p-xp__label {
+  color: var(--accent);
+}
+.p-xp__title {
+  font-size: clamp(2.75rem, 0.8rem + 7vw, 7.5rem);
+  line-height: 0.95;
+}
+.p-xp__lead {
+  max-width: 760px;
+  color: var(--accent);
+  font-size: clamp(1rem, 0.75rem + 1.1vw, 1.75rem);
+  line-height: 1.35;
+}
+
+/* ---------- Étapes ---------- */
+.p-xp__steps {
+  position: relative;
+}
+.p-xp__list {
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  gap: var(--cell);
 }
-.p-exp__arrow {
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--glass-border);
-  border-radius: 50%;
-  background-color: var(--glass);
-  -webkit-backdrop-filter: var(--glass-blur);
-  backdrop-filter: var(--glass-blur);
+
+.p-xp-step {
+  --num-collapsed: 92px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 1024px) {
+  .p-xp-step {
+    --num-collapsed: 141px;
+    grid-template-columns: 2fr 1fr 2fr;
+  }
+}
+
+.p-xp-step__card {
+  display: flex;
+  min-height: 190px;
+  overflow: hidden;
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
+}
+
+/* Bloc numéro : couvre la carte, puis se rétracte à --num-collapsed (JS) */
+.p-xp-step__num {
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--num-bg);
+  color: var(--num-ink);
+}
+.p-xp-step__num.is-open {
+  width: var(--num-collapsed);
+}
+.p-xp-step__num svg {
+  flex-shrink: 0;
+  height: 92px;
+  width: auto;
+}
+@media (min-width: 1024px) {
+  .p-xp-step__num svg {
+    height: 112px;
+  }
+}
+
+.p-xp-step__body {
+  flex-shrink: 0;
+  width: calc(100% - var(--num-collapsed));
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 16px;
+}
+@media (min-width: 1024px) {
+  .p-xp-step__body {
+    padding: 28px 32px;
+  }
+}
+.p-xp-step__kind {
+  opacity: 0.6;
+}
+.p-xp-step__title {
+  font-size: clamp(1.25rem, 0.9rem + 1.2vw, 2rem);
+  line-height: 1.05;
+}
+.p-xp-step__desc {
+  color: var(--accent);
+  line-height: 1.45;
+}
+.p-xp-step__time {
   color: var(--text);
-  font-size: 1.1rem;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+  opacity: 0.55;
 }
-.p-exp__arrow:hover {
-  background: var(--ice);
+
+/* Panneau des tags */
+.p-xp-step__panel {
+  padding: 16px;
+  border: 1px solid var(--panel-border);
+  border-top: 0;
+  background: var(--panel);
+}
+@media (min-width: 1024px) {
+  .p-xp-step__panel {
+    grid-column: 3;
+    padding: 32px;
+    border-top: 1px solid var(--panel-border);
+  }
+}
+.p-xp-step__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+}
+.p-xp-step__tags li {
+  /* l'apparition (scale) est sur le li, le survol sur le span */
+  transform-origin: center;
+}
+.p-xp-step__tags span {
+  display: inline-block;
+  padding: 7px 11px 6px;
+  border-radius: 6px;
+  font-size: clamp(0.8125rem, 0.75rem + 0.25vw, 1rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.p-xp-step__tags span:hover {
+  transform: scale(1.06);
+}
+/* Palette glacée en rotation */
+.p-xp-step__tags li:nth-child(5n + 1) span {
+  background: var(--accent);
   color: var(--bg);
 }
-
-.p-exp__open {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding-bottom: 4px;
-  border-bottom: 1px solid currentColor;
+.p-xp-step__tags li:nth-child(5n + 2) span {
+  background: #dff3ff;
+  color: #0b1a2e;
+}
+.p-xp-step__tags li:nth-child(5n + 3) span {
+  background: #24344d;
   color: var(--text);
-  font-family: var(--font-display);
-  font-size: clamp(1rem, 0.8rem + 0.6vw, 1.4rem);
-  letter-spacing: 0.02em;
-  transition: color 0.3s ease;
 }
-.p-exp__open:hover {
-  color: var(--accent);
+.p-xp-step__tags li:nth-child(5n + 4) span {
+  background: #1f5eff;
+  color: #e6f1ff;
 }
-.p-exp__open .c-cta__icon {
-  transition: transform 0.3s ease;
-}
-.p-exp__open:hover .c-cta__icon {
-  transform: translate(3px, -3px);
+.p-xp-step__tags li:nth-child(5n + 5) span {
+  background: #8fb8ff;
+  color: #05070d;
 }
 
-.p-exp__hint {
+/* ---------- Timeline (ordinateur uniquement) ---------- */
+.p-xp__timeline {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .p-xp__timeline {
+    display: block;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+}
+.p-xp__track,
+.p-xp__point {
   position: absolute;
   left: 50%;
-  bottom: var(--gutter);
+}
+.p-xp__track {
+  width: 8px;
+  border-radius: 8px;
+  background: rgba(230, 241, 255, 0.16);
   transform: translateX(-50%);
-  opacity: 0.45;
-  white-space: nowrap;
 }
-
-/* Panneau de détail en verre dépoli */
-.p-exp__drawer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 5;
-  width: min(440px, 100%);
-  padding: calc(var(--header-top) + 72px) 28px 32px;
-  overflow-y: auto;
-  border-left: 1px solid var(--glass-border);
-  background-color: rgba(10, 18, 32, 0.72);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
-  backdrop-filter: blur(24px) saturate(160%);
-  transform: translateX(100%);
-  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+.p-xp__fill {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+  box-shadow: 0 0 18px rgba(127, 231, 255, 0.55);
+  transform-origin: top center;
 }
-.p-exp__drawer.is-open {
-  transform: translateX(0);
-}
-.p-exp__close {
-  position: absolute;
-  top: calc(var(--header-top) + 20px);
-  right: 24px;
-  width: 40px;
-  height: 40px;
-  border: 1px solid var(--glass-border);
+.p-xp__point {
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
   border-radius: 50%;
-  color: var(--text);
+  background: #3a4a62;
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
-.p-exp-detail {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-.p-exp-detail__kind {
-  color: var(--accent);
-}
-.p-exp-detail__title {
-  font-size: clamp(2rem, 1.4rem + 1.6vw, 3rem);
-  line-height: 1;
-}
-.p-exp-detail__meta {
-  opacity: 0.65;
+.p-xp__point.is-active {
+  transform: scale(1.2);
+  background: var(--accent);
+  box-shadow: 0 0 0 6px rgba(127, 231, 255, 0.15), 0 0 24px rgba(127, 231, 255, 0.6);
 }
 
-@media (max-width: 767.98px) {
-  .p-exp__top {
-    flex-direction: column-reverse;
-    align-items: flex-start;
-  }
-  .p-exp__bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-bottom: 88px;
-  }
-  .p-exp__info {
-    max-width: 100%;
-  }
-  .p-exp__actions {
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-right: 0;
-  }
+/* ---------- Fin de page ---------- */
+.p-xp__end {
+  justify-content: center;
+  margin-top: calc(var(--cell) * 3);
 }
 
 /* =========================================================
@@ -1342,12 +1357,9 @@ body[data-page='experiences'] .c-footer {
 /* =========================================================
    Section de transition vers la page suivante
    ========================================================= */
-.p-next {
-  background-color: var(--dark);
-}
-
 .p-next__wrapper {
-  min-height: 100svh;
+  padding-top: 120px;
+  padding-bottom: 160px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1398,6 +1410,10 @@ body[data-page='experiences'] .c-footer {
   height: 100%;
   display: block;
   object-fit: cover;
+}
+/* Hero : affiches au format portrait (2:3), visibles en entier */
+.p-ab-hero .p-ab-card {
+  aspect-ratio: 2 / 3;
 }
 /* Portrait : cadrage sur le visage plutôt qu'au centre */
 .p-ab-card img[src*='profil'],
@@ -1468,6 +1484,15 @@ body[data-page='experiences'] .c-footer {
     transform: translate(65%, 40%) rotate(4deg);
   }
 }
+/* Écrans moyens : le titre occupe presque toute la largeur, les affiches restent dans l'écran */
+@media (min-width: 992px) and (max-width: 1279.98px) {
+  .p-ab-hero__visual--1 {
+    transform: translate(-20%, -55%) rotate(-7.5deg);
+  }
+  .p-ab-hero__visual--2 {
+    transform: translate(15%, 50%) rotate(4deg);
+  }
+}
 
 /* ---------- Image qui change au scroll + texte ---------- */
 .p-ab-cycle {
@@ -1499,7 +1524,8 @@ body[data-page='experiences'] .c-footer {
 .p-ab-cycle__visual {
   position: relative;
   width: 70%;
-  aspect-ratio: 4 / 5;
+  /* même proportion que la photo de profil (973 × 1400) : elle apparaît en entier */
+  aspect-ratio: 973 / 1400;
   overflow: clip;
   border-radius: 22px;
   border: 1px solid var(--glass-border);
@@ -2107,38 +2133,324 @@ body[data-page='experiences'] .c-footer {
   }
 }
 
-.p-split {
-  display: grid;
-  gap: 24px;
-  margin-bottom: 40px;
+/* =========================================================
+   Formations : présentation du BTS SIO en escalier d'étapes
+   (inspiré de la section « process » de leveled-agency.fr)
+   ========================================================= */
+.p-stair {
+  padding-top: 40px;
+  padding-bottom: 160px;
 }
 @media (min-width: 1024px) {
-  .p-split {
-    grid-template-columns: repeat(2, 1fr);
-    margin-bottom: 80px;
+  .p-stair {
+    padding-bottom: 240px;
   }
 }
 
-.p-split__item {
+.p-stair__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  margin-bottom: 56px;
+}
+@media (min-width: 1024px) {
+  .p-stair__head {
+    margin-bottom: 96px;
+  }
+}
+.p-stair__heading {
+  font-size: clamp(3rem, 1rem + 7vw, 8rem);
+  line-height: 0.95;
+}
+.p-stair__intro {
+  max-width: 380px;
+  line-height: 1.6;
+}
+
+/* --w : côté d'une case numéro = décalage d'une marche à l'autre */
+.p-stair__list {
+  --w: 44px;
+  --stick: calc(var(--header-top) + 72px);
+}
+@media (min-width: 1024px) {
+  .p-stair__list {
+    --w: clamp(72px, 6.8vw, 104px);
+    --stick: calc(var(--header-top) + 96px);
+  }
+}
+
+/* Chaque marche reste collée en haut ; la suivante, décalée d'une case, la recouvre */
+.p-stair__step {
+  position: sticky;
+  top: var(--stick);
+}
+@media (min-width: 1024px) {
+  .p-stair__step {
+    margin-left: calc(var(--i) * var(--w));
+  }
+}
+
+.p-stair__header {
+  display: flex;
+  height: var(--w);
+  margin-left: calc(var(--i) * var(--w));
+  background: var(--text);
+  color: var(--bg);
+}
+@media (min-width: 1024px) {
+  .p-stair__header {
+    margin-left: 0;
+  }
+}
+.p-stair__num {
+  flex-shrink: 0;
+  width: var(--w);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--accent);
+  font-size: clamp(1rem, 0.7rem + 1.1vw, 1.875rem);
+}
+.p-stair__num span {
+  display: inline-block;
+}
+.p-stair__title {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding: 0 12px;
+  font-size: clamp(1rem, 0.7rem + 1.4vw, 2.25rem);
+  white-space: nowrap;
+}
+@media (min-width: 1024px) {
+  .p-stair__title {
+    padding: 0 32px;
+  }
+}
+
+.p-stair__content {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 24px 16px;
+  min-height: 240px;
+  padding: 24px 16px 32px;
+  background: rgb(8, 14, 26);
   border: 1px solid var(--glass-border);
-  background-color: var(--glass);
-  -webkit-backdrop-filter: var(--glass-blur);
-  backdrop-filter: var(--glass-blur);
-  box-shadow: var(--glass-shine);
+  border-top: 0;
 }
 @media (min-width: 1024px) {
-  .p-split__item {
-    padding: 32px 24px;
+  .p-stair__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.15fr;
+    gap: 32px;
+    min-height: clamp(260px, 24vw, 340px);
+    margin-left: var(--w);
+    padding: 48px 40px;
+  }
+  .p-stair__sublabel {
+    grid-column: 2;
+  }
+  .p-stair__desc {
+    grid-column: 3;
   }
 }
-.p-split__item--fill {
-  background: var(--ice);
-  color: var(--bg);
+.p-stair__sublabel {
+  color: var(--accent);
+  line-height: 1.5;
 }
-.p-split__name {
-  font-size: clamp(2rem, 1.3rem + 3vw, 4rem);
+.p-stair__desc {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  line-height: 1.55;
+}
+.p-stair__desc .c-dots {
+  gap: 8px;
+  opacity: 0.85;
+}
+.p-stair__desc .c-dots li {
+  align-items: baseline;
+  line-height: 1.4;
+}
+
+/* Voile posé par le JS : la marche recouverte s'assombrit */
+.p-stair__veil {
+  position: absolute;
+  inset: 0;
+  background: rgb(5, 7, 13);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* =========================================================
+   Formations : le programme en paquet de cartes
+   (principe de la section « produce » d'ironhill.au)
+   ========================================================= */
+.p-prog__stage {
+  position: relative;
+  height: 100svh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.p-prog__label {
+  position: absolute;
+  top: calc(var(--header-top) + 72px);
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: var(--accent);
+}
+
+/* Grand texte de fond : apparaît lettre par lettre puis s'estompe sous les cartes */
+.p-prog__backdrop {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-inline: var(--gutter);
+  text-align: center;
+  pointer-events: none;
+}
+.p-prog__line {
+  font-family: var(--font-title);
+  font-size: clamp(2.6rem, 0.5rem + 9.4vw, 11rem);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Paquet : toutes les cartes au même endroit, la dernière arrivée au-dessus */
+.p-prog__deck {
+  position: relative;
+  width: clamp(250px, 76vw, 380px);
+  height: min(560px, 68svh);
+}
+.p-prog__card {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+/* Carte dans l'esprit des cartes de compétences : couleur pleine, reflet glacé, pastille */
+.p-prog__inner {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(10px, 1.6svh, 18px);
+  padding: clamp(18px, 3svh, 28px) clamp(18px, 2vw, 28px);
+  overflow: hidden;
+  border-radius: clamp(18px, 1.8vw, 28px);
+  background-color: var(--card-bg);
+  color: var(--card-fg);
+  text-align: center;
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+.p-prog__inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, transparent 38%);
+  pointer-events: none;
+}
+.p-prog__top {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  opacity: 0.75;
+}
+.p-prog__logo {
+  width: clamp(64px, 11svh, 96px);
+  margin-top: clamp(4px, 1.5svh, 16px);
+}
+.p-prog__name {
+  font-size: clamp(1.6rem, 1rem + 1.6vw, 2.5rem);
+  line-height: 1;
+}
+.p-prog__tag {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background-color: var(--card-fg);
+  color: var(--card-bg);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  white-space: nowrap;
+  transform: rotate(-4deg);
+}
+.p-prog__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+  line-height: 1.5;
+}
+.p-prog__body ul {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.p-prog__body a {
+  text-decoration: underline;
+}
+
+/* Pagination */
+.p-prog__dots {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  display: flex;
+  gap: 6px;
+  padding: 8px 10px;
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  background: var(--glass);
+  translate: -50% 0;
+}
+.p-prog__dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--line-light);
+  transition:
+    width 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.3s ease;
+}
+.p-prog__dots span.is-active {
+  width: 22px;
+  background: var(--accent);
+}
+
+/* Sans animation : les cartes s'affichent en grille, sous le titre */
+.p-prog.is-static .p-prog__stage {
+  height: auto;
+  gap: 48px;
+  padding-block: 160px 120px;
+}
+.p-prog.is-static .p-prog__backdrop {
+  position: static;
+}
+.p-prog.is-static .p-prog__deck {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  padding-inline: var(--gutter);
+}
+.p-prog.is-static .p-prog__card {
+  position: relative;
+  height: 520px;
+}
+.p-prog.is-static .p-prog__dots {
+  display: none;
 }
