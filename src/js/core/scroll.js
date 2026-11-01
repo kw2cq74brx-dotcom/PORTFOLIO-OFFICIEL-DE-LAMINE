@@ -40,12 +40,12 @@ export function initSmoothScroll() {
   scrollState.lenis = lenis;
 }
 
-export function scrollToTarget(target, { duration = 1, easing = easeOutQuad } = {}) {
+export function scrollToTarget(target, { duration = 1, easing = easeOutQuad, lock = true } = {}) {
   const done = () => (scrollState.isAutoScrolling = false);
   scrollState.isAutoScrolling = true;
 
   if (scrollState.lenis) {
-    scrollState.lenis.scrollTo(target, { duration, easing, lock: true, onComplete: done });
+    scrollState.lenis.scrollTo(target, { duration, easing, lock, onComplete: done });
     return;
   }
 

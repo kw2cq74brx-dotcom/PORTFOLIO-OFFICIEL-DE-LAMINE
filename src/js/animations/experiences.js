@@ -120,10 +120,4 @@ export function initExperiences() {
     }),
   );
 
-  // Entrée : les petits textes du cadre d'introduction
-  document.addEventListener(
-    'page:enter',
-    () => gsap.from('.js-xp-intro', { y: 24, opacity: 0, duration: 0.8, ease: 'power3.out', stagger: 0.1, delay: 0.35 }),
-    { once: true },
-  );
 }

@@ -19,22 +19,22 @@ export default {
   // Fichiers à déposer dans /public
   photo: 'images/profil.jpg',
   cv: 'docs/cv-baye-lamine-gueye.pdf', // À COMPLÉTER : dépose ton CV à cet emplacement
+  conventionStage: 'docs/convention-stage-prima-frais.pdf',
 
   // Réseaux
-  linkedin: 'https://www.linkedin.com/', // À COMPLÉTER
-  github: 'https://github.com/', // À COMPLÉTER
+  linkedin: 'https://www.linkedin.com/in/baye-lamine-gueye-b760a8341',
+  github: 'https://github.com/kw2cq74brx-dotcom/PORTFOLIO-OFFICIEL-DE-LAMINE',
 
   // Liens des projets
-  mdsAvisUrl: '#', // À COMPLÉTER : URL du site MDS Avis
+  mdsAvisUrl: 'https://mds-avis-frontend.vercel.app',
   pythonAppUrl: '#', // À COMPLÉTER : URL de l'application Python
-  modelsMapsUrl: '#', // À COMPLÉTER : URL de Model's Maps (si en ligne)
+  modelsMapsUrl: 'https://modelsmap-web.onrender.com',
 
   // Années des formations
-  yearsSio: '20XX — 20XX', // À COMPLÉTER
-  yearsEsat: '20XX — 20XX', // À COMPLÉTER
-  yearsBac: '20XX', // À COMPLÉTER
-  yearsClaude: '20XX', // À COMPLÉTER : année de la certification Claude
-  // Page du cours Claude 101 (Anthropic Academy) ; à remplacer par le lien personnel
-  // de vérification du certificat (verify.skilljar.com/c/…) une fois obtenu
-  claudeCertUrl: 'https://anthropic.skilljar.com/claude-101',
+  yearsSio: '2025 — 2027',
+  yearsEsat: '2022 — 2024',
+  yearsBac: '2022',
+  yearsClaude: '2026',
+  // Page de vérification de mon certificat Claude 101
+  claudeCertUrl: 'https://academy.claude.com/verify/cb0e75c2228d372075a6510725b82a47',
 };

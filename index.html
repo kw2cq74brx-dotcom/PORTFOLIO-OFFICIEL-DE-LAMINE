@@ -12,16 +12,24 @@
     <include src="partials/header.html"></include>
 
     <main id="contenu">
-      <!-- ============ FIRST VIEW ============ -->
-      <section class="p-fv">
+      <!-- ============ FIRST VIEW : squelettes daisyUI puis contenu (animations/heroSkeleton.js) ============ -->
+      <section class="p-fv js-hero">
         <div class="l-wrapper p-fv__wrapper">
+          <div class="p-fv__id">
+            <div class="p-fv__photo">
+              <img src="{{ photo }}" alt="Portrait de Baye Lamine Gueye" />
+            </div>
+            <div class="p-fv__id-text">
+              <p class="t-base">{{ role }}</p>
+              <p class="t-sm">{{ city }}</p>
+            </div>
+          </div>
+
           <div class="p-fv__top">
-            <p class="t-base">[{{ role }}]</p>
             <h1 class="p-fv__title anton js-title-scale">
-              <span class="text-wrapper">BAYE LAMINE<br class="br-sp" /> GUEYE</span>
+              <span class="text-wrapper">BAYE LAMINE GUEYE</span>
             </h1>
             <div class="p-fv__vision">
-              <p class="t-base">[PROFIL]</p>
               <p class="t-base">
                 Développeur web full stack en devenir, je conçois des applications modernes, sécurisées
                 et pensées pour leurs utilisateurs — de la base de données jusqu'à l'interface.
@@ -52,234 +60,45 @@
               </a>
             </div>
           </div>
-
-          <div class="p-fv__bottom">
-            <div class="p-fv__labels t-sm" aria-hidden="true">
-              <p><span>SCROLL</span><span>[↓]</span></p>
-              <p><span>SOMMAIRE</span><span>[+]</span></p>
-              <p><span>SCROLL</span><span>[↓]</span></p>
-            </div>
-            <nav aria-label="Sommaire">
-              <ul class="p-fv__lists">
-                <li>
-                  <a class="p-fv__item" href="a-propos.html">
-                    <span class="t-sm">[À PROPOS]</span><span class="t-base">QUI SUIS-JE</span>
-                  </a>
-                </li>
-                <li>
-                  <a class="p-fv__item" href="formations.html">
-                    <span class="t-sm">[FORMATIONS]</span><span class="t-base">MON CURSUS</span>
-                  </a>
-                </li>
-                <li>
-                  <a class="p-fv__item" href="competences.html">
-                    <span class="t-sm">[COMPÉTENCES]</span><span class="t-base">SAVOIR-FAIRE</span>
-                  </a>
-                </li>
-                <li>
-                  <a class="p-fv__item" href="experiences.html">
-                    <span class="t-sm">[EXPÉRIENCES]</span><span class="t-base">PARCOURS PRO</span>
-                  </a>
-                </li>
-                <li>
-                  <a class="p-fv__item" href="projets.html">
-                    <span class="t-sm">[PROJETS]</span><span class="t-base">RÉALISATIONS</span>
-                  </a>
-                </li>
-                <li>
-                  <a class="p-fv__item" href="veille.html">
-                    <span class="t-sm">[VEILLE]</span><span class="t-base">VEILLE INFORMATIQUE</span>
-                  </a>
-                </li>
-                <li>
-                  <a class="p-fv__item" href="synthese.html">
-                    <span class="t-sm">[SYNTHÈSE]</span><span class="t-base">TABLEAU DE SYNTHÈSE</span>
-                  </a>
-                </li>
-                <li>
-                  <a class="p-fv__item" href="contact.html">
-                    <span class="t-sm">[CONTACT]</span><span class="t-base">ME CONTACTER</span>
-                  </a>
-                </li>
-
-              </ul>
-            </nav>
-          </div>
         </div>
       </section>
 
-      <!-- ============ QUI SUIS-JE ============ -->
-      <section class="p-about" id="about">
-        <div class="l-wrapper p-about__wrapper">
-          <h2 class="p-about__title anton js-title-outline">
-            <span class="text-wrapper"><span>QUI</span><span>SUIS-JE</span><span>?</span></span>
-            <span class="text-wrapper" aria-hidden="true"><span>QUI</span><span>SUIS-JE</span><span>?</span></span>
-          </h2>
+      <!-- ============ TOUTES LES PAGES DU SITE, l'une après l'autre ============
+           Chaque bloc est partagé avec sa page : le modifier met à jour les deux. -->
+      <div id="a-propos" data-section="a-propos">
+        <include src="partials/pages/a-propos.html" demote></include>
+      </div>
 
-          <div class="p-about__lead">
-            <div class="p-about__intro">
-              <p class="t-base">[À PROPOS]</p>
-              <p class="t-base">
-                Étudiant en BTS SIO option SLAM à My Digital School Paris. Après un parcours technique au
-                Sénégal, je me spécialise dans la conception et le développement d'applications.
-              </p>
-            </div>
-            <div class="p-about__floating" aria-hidden="true">
-              <ul class="p-about__floating-wrapper">
-                <li class="p-about__floating-item">
-                  <div class="p-about__floating-inner js-floating-inner"><p class="t-sm">CURIOSITÉ ???</p></div>
-                </li>
-                <li class="p-about__floating-item">
-                  <div class="p-about__floating-inner js-floating-inner"><p class="t-sm">RIGUEUR ???</p></div>
-                </li>
-                <li class="p-about__floating-item">
-                  <div class="p-about__floating-inner js-floating-inner"><p class="t-sm">AUTONOMIE ???</p></div>
-                </li>
-              </ul>
-            </div>
-          </div>
+      <div id="formations" data-section="formations">
+        <include src="partials/pages/formations.html" demote></include>
+      </div>
 
-          <div class="p-about__info">
-            <div class="p-about__info-item">
-              <p class="t-sm">Je suis</p>
-              <p class="t-sm">basé</p>
-              <p class="t-sm">à</p>
-              <p class="anton">PARIS</p>
-            </div>
-            <div class="p-about__info-item">
-              <p class="t-sm">Étudiant</p>
-              <p class="t-sm">en option</p>
-              <p class="t-sm">BTS SIO</p>
-              <p class="anton">SLAM</p>
-            </div>
-          </div>
+      <div id="competences" data-section="competences">
+        <include src="partials/pages/competences.html" demote></include>
+      </div>
 
-          <ul class="p-about__services p-about__services--4">
-            <li>
-              <a class="p-about__services-item" href="competences.html">
-                <div class="p-about__services-info">
-                  <p class="t-base">Concevoir et développer des applications web complètes, du front-end au back-end.</p>
-                  <ul>
-                    <li class="t-sm"><span class="dot"></span>HTML · CSS · JAVASCRIPT</li>
-                    <li class="t-sm"><span class="dot"></span>NEXT.JS · REACT · TAILWIND</li>
-                    <li class="t-sm"><span class="dot"></span>PYTHON · PHP</li>
-                  </ul>
-                </div>
-                <p class="anton p-about__services-name">DÉVELOPPEMENT WEB</p>
-              </a>
-            </li>
-            <li>
-              <a class="p-about__services-item" href="competences.html">
-                <div class="p-about__services-info">
-                  <p class="t-base">Modéliser, interroger et administrer les données d'une organisation.</p>
-                  <ul>
-                    <li class="t-sm"><span class="dot"></span>MERISE · UML</li>
-                    <li class="t-sm"><span class="dot"></span>SQL · MYSQL · POSTGRESQL</li>
-                    <li class="t-sm"><span class="dot"></span>ORM PRISMA</li>
-                  </ul>
-                </div>
-                <p class="anton p-about__services-name">BASES DE DONNÉES</p>
-              </a>
-            </li>
-            <li>
-              <a class="p-about__services-item" href="competences.html">
-                <div class="p-about__services-info">
-                  <p class="t-base">Recenser, maintenir et faire évoluer les ressources informatiques.</p>
-                  <ul>
-                    <li class="t-sm"><span class="dot"></span>INVENTAIRE · GLPI</li>
-                    <li class="t-sm"><span class="dot"></span>GESTION DES INCIDENTS</li>
-                    <li class="t-sm"><span class="dot"></span>DOCUMENTATION · ITIL</li>
-                  </ul>
-                </div>
-                <p class="anton p-about__services-name">PATRIMOINE IT</p>
-              </a>
-            </li>
-            <li>
-              <a class="p-about__services-item" href="competences.html">
-                <div class="p-about__services-info">
-                  <p class="t-base">Protéger les données, les identités et les applications.</p>
-                  <ul>
-                    <li class="t-sm"><span class="dot"></span>RGPD · CNIL</li>
-                    <li class="t-sm"><span class="dot"></span>OWASP TOP 10</li>
-                    <li class="t-sm"><span class="dot"></span>AUTHENTIFICATION · CHIFFREMENT</li>
-                  </ul>
-                </div>
-                <p class="anton p-about__services-name">CYBERSÉCURITÉ</p>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <div id="experiences" data-section="experiences">
+        <include src="partials/pages/experiences.html" demote></include>
+      </div>
 
-      <!-- ============ PROJETS ============ -->
-      <section class="p-projects" id="projects">
-        <div class="l-wrapper p-projects__wrapper">
-          <div class="p-projects__lead">
-            <div class="p-projects__intro">
-              <p class="t-base">[PROJETS]</p>
-              <p class="t-base">
-                Une sélection de projets académiques et personnels : applications web full stack,
-                développement Python et produit numérique.
-              </p>
-            </div>
-            <h2 class="anton p-projects__title js-title-roll">
-              <span class="text-wrapper"><span>MES</span><span aria-hidden="true">MES</span></span>
-              <span class="text-wrapper"><span>PROJETS</span><span aria-hidden="true">PROJETS</span></span>
-            </h2>
-          </div>
+      <div id="projets" data-section="projets">
+        <include src="partials/pages/projets.html" demote></include>
+      </div>
 
-          <div class="c-cards">
-            <a class="c-card c-card--a" href="projets.html">
-              <p class="t-sm">(01)</p>
-              <div class="c-card__img c-pixel js-pixel">
-                <canvas></canvas>
-                <img src="images/projets/mds-avis.svg" alt="Aperçu du projet MDS Avis" width="1200" height="900" />
-              </div>
-              <div class="c-card__info">
-                <p class="t-sm">MDS AVIS</p>
-                <p class="t-sm">ACADÉMIQUE — NEXT.JS</p>
-              </div>
-            </a>
-            <a class="c-card c-card--b" href="projets.html">
-              <p class="t-sm">(02)</p>
-              <div class="c-card__img c-pixel js-pixel">
-                <canvas></canvas>
-                <img src="images/projets/app-python.svg" alt="Aperçu de l'application Python" width="960" height="1200" />
-              </div>
-              <div class="c-card__info">
-                <p class="t-sm">APPLICATION PYTHON</p>
-                <p class="t-sm">ACADÉMIQUE — PYTHON</p>
-              </div>
-            </a>
-            <a class="c-card c-card--c" href="projets.html">
-              <p class="t-sm">(03)</p>
-              <div class="c-card__img c-pixel js-pixel">
-                <canvas></canvas>
-                <img src="images/projets/models-maps.svg" alt="Aperçu de Model's Maps" width="1200" height="900" />
-              </div>
-              <div class="c-card__info">
-                <p class="t-sm">MODEL'S MAPS</p>
-                <p class="t-sm">PERSONNEL — WEB APP</p>
-              </div>
-            </a>
-          </div>
+      <div id="veille" data-section="veille">
+        <include src="partials/pages/veille.html" demote></include>
+      </div>
 
-          <div class="p-projects__more">
-            <a class="c-cta anton" href="projets.html">
-              <span class="text-wrapper">
-                <span class="c-cta__label c-cta__label--default">TOUS LES PROJETS</span>
-                <span class="c-cta__label c-cta__label--clone" aria-hidden="true">TOUS LES PROJETS</span>
-              </span>
-              <span class="c-cta__rule"></span>
-              <span class="text-wrapper">
-                <span class="c-cta__icon c-cta__icon--default"></span>
-                <span class="c-cta__icon c-cta__icon--clone"></span>
-              </span>
-            </a>
-          </div>
-        </div>
-      </section>
+      <div id="synthese" data-section="synthese">
+        <include src="partials/pages/synthese.html" demote></include>
+      </div>
+
+      <div id="contact" data-section="contact">
+        <include src="partials/pages/contact.html" demote></include>
+      </div>
     </main>
+
+    <include src="partials/whatsapp.html"></include>
 
     <include src="partials/footer.html"></include>
   </body>

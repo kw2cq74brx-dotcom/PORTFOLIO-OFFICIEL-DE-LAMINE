@@ -42,3 +42,29 @@ export function splitChars(target) {
   target.replaceChildren(srOnly, visual);
   return chars;
 }
+
+// Découpe un texte en mots animables, sans toucher aux balises qu'il contient (<strong>, <a>…)
+export function splitWords(target) {
+  const walker = document.createTreeWalker(target, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+
+  const words = [];
+  nodes.forEach((node) => {
+    const fragment = document.createDocumentFragment();
+    node.textContent.split(/(\s+)/).forEach((token) => {
+      if (!token) return;
+      if (/^\s+$/.test(token)) {
+        fragment.appendChild(document.createTextNode(' '));
+        return;
+      }
+      const word = document.createElement('span');
+      word.className = 'word';
+      word.textContent = token;
+      fragment.appendChild(word);
+      words.push(word);
+    });
+    node.replaceWith(fragment);
+  });
+  return words;
+}

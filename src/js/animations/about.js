@@ -1,5 +1,6 @@
 import { gsap } from '../lib/gsap.js';
 import { prefersReducedMotion } from '../core/scroll.js';
+import { onReveal } from '../core/reveal.js';
 
 // Page À propos (structure inspirée de lxlcreative.co.uk/about) :
 //  - entrée : les cartes et le titre du hero montent en fondu ;
@@ -20,10 +21,8 @@ function initEnter() {
   const items = document.querySelectorAll('.js-enter');
   if (!items.length || prefersReducedMotion) return;
   gsap.set(items, { yPercent: 25, autoAlpha: 0 });
-  document.addEventListener(
-    'page:enter',
-    () => gsap.to(items, { yPercent: 0, autoAlpha: 1, duration: 0.9, ease: 'expo.out', stagger: 0.08, delay: 0.3 }),
-    { once: true },
+  onReveal(items[0], () =>
+    gsap.to(items, { yPercent: 0, autoAlpha: 1, duration: 0.9, ease: 'expo.out', stagger: 0.08, delay: 0.3 }),
   );
 }
 

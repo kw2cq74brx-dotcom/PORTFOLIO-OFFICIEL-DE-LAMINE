@@ -12,12 +12,14 @@ const pages = readdirSync(root).filter((file) => file.endsWith('.html'));
 
 // Mini-moteur de gabarits :
 //   <include src="partials/header.html"></include> → contenu du fichier
+//   <include src="…" demote></include>             → idem, ses <h1> deviennent des <h2>
 //   {{ email }}                                    → valeur de site.config.js
 function htmlTemplate(data) {
   const include = (html, depth = 0) =>
-    html.replace(/<include src="([^"]+)"\s*><\/include>/g, (_, src) => {
+    html.replace(/<include src="([^"]+)"(\s+demote)?\s*><\/include>/g, (_, src, demote) => {
       if (depth > 5) throw new Error(`Inclusion trop profonde : ${src}`);
-      return include(readFileSync(resolve(root, src), 'utf-8'), depth + 1);
+      const content = include(readFileSync(resolve(root, src), 'utf-8'), depth + 1);
+      return demote ? content.replace(/<(\/?)h1\b/g, '<$1h2') : content;
     });
 
   const fill = (html) =>

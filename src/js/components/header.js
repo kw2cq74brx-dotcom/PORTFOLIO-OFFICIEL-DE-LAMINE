@@ -11,11 +11,38 @@ export function initHeader() {
 }
 
 // Lien de la page courante (header + menu), d'après <body data-page="…">
-function markCurrentPage() {
-  const page = document.body.dataset.page;
+function markCurrentPage(page = document.body.dataset.page) {
+  document.querySelectorAll('[data-nav].is-current').forEach((link) => {
+    link.classList.remove('is-current');
+    link.removeAttribute('aria-current');
+  });
   document.querySelectorAll(`[data-nav="${page}"]`).forEach((link) => {
     link.classList.add('is-current');
     link.setAttribute('aria-current', 'page');
+  });
+}
+
+// Accueil : le lien actif suit la section affichée. Le bouton WhatsApp apparaît sur la section contact.
+// À appeler après la création des sections épinglées, qui décalent tout ce qui suit.
+export function initSectionSpy() {
+  const sections = [...document.querySelectorAll('[data-section]')];
+  sections.forEach((section) =>
+    ScrollTrigger.create({
+      trigger: section,
+      start: 'top 50%',
+      end: 'bottom 50%',
+      onToggle: (self) => self.isActive && markCurrentPage(section.dataset.section),
+    }),
+  );
+  if (!sections.length) return;
+
+  ScrollTrigger.create({ trigger: sections[0], start: 'top 50%', onLeaveBack: () => markCurrentPage() });
+  const whatsapp = document.querySelector('.c-whatsapp');
+  ScrollTrigger.create({
+    trigger: '#contact',
+    start: 'top 70%',
+    onEnter: () => whatsapp.classList.add('is-visible'),
+    onLeaveBack: () => whatsapp.classList.remove('is-visible'),
   });
 }
 

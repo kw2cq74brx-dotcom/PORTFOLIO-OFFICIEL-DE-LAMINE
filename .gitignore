@@ -1,3 +1,6 @@
 node_modules
 dist
 .DS_Store
+
+# Convention signée (données personnelles) : ne pas versionner
+public/docs/convention-stage-prima-frais.pdf

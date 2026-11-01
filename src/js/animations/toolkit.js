@@ -1,5 +1,6 @@
 import { gsap, ScrollTrigger } from '../lib/gsap.js';
 import { injectIcons } from '../data/toolIcons.js';
+import { onReveal } from '../core/reveal.js';
 
 // Page compétences : un éventail de cartes par bloc, piloté par le scroll.
 //  1. la première carte du premier bloc apparaît seule au centre (au chargement) ;
@@ -113,7 +114,7 @@ export function initToolkit() {
     const time = progress * tl.duration();
     const current = sets.reduce((acc, _, s) => (tl.labels[`bloc${s}`] <= time ? s : acc), 0);
     bars.forEach((bar, s) => bar.classList.toggle('is-active', s === current));
-    if (counter) counter.textContent = `[0${current + 1} / 0${sets.length}]`;
+    if (counter) counter.textContent = `0${current + 1} / 0${sets.length}`;
   };
 
   ScrollTrigger.create({
@@ -141,7 +142,7 @@ export function initToolkit() {
     ease: 'power4.out',
     clearProps: 'transform,opacity',
   });
-  document.addEventListener('page:enter', () => intro.play(), { once: true });
+  onReveal(root, () => intro.play());
 }
 
 // Ordre d'apparition : du centre vers les bords, en alternant droite et gauche

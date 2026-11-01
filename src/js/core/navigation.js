@@ -6,6 +6,7 @@ const normalize = (path) => path.replace(/index\.html$/, '');
 
 // Un seul écouteur pour tous les liens :
 // - ancre de la page courante → défilement fluide
+// - page présente en section de l'accueil → défilement jusqu'à la section
 // - autre page du site → transition en pixels puis navigation
 // - le reste (externe, mailto, tel, téléchargement) → comportement natif
 export function initNavigation() {
@@ -33,6 +34,15 @@ export function initNavigation() {
     }
 
     if (!/(\.html|\/)$/.test(url.pathname)) return;
+
+    const page = url.pathname.match(/([^/]+)\.html$/)?.[1];
+    if (document.querySelector(`[data-section="${page}"]`)) {
+      e.preventDefault();
+      menu.close();
+      // ancre absente de l'accueil (#stages…) : on va au début de la section
+      scrollToTarget(url.hash && document.querySelector(url.hash) ? url.hash : `#${page}`, { duration: 1.6 });
+      return;
+    }
 
     e.preventDefault();
     leave().then(() => {

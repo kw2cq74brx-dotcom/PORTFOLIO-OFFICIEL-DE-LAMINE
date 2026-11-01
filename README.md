@@ -42,3 +42,12 @@ src/js/animations/      titres, images pixelisées, transitions en pixels,
 
 Design et animations adaptés de [Atelier North](https://github.com/codrops/atelier-north)
 de Kaisei Sadatoki pour Codrops — licence MIT.
+Défilement en profondeur de la section Sources adapté de
+[Atmospheric Depth Gallery](https://github.com/houmahani/codrops-depth-gallery)
+de Houmahani Kane pour Codrops — licence MIT.
+Carrousel de la section Mes lectures écrit d'après le principe de
+[Infinite 3D Gradient Carousel](https://tympanus.net/codrops/2025/11/11/building-a-3d-infinite-carousel-with-reactive-background-gradients/)
+de Clément Grellier pour Codrops.
+Animations des textes au scroll adaptées de
+[On-Scroll Typography Animations](https://github.com/codrops/OnScrollTypographyAnimations)
+(Codrops) — licence MIT.

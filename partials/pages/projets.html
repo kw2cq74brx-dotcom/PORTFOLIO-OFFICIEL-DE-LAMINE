@@ -1,0 +1,84 @@
+      <section class="p-head p-head--center">
+        <div class="l-wrapper p-head__wrapper">
+          <p class="t-base">PROJETS ACADÉMIQUES &amp; PERSONNEL</p>
+          <h1 class="p-head__title anton js-fx-title"><span class="text-wrapper">PROJETS</span></h1>
+          <p class="p-head__subtitle">Applications web, Python et produit personnel</p>
+          <p class="t-sm">SCROLL ↓</p>
+        </div>
+      </section>
+
+      <!-- ============ PROJETS : cartes dispersées (même structure que « Mon parcours » de la page À propos) ============
+           Au survol, l'image de chaque carte défile et la carte prend de l'élan. -->
+      <section class="p-ab-steps p-ab-steps--projects js-momentum" aria-label="Mes projets">
+        <div class="l-wrapper">
+          <div class="p-ab-steps__head">
+            <h2 class="p-ab-steps__title">
+              Deux projets académiques, un projet <strong class="p-ab-accent">personnel</strong>, une même exigence.
+            </h2>
+          </div>
+
+          <ul class="p-ab-steps__list" role="list">
+            <li class="p-ab-steps__item js-hover-cycle js-momentum-item" id="mds-avis">
+              <article class="p-ab-step js-momentum-target">
+                <div class="p-ab-step__visual">
+                  <img src="images/projets/mds-avis.jpg" alt="Page d'accueil de MDS Avis : « Les avis de My Digital School, sans filtre. »" />
+                </div>
+                <div class="p-ab-step__content">
+                  <p class="t-sm p-ab-step__meta">PROJET ACADÉMIQUE · {{ yearsSio }}</p>
+                  <h2 class="anton p-ab-step__name">MDS Avis</h2>
+                  <p class="t-sm p-ab-step__role">Next.js · Prisma · Tailwind CSS</p>
+                  <!-- À COMPLÉTER : lien vers la page du projet (site.config.js) -->
+                  <a class="p-ab-step__link" href="{{ mdsAvisUrl }}" target="_blank" rel="noopener">
+                    <span>VOIR LE PROJET</span><span class="c-cta__icon" aria-hidden="true"></span>
+                  </a>
+                </div>
+              </article>
+            </li>
+            <li class="p-ab-steps__item js-hover-cycle js-momentum-item" id="app-python">
+              <article class="p-ab-step js-momentum-target">
+                <div class="p-ab-step__visual">
+                  <!-- À COMPLÉTER : captures du projet → public/images/projets/app-python.(jpg|png) et app-python-2.(jpg|png) -->
+                  <img class="js-hover-cycle-image" src="images/projets/app-python.svg" alt="Aperçu de l'application Python" />
+                  <img class="js-hover-cycle-image" src="images/projets/app-python-2.svg" alt="" />
+                </div>
+                <div class="p-ab-step__content">
+                  <p class="t-sm p-ab-step__meta">PROJET ACADÉMIQUE · {{ yearsSio }}</p>
+                  <h2 class="anton p-ab-step__name">Application Python</h2>
+                  <p class="t-sm p-ab-step__role">Python · Programmation orientée objet</p>
+                  <!-- À COMPLÉTER : lien vers la page du projet (site.config.js) -->
+                  <a class="p-ab-step__link" href="{{ pythonAppUrl }}" target="_blank" rel="noopener">
+                    <span>VOIR LE PROJET</span><span class="c-cta__icon" aria-hidden="true"></span>
+                  </a>
+                </div>
+              </article>
+            </li>
+            <li class="p-ab-steps__item js-hover-cycle js-momentum-item" id="models-maps">
+              <article class="p-ab-step js-momentum-target">
+                <div class="p-ab-step__visual">
+                  <img src="images/projets/models-maps.jpg" alt="Page d'accueil de Model's Map : « Ta carrière de mannequin commence ici. »" />
+                </div>
+                <div class="p-ab-step__content">
+                  <p class="t-sm p-ab-step__meta">PROJET PERSONNEL · 20XX</p>
+                  <h2 class="anton p-ab-step__name">Model's Map</h2>
+                  <p class="t-sm p-ab-step__role">Application web de scouting de mannequins</p>
+                  <!-- À COMPLÉTER : lien vers la page du projet (site.config.js) -->
+                  <a class="p-ab-step__link" href="{{ modelsMapsUrl }}" target="_blank" rel="noopener">
+                    <span>VOIR LE PROJET</span><span class="c-cta__icon" aria-hidden="true"></span>
+                  </a>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </div>
+
+        <div class="p-ab-squiggle p-ab-squiggle--steps js-draw-svg" aria-hidden="true">
+          <svg viewBox="0 0 1440 600" fill="none" preserveAspectRatio="none">
+            <path
+              d="M-20 420 C 180 300, 300 520, 470 430 S 700 140, 880 260 S 1150 520, 1460 300"
+              stroke="currentColor"
+              stroke-linecap="round"
+              vector-effect="non-scaling-stroke"
+            />
+          </svg>
+        </div>
+      </section>

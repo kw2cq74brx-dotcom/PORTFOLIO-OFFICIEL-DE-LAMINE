@@ -38,6 +38,7 @@
   --font-display: 'Anton', sans-serif;
   --font-title: 'Alt Matey', 'Anton', sans-serif;
   --font-accent: 'Caveat', cursive;
+  --font-text: 'Montserrat Alternates', var(--font-mono);
 
   --gutter: clamp(16px, calc(7.762px + 2.197vw), 64px);
   --header-top: clamp(24px, calc(21.254px + 0.732vw), 40px);
@@ -128,13 +129,33 @@ html.lenis body {
 }
 
 /* line-height 1.2 : laisse la place aux accents des majuscules (É, À…) dans le masque */
+/* Descriptions : Montserrat Alternates (les libellés entre crochets, dates et chiffres restent en Kode Mono) */
+.t-md,
+.p-head__lead p:last-child,
+.p-fv__vision p:last-child,
+.p-pile__lead,
+.p-stair__intro,
+.p-xp__lead,
+.p-projects__intro p:last-child,
+.p-next__lead,
+.p-depth__intro p:last-child,
+.p-depth__info .t-base,
+.p-reads__head > .t-base,
+.p-reads__summary,
+.p-about__services-info > .t-base,
+.p-ab-quality__text,
+.p-social__desc,
+.p-prog__body {
+  font-family: var(--font-text);
+}
+
 /* Grands titres : Alt Matey (les libellés, boutons et cartes restent en Anton) */
 .p-fv__title,
 .p-head__title,
 .p-xp__title,
 .p-about__title,
 .p-projects__title,
-.p-sticky__title,
+.p-depth__title,
 .p-toolkit__title,
 .p-pile__heading,
 .p-ct__title,
@@ -151,8 +172,13 @@ html.lenis body {
   line-height: 1.2;
 }
 .p-fv__title .text-wrapper,
-.p-sticky__title .text-wrapper {
+.p-depth__title .text-wrapper {
   line-height: inherit;
+}
+
+/* Titres animés au scroll : les lettres en 3D ne sont pas coupées par le masque */
+.js-fx-title .text-wrapper {
+  overflow: visible;
 }
 
 /* Lettres générées par splitChars() */
@@ -162,15 +188,6 @@ html.lenis body {
 }
 .char {
   display: inline-block;
-}
-
-.br-sp {
-  display: block;
-}
-@media (min-width: 1024px) {
-  .br-sp {
-    display: none;
-  }
 }
 
 .dot {
