@@ -18,8 +18,8 @@ export default {
 
   // Fichiers à déposer dans /public
   photo: 'images/profil.jpg',
-  cv: 'docs/cv-baye-lamine-gueye.pdf', // À COMPLÉTER : dépose ton CV à cet emplacement
-  conventionStage: 'docs/convention-stage-prima-frais.pdf',
+  photoHero: 'images/profil-hero.jpg',
+  cv: 'docs/cv-baye-lamine-gueye.pdf',
 
   // Réseaux
   linkedin: 'https://www.linkedin.com/in/baye-lamine-gueye-b760a8341',

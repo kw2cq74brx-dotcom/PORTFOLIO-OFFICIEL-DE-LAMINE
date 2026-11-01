@@ -31,10 +31,11 @@
 }
 .p-fv__photo {
   flex-shrink: 0;
-  width: clamp(88px, 9vw, 136px);
+  width: clamp(112px, 11vw, 168px);
   aspect-ratio: 1;
   overflow: hidden;
   border: 1px solid var(--glass-border);
+  border-radius: 24px;
   box-shadow: var(--glass-shine);
 }
 .p-fv__photo img {
@@ -42,7 +43,7 @@
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: 50% 18%;
+  object-position: 50% 0;
   transition: opacity 0.4s ease;
 }
 .p-fv__id-text {
@@ -65,7 +66,8 @@
     gap: 6px;
   }
   .p-fv__photo {
-    width: 76px;
+    width: 92px;
+    border-radius: 18px;
   }
   .p-fv__top {
     gap: 20px;
@@ -1187,17 +1189,6 @@ a.p-about__services-item:hover {
   color: var(--text);
   opacity: 0.55;
 }
-.p-xp-step__link {
-  display: flex;
-  gap: 8px;
-  width: fit-content;
-  padding-bottom: 2px;
-  border-bottom: 1px solid currentColor;
-  transition: color 0.3s ease;
-}
-.p-xp-step__link:hover {
-  color: var(--accent);
-}
 
 /* Panneau des tags */
 .p-xp-step__panel {
@@ -1531,10 +1522,6 @@ a.p-about__services-item:hover {
   display: block;
   object-fit: cover;
 }
-/* Hero : affiches au format portrait (2:3), visibles en entier */
-.p-ab-hero .p-ab-card {
-  aspect-ratio: 2 / 3;
-}
 /* Portrait : cadrage sur le visage plutôt qu'au centre */
 .p-ab-card img[src*='profil'],
 .p-ab-cycle__visual img[src*='profil'] {
@@ -1552,7 +1539,7 @@ a.p-about__services-item:hover {
 }
 
 /* Grille : les affiches ont leur propre place et ne recouvrent jamais la phrase.
-   Une carte inclinée à 15° déborde de sa colonne de 17,7 % de sa largeur :
+   Une carte carrée inclinée à 15° déborde de sa colonne de 11,2 % de sa largeur :
    l'écart compense ce débord pour la garder tout près du texte, sans le toucher.
    Mobile : côte à côte au-dessus du titre. Ordinateur : de part et d'autre, en décalé. */
 .p-ab-hero__title-wrap {
@@ -1562,7 +1549,7 @@ a.p-about__services-item:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 36px calc(var(--card-w) * 0.354 + 8px);
+  gap: 36px calc(var(--card-w) * 0.224 + 8px);
 }
 
 .p-ab-hero__title {
@@ -1589,7 +1576,7 @@ a.p-about__services-item:hover {
     display: grid;
     /* 9,9 fois la taille du texte : la largeur de sa plus longue ligne */
     grid-template-columns: var(--card-w) minmax(0, calc(var(--title-fs) * 9.9)) var(--card-w);
-    column-gap: calc(var(--card-w) * 0.177 + 16px);
+    column-gap: calc(var(--card-w) * 0.112 + 16px);
   }
   .p-ab-hero__title {
     grid-column: 2;
