@@ -12,20 +12,13 @@ import {
   siMysql,
   siMariadb,
   siPostgresql,
-  siSqlite,
   siPrisma,
   siVirtualbox,
-  siLinux,
   siGit,
   siGithub,
-  siMarkdown,
   siJira,
-  siOwasp,
   siLetsencrypt,
   siJsonwebtokens,
-  siBitwarden,
-  siWireshark,
-  siKalilinux,
 } from 'simple-icons';
 
 // Pictogrammes maison (tracé au trait) pour les notions sans logo officiel
@@ -49,11 +42,6 @@ const customIcons = {
     title: 'GLPI',
     // Fiche d'inventaire cochée
     svg: '<rect x="5" y="3.5" width="14" height="18" rx="2" /><path d="M9 2.5h6v3H9z" /><path d="M8.5 10l1.5 1.5 2.5-2.5M14 10.5h2.5M8.5 15.5l1.5 1.5 2.5-2.5M14 16h2.5" />',
-  },
-  itil: {
-    title: 'ITIL',
-    // Cycle de vie des services
-    svg: '<path d="M20 12a8 8 0 0 1-13.7 5.6M4 12a8 8 0 0 1 13.7-5.6" /><path d="M17.7 2.8v3.8h-3.8M6.3 21.2v-3.8h3.8" /><circle cx="12" cy="12" r="2.2" />',
   },
   rgpd: {
     title: 'RGPD',
@@ -116,19 +104,12 @@ export const toolIcons = {
   mysql: siMysql,
   mariadb: siMariadb,
   postgresql: siPostgresql,
-  sqlite: siSqlite,
   prisma: siPrisma,
   virtualbox: siVirtualbox,
-  linux: siLinux,
   git: siGit,
   github: siGithub,
-  markdown: siMarkdown,
   jira: siJira,
-  owasp: siOwasp,
   letsencrypt: siLetsencrypt,
   jwt: siJsonwebtokens,
-  bitwarden: siBitwarden,
-  wireshark: siWireshark,
-  kali: siKalilinux,
   ...customIcons,
 };
