@@ -359,6 +359,10 @@
 /* =========================================================
    Curseur « lentille de verre » (le fond WebGL dessine la réfraction dessous)
    ========================================================= */
+.has-lens,
+.has-lens * {
+  cursor: none !important;
+}
 .c-lens {
   position: fixed;
   top: 0;

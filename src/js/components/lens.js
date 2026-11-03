@@ -20,6 +20,8 @@ export function initLens() {
   el.className = 'c-lens';
   el.setAttribute('aria-hidden', 'true');
   document.body.appendChild(el);
+  // La lentille remplace la flèche du système, masquée en CSS
+  document.documentElement.classList.add('has-lens');
 
   // Diamètre : 8 % du plus petit côté de l'écran, borné
   let baseRadius = 0;
