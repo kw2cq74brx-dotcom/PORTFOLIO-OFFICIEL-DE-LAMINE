@@ -21,10 +21,10 @@ export function initLens() {
   el.setAttribute('aria-hidden', 'true');
   document.body.appendChild(el);
 
-  // Diamètre : 20 % du plus petit côté de l'écran, borné
+  // Diamètre : 8 % du plus petit côté de l'écran, borné
   let baseRadius = 0;
   const resize = () => {
-    baseRadius = gsap.utils.clamp(90, 200, Math.min(window.innerWidth, window.innerHeight) * 0.2) / 2;
+    baseRadius = gsap.utils.clamp(44, 80, Math.min(window.innerWidth, window.innerHeight) * 0.08) / 2;
     el.style.width = el.style.height = `${baseRadius * 2}px`;
   };
   resize();
