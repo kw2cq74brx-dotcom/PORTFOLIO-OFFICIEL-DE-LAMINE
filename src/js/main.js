@@ -24,6 +24,7 @@ import { initProgramme } from './animations/programme.js';
 import { initAbout } from './animations/about.js';
 import { initExperiences } from './animations/experiences.js';
 import { initContact } from './animations/contact.js';
+import { initVeilleFeed } from './components/veilleFeed.js';
 
 initLiquidBackground();
 initLens();
@@ -47,6 +48,8 @@ initPixelImages();
 initPixelTransitions();
 initSynthesis();
 initSectionSpy();
+// Veille : articles et sources à jour depuis les flux RSS (sans bloquer le reste)
+initVeilleFeed();
 
 // La découpe en lettres dépend des polices : on attend qu'elles soient chargées,
 // puis l'intro (première visite et actualisation) avant de révéler la page

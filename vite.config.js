@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import site from './site.config.js';
+import veille from './api/veille.js';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
 
@@ -40,9 +41,18 @@ function htmlTemplate(data) {
   };
 }
 
+// En local, les fonctions serveur de Vercel (dossier api/) n'existent pas : on branche la même
+// fonction sur le serveur de Vite pour que la veille se mette à jour aussi pendant le développement
+function localApi() {
+  const mount = (server) => {
+    server.middlewares.use('/api/veille', (req, res) => veille(req, res));
+  };
+  return { name: 'local-api', configureServer: mount, configurePreviewServer: mount };
+}
+
 export default defineConfig({
   base: './',
-  plugins: [htmlTemplate(site), tailwindcss()],
+  plugins: [htmlTemplate(site), tailwindcss(), localApi()],
   build: {
     rollupOptions: {
       input: Object.fromEntries(pages.map((page) => [page.replace('.html', ''), resolve(root, page)])),

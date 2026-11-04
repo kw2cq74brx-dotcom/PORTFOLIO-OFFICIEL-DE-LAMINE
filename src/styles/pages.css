@@ -519,6 +519,31 @@ a.p-about__services-item:hover {
   font-size: clamp(2rem, 0.9rem + 2.1vw, 3rem);
 }
 
+/* Veille — deux sujets côte à côte */
+@media (min-width: 1024px) {
+  .p-about__services--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.p-about__services--2 .p-about__services-item {
+  aspect-ratio: auto;
+}
+.p-subjects__title {
+  margin-bottom: 40px;
+}
+@media (min-width: 1024px) {
+  .p-subjects__title {
+    margin-bottom: 64px;
+  }
+}
+.p-subjects__name {
+  font-weight: 600;
+}
+.p-subjects__text {
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
 /* =========================================================
    Bloc « Projects » : lead + titre qui roule
    ========================================================= */
@@ -660,6 +685,28 @@ a.p-about__services-item:hover {
   margin-bottom: 16px;
   line-height: 1.5;
   opacity: 0.85;
+}
+.p-depth__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 20px;
+}
+/* Dernier article de la source, mis à jour depuis son flux RSS */
+.p-depth__latest {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid color-mix(in srgb, var(--accent-card) 30%, transparent);
+}
+.p-depth__latest a {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.35;
+}
+.p-depth__latest a:hover {
+  text-decoration: underline;
 }
 .p-depth__number {
   text-align: right;
